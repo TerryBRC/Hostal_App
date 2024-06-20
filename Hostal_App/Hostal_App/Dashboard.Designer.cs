@@ -2328,6 +2328,7 @@
             this.dataGridViewConfig.ReadOnly = true;
             this.dataGridViewConfig.Size = new System.Drawing.Size(900, 150);
             this.dataGridViewConfig.TabIndex = 0;
+            this.dataGridViewConfig.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewConfiguraciones_CellClick);
             // 
             // txtBuscarConfig
             // 
