@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 
@@ -91,6 +92,29 @@ namespace Hostal_App.Services
 
                 return dataTable;
             }
+        }
+
+        public List<string> ObtenerNombresTH()
+        {
+            List<string> nombresTH = new List<string>();
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                MySqlCommand command = new MySqlCommand("sp_obtener_tipos_h", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                connection.Open();
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string tipo = reader["Tipo"].ToString();
+                        nombresTH.Add(tipo);
+                    }
+                }
+            }
+
+            return nombresTH;
         }
 
 

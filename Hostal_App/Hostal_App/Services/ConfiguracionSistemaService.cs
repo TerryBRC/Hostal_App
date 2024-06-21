@@ -1,6 +1,4 @@
-﻿using Hostal_App.Models;
-using MySql.Data.MySqlClient;
-using System;
+﻿using MySql.Data.MySqlClient;
 using System.Configuration;
 using System.Data;
 

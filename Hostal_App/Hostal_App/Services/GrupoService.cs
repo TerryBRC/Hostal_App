@@ -1,4 +1,6 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Hostal_App.Models;
+using MySql.Data.MySqlClient;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 
@@ -76,13 +78,13 @@ namespace Hostal_App.Services
         }
 
         // Método para obtener un grupo filtrado por nombre
-        public DataTable ObtenerGrupoFiltrado(string filtroNombre)
+        public DataTable ObtenerGrupoFiltrado(string filtro)
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 MySqlCommand command = new MySqlCommand("sp_search_grupo", connection);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@p_nombre", "%" + filtroNombre + "%");
+                command.Parameters.AddWithValue("@p_filter", "%" + filtro + "%");
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                 DataTable dataTable = new DataTable();
@@ -90,6 +92,81 @@ namespace Hostal_App.Services
 
                 return dataTable;
             }
+        }
+
+        public List<string> ObtenerNombresGrupos()
+        {
+            List<string> nombresGrupos = new List<string>();
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                MySqlCommand command = new MySqlCommand("sp_obtener_nombres_grupos", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                connection.Open();
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string nombreGrupo = reader["nombre"].ToString();
+                        nombresGrupos.Add(nombreGrupo);
+                    }
+                }
+            }
+
+            return nombresGrupos;
+        }
+
+
+        public int ObtenerIdGrupoPorNombre(string nombreGrupo)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                MySqlCommand command = new MySqlCommand("SELECT id FROM grupos WHERE nombre = @nombreGrupo", connection);
+                command.Parameters.AddWithValue("@nombreGrupo", nombreGrupo);
+
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null && int.TryParse(result.ToString(), out int grupoId))
+                {
+                    return grupoId;
+                }
+                return -1; // Valor que indica que no se encontró el grupo
+            }
+        }
+
+
+
+        public List<Permiso> ObtenerPermisosPorGrupo(int grupoId)
+        {
+            List<Permiso> permisos = new List<Permiso>();
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                string query = "SELECT p.id, p.nombre FROM Permisos p " +
+                               "INNER JOIN grupos_permisos gp ON p.id = gp.permiso_id " +
+                               "WHERE gp.grupo_id = @grupoId";
+
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@grupoId", grupoId);
+
+                connection.Open();
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Permiso permiso = new Permiso
+                        {
+                            Id = reader.GetInt32("id"),
+                            Nombre = reader.GetString("nombre")
+                        };
+
+                        permisos.Add(permiso);
+                    }
+                }
+            }
+
+            return permisos;
         }
 
     }

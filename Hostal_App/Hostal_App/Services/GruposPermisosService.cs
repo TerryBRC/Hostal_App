@@ -44,13 +44,13 @@ namespace Hostal_App.Services
 
 
         // Método para obtener grupos de permisos filtrados por nombre
-        public DataTable ObtenerGruposPermisosFiltrados(string filtroNombre)
+        public DataTable ObtenerGruposPermisosFiltrados(string filtro)
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 MySqlCommand command = new MySqlCommand("sp_search_grupo_permisos", connection);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@p_nombre", "%" + filtroNombre + "%");
+                command.Parameters.AddWithValue("@p_filter", "%" + filtro + "%");
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                 DataTable dataTable = new DataTable();
@@ -59,6 +59,24 @@ namespace Hostal_App.Services
                 return dataTable;
             }
         }
+
+
+        public DataTable ObtenerGruposPermisos()
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                MySqlCommand command = new MySqlCommand("sp_read_grupos_permisos", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                return dataTable;
+            }
+        }
+
+
 
     }
 }

@@ -1,13 +1,14 @@
-﻿using Hostal_App.Services;
+﻿using Google.Protobuf.WellKnownTypes;
+using Hostal_App.Helper;
+using Hostal_App.Models;
+using Hostal_App.Services;
 using MaterialSkin.Controls;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.InteropServices;
+using System.Security.AccessControl;
 using System.Windows.Forms;
 
 namespace Hostal_App
@@ -19,11 +20,18 @@ namespace Hostal_App
         private readonly TipoHabitacionService tipoHabitacionService;
         private readonly PermisoService permisoService;
         private readonly GrupoService grupoService;
-        private readonly ConfiguracionSistemaService configuracionSistemaService;
+        private readonly GruposPermisosService gruposPermisosService;
+        private readonly HabitacionService habitacionService;
+        private readonly ReservaService reservaService;
 
-        public Dashboard()
+
+        private readonly List<Permiso> permisosLogin;
+        public Dashboard(List<Permiso> permisos)
         {
             InitializeComponent();
+            this.permisosLogin = permisos;
+            CargarListaPermisos();
+            InitializeTimer();
             usuarioService = new UsuarioService();
             LoadData();
             clienteService = new ClienteService();
@@ -34,8 +42,25 @@ namespace Hostal_App
             LoadDataPermisos();
             grupoService = new GrupoService();
             LoadDataGrupos();
-            configuracionSistemaService = new ConfiguracionSistemaService();
-            LoadDataConfiguraciones();
+            gruposPermisosService = new GruposPermisosService();
+            LoadDataGruposPermisos();
+            habitacionService = new HabitacionService();
+            LoadDataHabitacion();
+            reservaService = new ReservaService();
+            LoadDataReservas();
+
+        }
+
+        private void CargarListaPermisos()
+        {
+            // Limpiar la lista antes de cargar los permisos para evitar duplicados
+            lbPermisos.Items.Clear();
+
+            // Agregar los permisos al ListBox
+            foreach (Permiso permiso in permisosLogin)
+            {
+                lbPermisos.Items.Add(permiso.Nombre);
+            }
         }
         #region Usuarios
         private void Limpiar()
@@ -46,7 +71,8 @@ namespace Hostal_App
             txtNombre.Clear();
             txtApellido.Clear();
             txtCorreo.Clear();
-            chkIsActive.Checked = false;
+            cmbGrupoUsuario.SelectedIndex = -1;
+            chkIsActive.Checked = true;
         }
         private void LoadData()
         {
@@ -54,7 +80,6 @@ namespace Hostal_App
             // Ocultar la columna de encabezado de fila
             dataGridViewUsuarios.RowHeadersVisible = false;
         }
-
         private void dataGridViewUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -67,6 +92,7 @@ namespace Hostal_App
                     txtNombre.Text = row.Cells["nombre"].Value.ToString();
                     txtApellido.Text = row.Cells["apellido"].Value.ToString();
                     txtCorreo.Text = row.Cells["email"].Value.ToString();
+                    cmbGrupoUsuario.SelectedValue = row.Cells["grupo_id"].Value.ToString();
                     chkIsActive.Checked = Convert.ToBoolean(row.Cells["is_active"].Value);
                 }
             }
@@ -91,8 +117,9 @@ namespace Hostal_App
                 MessageBox.Show("Por favor, complete todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            string passwordEnc = EncryptionHelper.EncryptPassword(password);
 
-            if (usuarioService.CrearUsuario(password, usuario, nombre, apellido, correo, isActive))
+            if (usuarioService.CrearUsuario(passwordEnc, usuario, nombre, apellido, correo, isActive))
             {
                 MessageBox.Show("Usuario guardado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Limpiar();
@@ -164,9 +191,17 @@ namespace Hostal_App
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             string filter = txtBuscar.Text;
-            LoadFilteredData(filter);
+            if (string.IsNullOrEmpty(filter))
+            {
+                LoadData();
+            }
+            else
+            {
+                LoadFilteredData(filter);
+            }
         }
         #endregion Usuarios
+
         #region Clientes
         private void LimpiarClientes()
         {
@@ -294,9 +329,17 @@ namespace Hostal_App
         private void btnBuscarCliente_Click(object sender, EventArgs e)
         {
             string filter = txtBuscarCliente.Text;
-            LoadFilteredDataClientes(filter);
+            if (string.IsNullOrEmpty(filter))
+            {
+                LoadDataClientes();
+            }
+            else
+            {
+                LoadFilteredDataClientes(filter);
+            }
         }
         #endregion Clientes
+
         #region Tipo_Habitacion
         private void LimpiarTipoHabitacion()
         {
@@ -329,7 +372,7 @@ namespace Hostal_App
                 return;
             }
 
-            if (tipoHabitacionService.CrearTipoHabitacion(tipo,descripcion))
+            if (tipoHabitacionService.CrearTipoHabitacion(tipo, descripcion))
             {
                 MessageBox.Show("Tipo de Habitación guardada exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LimpiarTipoHabitacion();
@@ -346,7 +389,7 @@ namespace Hostal_App
             string tipo = txtTipo.Text;
             string descripcion = txtDescripcion.Text;
 
-            if (id.Equals("")||string.IsNullOrWhiteSpace(tipo) || string.IsNullOrWhiteSpace(descripcion))
+            if (id.Equals("") || string.IsNullOrWhiteSpace(tipo) || string.IsNullOrWhiteSpace(descripcion))
             {
                 MessageBox.Show("Por favor, complete todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -403,7 +446,14 @@ namespace Hostal_App
         private void btnBuscarTH_Click(object sender, EventArgs e)
         {
             string filter = txtBuscarTH.Text;
-            LoadFilteredDataTH(filter);
+            if (string.IsNullOrEmpty(filter))
+            {
+                LoadDataTipoHabitacion();
+            }
+            else
+            {
+                LoadFilteredDataTH(filter);
+            }
         }
         #endregion Tipo_Habitacion
 
@@ -507,11 +557,16 @@ namespace Hostal_App
         private void btnBuscarPermiso_Click(object sender, EventArgs e)
         {
             string filter = txtBuscarPermiso.Text;
-            LoadFilteredDataPermisos(filter);
-        }
-
-
-
+            if (string.IsNullOrEmpty(filter))
+            {
+                LoadDataPermisos();
+            }
+            else
+            {
+                LoadFilteredDataPermisos(filter);
+            }
+            
+        }       
         #endregion Permisos
 
         #region Grupos
@@ -613,125 +668,527 @@ namespace Hostal_App
         private void btnBuscarGrupo_Click(object sender, EventArgs e)
         {
             string filter = txtBuscarGrupo.Text;
-            LoadFilteredDataGrupos(filter);
+            if (string.IsNullOrEmpty(filter))
+            {
+                LoadDataGrupos();
+            }
+            else
+            {
+                LoadFilteredDataGrupos(filter);
+            }
         }
         #endregion Grupos
 
-        #region Configuraciones
-        private void LimpiarConfiguraciones()
+        #region Grupos/Permisos
+        private void LimpiarGruposPermisos()
         {
-            lblIdConfig.Text = "";
-            txtClave.Clear();
-            txtValor.Clear();
-            txtClave.Focus();
+            lblIdPermisosGrupos.Text = "";
+            cmbPermisos.SelectedIndex = -1;
+            cmbGrupos.SelectedIndex = -1;
+            cmbGrupos.Focus();
         }
-        private void LoadDataConfiguraciones()
+        private void CargarComboBoxPermisos()
         {
-            dataGridViewConfig.DataSource = configuracionSistemaService.ObtenerConfiguraciones();
-            dataGridViewConfig.RowHeadersVisible = false;
+
+            // Obtener los nombres de los permisos
+            List<string> nombresPermisos = permisoService.ObtenerNombresPermisos();
+
+            // Limpiar el ComboBox antes de cargar los nuevos datos
+            cmbPermisos.Items.Clear();
+
+            // Agregar los nombres de los permisos al ComboBox
+            foreach (string nombrePermiso in nombresPermisos)
+            {
+                cmbPermisos.Items.Add(nombrePermiso);
+            }
         }
-        private void LoadFilteredDataConfiguraciones(string filter)
+        private void CargarComboBoxGrupos()
         {
-            dataGridViewConfig.DataSource = configuracionSistemaService.ObtenerConfiguracionesFiltradas(filter);
-            dataGridViewConfig.RowHeadersVisible = false;
+            cmbGrupos.DataSource = grupoService.ObtenerGrupos();
+            cmbGrupos.DisplayMember = "nombre";
+            cmbGrupos.ValueMember = "Id";
+            cmbGrupos.SelectedIndex = -1;
+            cmbGrupoUsuario.DataSource = grupoService.ObtenerGrupos();
+            cmbGrupoUsuario.DisplayMember = "nombre";
+            cmbGrupoUsuario.ValueMember = "Id";
+            cmbGrupoUsuario.SelectedIndex = -1;
         }
 
-        private void dataGridViewConfiguraciones_CellClick(object sender, DataGridViewCellEventArgs e)
+
+        private void LoadDataGruposPermisos()
+        {
+            dataGridViewGruposPermisos.DataSource = gruposPermisosService.ObtenerGruposPermisos();
+            dataGridViewGruposPermisos.RowHeadersVisible = false;
+
+            CargarComboBoxPermisos();
+            CargarComboBoxGrupos();
+        }
+
+        private void dataGridViewGruposPermisos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
                 if (e.RowIndex >= 0)
                 {
-                    DataGridViewRow row = dataGridViewConfig.Rows[e.RowIndex];
-                    lblIdConfig.Text = row.Cells["id"].Value.ToString();
-                    txtClave.Text = row.Cells["clave"].Value.ToString();
-                    txtValor.Text = row.Cells["valor"].Value.ToString();
+                    DataGridViewRow row = dataGridViewGruposPermisos.Rows[e.RowIndex];
+                    // Obtener datos de la fila seleccionada
+                    string idGruposPermisos = row.Cells["Id"].Value.ToString();
+                    string nombreGrupo = row.Cells["Grupo"].Value.ToString();
+                    string nombrePermiso = row.Cells["Permiso"].Value.ToString();
+
+                    // Mostrar los datos en los ComboBox correspondientes
+                    lblIdPermisosGrupos.Text = idGruposPermisos; // Mostrar el ID en un control Label
+                    cmbGrupos.SelectedItem = nombreGrupo;
+                    cmbPermisos.SelectedItem = nombrePermiso;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al seleccionar la configuración: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al cargar los datos de la fila seleccionada: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void btnAgregarConfig_Click(object sender, EventArgs e)
+        private void btnAgregarGrupoPermiso_Click(object sender, EventArgs e)
         {
-            string clave = txtClave.Text;
-            string valor = txtValor.Text;
+            string nombreGrupo = cmbGrupos.SelectedItem?.ToString();
+            string nombrePermiso = cmbPermisos.SelectedItem?.ToString();
 
-            if (string.IsNullOrWhiteSpace(clave) || string.IsNullOrWhiteSpace(valor))
+            if (string.IsNullOrWhiteSpace(nombreGrupo) || string.IsNullOrWhiteSpace(nombrePermiso))
             {
-                MessageBox.Show("Por favor, complete todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Por favor, seleccione un grupo y un permiso.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (configuracionSistemaService.CrearConfiguracion(clave, valor))
-            {
-                MessageBox.Show("Configuración guardada exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LimpiarConfiguraciones();
-                LoadDataConfiguraciones();
-            }
-            else
-            {
-                MessageBox.Show("Error al guardar la configuración.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        private void btnActualizarConfig_Click(object sender, EventArgs e)
-        {
-            int id = int.Parse(lblIdConfig.Text);
-            string clave = txtClave.Text;
-            string valor = txtValor.Text;
+            // Obtener los IDs de grupo y permiso
+            int grupoId = grupoService.ObtenerIdGrupoPorNombre(nombreGrupo);
+            int permisoId = permisoService.ObtenerIdPermisoPorNombre(nombrePermiso);
 
-            if (id.Equals("") || string.IsNullOrWhiteSpace(clave) || string.IsNullOrWhiteSpace(valor))
+            if (grupoId == -1 || permisoId == -1)
             {
-                MessageBox.Show("Por favor, complete todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No se pudo obtener el ID del grupo o el permiso.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (configuracionSistemaService.ActualizarConfiguracion(id, clave, valor))
+            // Lógica para asignar el permiso al grupo utilizando el método AsignarPermisoAGrupo
+            bool asignado = gruposPermisosService.AsignarPermisoAGrupo(grupoId, permisoId);
+
+            if (asignado)
             {
-                MessageBox.Show("Configuración actualizada exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LimpiarConfiguraciones();
-                LoadDataConfiguraciones();
+                MessageBox.Show("Grupo y permiso agregados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Actualizar datos en el DataGridView y limpiar ComboBoxes
+                LoadDataGruposPermisos();
+                LimpiarGruposPermisos();
             }
             else
             {
-                MessageBox.Show("Error al actualizar la configuración.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Hubo un problema al agregar el permiso al grupo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+        private void btnEliminarGrupoPermiso_Click(object sender, EventArgs e)
+        {
+            string nombreGrupo = cmbGrupos.SelectedItem?.ToString();
+            string nombrePermiso = cmbPermisos.SelectedItem?.ToString();
+
+            if (string.IsNullOrWhiteSpace(nombreGrupo) || string.IsNullOrWhiteSpace(nombrePermiso))
+            {
+                MessageBox.Show("Por favor, seleccione un grupo y un permiso.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Obtener IDs correspondientes a los nombres seleccionados
+            int grupoId = grupoService.ObtenerIdGrupoPorNombre(nombreGrupo);
+            int permisoId = permisoService.ObtenerIdPermisoPorNombre(nombrePermiso);
+
+            if (grupoId == -1 || permisoId == -1)
+            {
+                MessageBox.Show("Error al obtener los IDs de grupo y permiso.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Lógica para eliminar el grupo y permiso seleccionados
+            gruposPermisosService.RevocarPermisoDeGrupo(grupoId, permisoId);
+
+            // Actualizar datos en el DataGridView y limpiar ComboBoxes
+            LoadDataGruposPermisos();
+            LimpiarGruposPermisos();
+
+            MessageBox.Show("Grupo y permiso eliminados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+        }
+        private void btnBuscarGrupoPermiso_Click(object sender, EventArgs e)
+        {
+            string filter = txtBuscarGrupoPermiso.Text;
+            if (string.IsNullOrWhiteSpace(filter))
+            {
+                LoadDataGruposPermisos();
+            }
+            else
+            {
+                dataGridViewGruposPermisos.DataSource = gruposPermisosService.ObtenerGruposPermisosFiltrados(filter);
+                dataGridViewGruposPermisos.RowHeadersVisible = false;
             }
         }
-        private void btnEliminarConfig_Click(object sender, EventArgs e)
+        #endregion Grupos/permisos
+
+        #region Habitacion
+        private void LimpiarHabitacion()
         {
-            int id = int.Parse(lblIdConfig.Text);
+            lblIdH.Text = "";
+            txtNumero.Clear();
+            txtCapacidad.Clear();
+            txtPrecioXNoche.Clear();
+            ckbDisponible.Checked = true;
+            cmbTipoHabitacion.SelectedIndex = -1;
+            txtNumero.Focus();
+        }
 
-            DialogResult result = MessageBox.Show("¿Estás seguro de eliminar esta configuración?", "Confirmar Eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+        private void LoadDataHabitacion()
+        {
+            dataGridViewH.DataSource = habitacionService.ObtenerHabitaciones();
+            dataGridViewH.RowHeadersVisible = false;
+            ckbDisponible.Checked = true;
+            CargarComboBoxTipoHabitacion();
+        }
 
-            if (result == DialogResult.Yes)
+        private void CargarComboBoxTipoHabitacion()
+        {
+            cmbTipoHabitacion.DataSource = tipoHabitacionService.ObtenerTiposHabitacion();
+            cmbTipoHabitacion.DisplayMember = "Tipo";
+            cmbTipoHabitacion.ValueMember = "Id";
+            cmbTipoHabitacion.SelectedIndex = -1;
+        }
+        private void dataGridViewH_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
             {
-                if (configuracionSistemaService.EliminarConfiguracion(id))
+                if (e.RowIndex >= 0)
                 {
-                    MessageBox.Show("Configuración eliminada exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LimpiarConfiguraciones();
-                    LoadDataConfiguraciones();
+                    DataGridViewRow row = dataGridViewH.Rows[e.RowIndex];
+                    // Obtener datos de la fila seleccionada
+                    lblIdH.Text = row.Cells["id"].Value.ToString();
+                    txtNumero.Text = row.Cells["numero"].Value.ToString();
+                    txtCapacidad.Text = row.Cells["capacidad_maxima"].Value.ToString();
+                    txtPrecioXNoche.Text = row.Cells["precio_por_noche"].Value.ToString();
+                    ckbDisponible.Checked = Convert.ToBoolean(row.Cells["disponible"].Value);
+                    cmbTipoHabitacion.SelectedValue = row.Cells["tipo_habitacion_id"].Value.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar los datos de la fila seleccionada: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void btnAgregarHabitacion_Click(object sender, EventArgs e)
+        {
+                string numero = txtNumero.Text;
+                int capacidad = int.Parse( txtCapacidad.Text);
+                decimal precioXNoche = decimal.Parse( txtPrecioXNoche.Text);
+                bool disponible = ckbDisponible.Checked;
+                long tipoHabitacionId = (long)cmbTipoHabitacion.SelectedValue;
+                if (string.IsNullOrWhiteSpace(numero) || capacidad <= 0 || precioXNoche <= 0 || tipoHabitacionId <= 0)
+                {
+                    MessageBox.Show("Por favor, complete todos los campos correctamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            try
+            {
+
+
+                bool resultado = habitacionService.CrearHabitacion(numero, capacidad, precioXNoche, disponible, tipoHabitacionId);
+
+                if (resultado)
+                {
+                    LoadDataHabitacion();
+                    LimpiarHabitacion();
+                    MessageBox.Show("Habitación agregada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    MessageBox.Show("Error al eliminar la configuración.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error al agregar la habitación.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-        }
-        private void btnBuscarConfig_Click(object sender, EventArgs e)
-        {
-            string filter = txtBuscarConfig.Text;
-            if (string.IsNullOrWhiteSpace(filter))
+            catch (Exception ex)
             {
-                LoadDataConfiguraciones();
+                MessageBox.Show("Error al agregar la habitación: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else {
-                LoadFilteredDataConfiguraciones(filter);
+        }
+        private void btnActualizarHabitacion_Click(object sender, EventArgs e)
+        {
+            long id =long.Parse( lblIdH.Text);
+            string numero = txtNumero.Text;
+            int capacidad =int.Parse( txtCapacidad.Text);
+            decimal precioXNoche =decimal.Parse( txtPrecioXNoche.Text);
+            bool disponible = ckbDisponible.Checked;
+            long tipoHabitacionId = (long)cmbTipoHabitacion.SelectedValue;
+
+            // Verificar si los campos obligatorios están vacíos
+            if (id<=0 || string.IsNullOrWhiteSpace(numero) || capacidad<=0 || precioXNoche <=0 || tipoHabitacionId == -1)
+            {
+                MessageBox.Show("Por favor, complete todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
+
+                try
+                {
+                bool resultado = habitacionService.ActualizarHabitacion(id,numero, capacidad, precioXNoche, disponible, tipoHabitacionId);
+
+                if (resultado)
+                {
+                    LoadDataHabitacion();
+                    LimpiarHabitacion();
+                    MessageBox.Show("Habitación actualizada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Error al actualizada la habitación.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al actualizar la habitación: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             
         }
-        #endregion Configuraciones
+        private void btnEliminarHabitacion_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                long id = Convert.ToInt64(lblIdH.Text);
 
+                if (id <= 0)
+                {
+                    MessageBox.Show("Por favor, seleccione una habitación válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                bool resultado = habitacionService.EliminarHabitacion(id);
+
+                if (resultado)
+                {
+                    LoadDataHabitacion();
+                    LimpiarHabitacion();
+                    MessageBox.Show("Habitación eliminada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Error al eliminar la habitación.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar la habitación: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnBuscarHabitacion_Click(object sender, EventArgs e)
+        {
+            string filter = txtBuscarH.Text;
+            if(string.IsNullOrWhiteSpace(filter))
+            {
+                LoadDataHabitacion();
+            }
+            else {
+                dataGridViewH.DataSource = habitacionService.ObtenerHabitacionFiltrada(filter);
+                dataGridViewH.RowHeadersVisible = false;
+            }
+            
+
+        }
+
+        #endregion Habitacion
+
+        #region Reservas
+        private void LimpiarReserva()
+        {
+            lblIdReserva.Text = string.Empty;
+            txtNumeroHuespedes.Clear();
+            cmbClientes.SelectedIndex = -1;
+            cmbHabitaciones.SelectedIndex = -1;
+            cmbEstado.SelectedIndex = -1;
+            dtpEntrada.Value = DateTime.Today;
+            dtpSalida.Value = DateTime.Today;
+            dtpEntrada.Focus();
+        }
+
+        private void LoadDataReservas()
+        {
+            dataGridViewReservas.DataSource = reservaService.ObtenerReservas();
+            dataGridViewReservas.RowHeadersVisible = false;
+
+            // Cargar los ComboBox de clientes y habitaciones
+            CargarComboBoxClientes();
+            CargarComboBoxHabitaciones();
+        }
+
+        private void CargarComboBoxClientes()
+        {
+            // Obtener la lista de clientes
+            DataTable clientes = clienteService.ObtenerClientes();
+
+            // Asignar la lista de clientes al ComboBox de clientes
+            cmbClientes.DataSource = clientes;
+            cmbClientes.DisplayMember = "nombre"; // Reemplaza "nombre" con el campo correcto que deseas mostrar en el ComboBox
+            cmbClientes.ValueMember = "id"; // Reemplaza "id" con el campo correcto que representa el valor seleccionado del ComboBox
+            cmbClientes.SelectedIndex = -1; // Seleccionar el índice -1 para deseleccionar cualquier elemento inicialmente
+
+            // Si deseas mostrar un texto inicial en el ComboBox de clientes, puedes agregar un elemento vacío o predeterminado
+            // cmbClientes.Items.Insert(0, new { id = 0, nombre = "Seleccionar Cliente" });
+        }
+
+        private void CargarComboBoxHabitaciones()
+        {
+            // Obtener la lista de habitaciones
+            DataTable habitaciones = habitacionService.ObtenerHabitaciones();
+
+            // Asignar la lista de habitaciones al ComboBox de habitaciones
+            cmbHabitaciones.DataSource = habitaciones;
+            cmbHabitaciones.DisplayMember = "numero"; // Reemplaza "numero" con el campo correcto que deseas mostrar en el ComboBox
+            cmbHabitaciones.ValueMember = "id"; // Reemplaza "id" con el campo correcto que representa el valor seleccionado del ComboBox
+            cmbHabitaciones.SelectedIndex = -1; // Seleccionar el índice -1 para deseleccionar cualquier elemento inicialmente
+
+            // Si deseas mostrar un texto inicial en el ComboBox de habitaciones, puedes agregar un elemento vacío o predeterminado
+            // cmbHabitaciones.Items.Insert(0, new { id = 0, numero = "Seleccionar Habitación" });
+        }
+        private void dataGridViewReservas_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex >= 0)
+                {
+                    DataGridViewRow row = dataGridViewReservas.Rows[e.RowIndex];
+                    lblIdReserva.Text = row.Cells["id"].Value.ToString();
+                    dtpEntrada.Value = Convert.ToDateTime(row.Cells["fecha_entrada"].Value);
+                    dtpSalida.Value = Convert.ToDateTime(row.Cells["fecha_salida"].Value);
+                    txtNumeroHuespedes.Text = row.Cells["numero_huespedes"].Value.ToString();
+                    cmbEstado.SelectedValue = row.Cells["estado"].Value.ToString();
+                    cmbClientes.SelectedValue = row.Cells["cliente_id"].Value;
+                    cmbHabitaciones.SelectedValue = row.Cells["habitacion_id"].Value;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al seleccionar el usuario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        private void btnBuscarReserva_Click(object sender, EventArgs e)
+        {
+            string filter = txtBuscarReserva.Text;
+            if (string.IsNullOrWhiteSpace(filter))
+            {
+                LoadDataReservas();
+            }
+            else
+            {
+                dataGridViewReservas.DataSource = reservaService.ObtenerReservasFiltradas(filter);
+                dataGridViewReservas.RowHeadersVisible = false;
+            }
+
+        }
+        private void btnAgregarReserva_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Obtener los datos del formulario
+                DateTime fechaEntrada = dtpEntrada.Value;
+                DateTime fechaSalida = dtpSalida.Value;
+                int numeroHuespedes = Convert.ToInt32(txtNumeroHuespedes.Text);
+                long estadoId = Convert.ToInt64(cmbEstado.SelectedValue);
+                long clienteId = Convert.ToInt64(cmbClientes.SelectedValue);
+                long habitacionId = Convert.ToInt64(cmbHabitaciones.SelectedValue);
+
+                // Llamar al método CrearReserva del servicio de reservas
+                bool resultado = reservaService.CrearReserva(fechaEntrada, fechaSalida, numeroHuespedes, estadoId, clienteId, habitacionId);
+
+                if (resultado)
+                {
+                    LoadDataReservas();
+                    LimpiarReserva();
+                    MessageBox.Show("Reserva agregada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Error al agregar la reserva.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar la reserva: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void btnActualizarReserva_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Obtener los datos del formulario
+                long id = Convert.ToInt64(lblIdReserva.Text);
+                DateTime fechaEntrada = dtpEntrada.Value;
+                DateTime fechaSalida = dtpSalida.Value;
+                int numeroHuespedes = Convert.ToInt32(txtNumeroHuespedes.Text);
+                long estadoId = Convert.ToInt64(cmbEstado.SelectedValue);
+                long clienteId = Convert.ToInt64(cmbClientes.SelectedValue);
+                long habitacionId = Convert.ToInt64(cmbHabitaciones.SelectedValue);
+
+                // Llamar al método ActualizarReserva del servicio de reservas
+                bool resultado = reservaService.ActualizarReserva(id, fechaEntrada, fechaSalida, numeroHuespedes, estadoId, clienteId, habitacionId);
+
+                if (resultado)
+                {
+                    LoadDataReservas();
+                    LimpiarReserva();
+                    MessageBox.Show("Reserva actualizada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Error al actualizar la reserva.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al actualizar la reserva: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void btnEliminarReserva_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Obtener el ID de la reserva seleccionada
+                long id = Convert.ToInt64(lblIdReserva.Text);
+
+                // Llamar al método EliminarReserva del servicio de reservas
+                bool resultado = reservaService.EliminarReserva(id);
+
+                if (resultado)
+                {
+                    LoadDataReservas();
+                    LimpiarReserva();
+                    MessageBox.Show("Reserva eliminada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Error al eliminar la reserva.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar la reserva: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        #endregion Reservas
+
+        private void InitializeTimer()
+        {
+            timer1.Interval = 1000; // 1 segundo
+            timer1.Tick += new EventHandler(timer1_Tick);
+            timer1.Start();
+        }
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            toolStripStatusLabel1.Text = DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss");
+        }
     }
 }

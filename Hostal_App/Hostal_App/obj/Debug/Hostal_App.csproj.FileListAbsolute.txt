@@ -44,6 +44,12 @@ D:\proyectos C# visual studio\Hostal_App\Hostal_App\obj\Debug\Hostal_App.csproj.
 D:\proyectos C# visual studio\Hostal_App\Hostal_App\obj\Debug\Hostal_App.exe
 D:\proyectos C# visual studio\Hostal_App\Hostal_App\obj\Debug\Hostal_App.pdb
 D:\proyectos C# visual studio\Hostal_App\Hostal_App\obj\Debug\Hostal_App.Dashboard.resources
+C:\Users\Admin\Documents\GitHub\Hostal_App\Hostal_App\Hostal_App\obj\Debug\Hostal_App.csproj.AssemblyReference.cache
+C:\Users\Admin\Documents\GitHub\Hostal_App\Hostal_App\Hostal_App\obj\Debug\Hostal_App.Dashboard.resources
+C:\Users\Admin\Documents\GitHub\Hostal_App\Hostal_App\Hostal_App\obj\Debug\Hostal_App.LoginForm.resources
+C:\Users\Admin\Documents\GitHub\Hostal_App\Hostal_App\Hostal_App\obj\Debug\Hostal_App.Properties.Resources.resources
+C:\Users\Admin\Documents\GitHub\Hostal_App\Hostal_App\Hostal_App\obj\Debug\Hostal_App.csproj.GenerateResource.cache
+C:\Users\Admin\Documents\GitHub\Hostal_App\Hostal_App\Hostal_App\obj\Debug\Hostal_App.csproj.CoreCompileInputs.cache
 C:\Users\Admin\Documents\GitHub\Hostal_App\Hostal_App\Hostal_App\bin\Debug\Hostal_App.exe.config
 C:\Users\Admin\Documents\GitHub\Hostal_App\Hostal_App\Hostal_App\bin\Debug\Hostal_App.exe
 C:\Users\Admin\Documents\GitHub\Hostal_App\Hostal_App\Hostal_App\bin\Debug\Hostal_App.pdb
@@ -80,13 +86,6 @@ C:\Users\Admin\Documents\GitHub\Hostal_App\Hostal_App\Hostal_App\bin\Debug\Syste
 C:\Users\Admin\Documents\GitHub\Hostal_App\Hostal_App\Hostal_App\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\Admin\Documents\GitHub\Hostal_App\Hostal_App\Hostal_App\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\Admin\Documents\GitHub\Hostal_App\Hostal_App\Hostal_App\bin\Debug\System.Threading.Tasks.Extensions.xml
-C:\Users\Admin\Documents\GitHub\Hostal_App\Hostal_App\Hostal_App\obj\Debug\Hostal_App.csproj.AssemblyReference.cache
-C:\Users\Admin\Documents\GitHub\Hostal_App\Hostal_App\Hostal_App\obj\Debug\Hostal_App.Dashboard.resources
-C:\Users\Admin\Documents\GitHub\Hostal_App\Hostal_App\Hostal_App\obj\Debug\Hostal_App.DashboardForm.resources
-C:\Users\Admin\Documents\GitHub\Hostal_App\Hostal_App\Hostal_App\obj\Debug\Hostal_App.LoginForm.resources
-C:\Users\Admin\Documents\GitHub\Hostal_App\Hostal_App\Hostal_App\obj\Debug\Hostal_App.Properties.Resources.resources
-C:\Users\Admin\Documents\GitHub\Hostal_App\Hostal_App\Hostal_App\obj\Debug\Hostal_App.csproj.GenerateResource.cache
-C:\Users\Admin\Documents\GitHub\Hostal_App\Hostal_App\Hostal_App\obj\Debug\Hostal_App.csproj.CoreCompileInputs.cache
 C:\Users\Admin\Documents\GitHub\Hostal_App\Hostal_App\Hostal_App\obj\Debug\Hostal_App.csproj.Up2Date
 C:\Users\Admin\Documents\GitHub\Hostal_App\Hostal_App\Hostal_App\obj\Debug\Hostal_App.exe
 C:\Users\Admin\Documents\GitHub\Hostal_App\Hostal_App\Hostal_App\obj\Debug\Hostal_App.pdb

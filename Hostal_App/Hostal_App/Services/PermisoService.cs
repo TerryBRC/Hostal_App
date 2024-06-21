@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 
@@ -91,6 +92,49 @@ namespace Hostal_App.Services
                 return dataTable;
             }
         }
+
+        public List<string> ObtenerNombresPermisos()
+        {
+            List<string> nombresPermisos = new List<string>();
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                MySqlCommand command = new MySqlCommand("sp_obtener_nombres_permisos", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                connection.Open();
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string nombrePermiso = reader["nombre"].ToString();
+                        nombresPermisos.Add(nombrePermiso);
+                    }
+                }
+            }
+
+            return nombresPermisos;
+        }
+
+
+        public int ObtenerIdPermisoPorNombre(string nombrePermiso)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                MySqlCommand command = new MySqlCommand("SELECT id FROM permisos WHERE nombre = @nombrePermiso", connection);
+                command.Parameters.AddWithValue("@nombrePermiso", nombrePermiso);
+
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null && int.TryParse(result.ToString(), out int permisoId))
+                {
+                    return permisoId;
+                }
+                return -1; // Valor que indica que no se encontró el permiso
+            }
+        }
+
+
 
     }
 }

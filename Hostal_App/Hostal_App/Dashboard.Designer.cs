@@ -32,8 +32,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             this.tpInicio = new System.Windows.Forms.TabPage();
+            this.sstBarra = new System.Windows.Forms.StatusStrip();
+            this.tsslBienvenida = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tbClientes = new System.Windows.Forms.TabPage();
             this.panDataCliente = new System.Windows.Forms.Panel();
+            this.materialLabel27 = new MaterialSkin.Controls.MaterialLabel();
             this.btnBuscarCliente = new MaterialSkin.Controls.MaterialButton();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.dataGridViewClientes = new System.Windows.Forms.DataGridView();
@@ -56,11 +60,14 @@
             this.txtNombreCliente = new System.Windows.Forms.TextBox();
             this.tpReservas = new System.Windows.Forms.TabPage();
             this.panel11 = new System.Windows.Forms.Panel();
+            this.materialLabel28 = new MaterialSkin.Controls.MaterialLabel();
             this.btnBuscarReserva = new MaterialSkin.Controls.MaterialButton();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.dataGridViewReservas = new System.Windows.Forms.DataGridView();
             this.txtBuscarReserva = new System.Windows.Forms.TextBox();
             this.panel12 = new System.Windows.Forms.Panel();
+            this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
+            this.cmbEstado = new System.Windows.Forms.ComboBox();
             this.materialLabel44 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel43 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel42 = new MaterialSkin.Controls.MaterialLabel();
@@ -78,6 +85,7 @@
             this.btnAgregarReserva = new System.Windows.Forms.Button();
             this.tpHabitaciones = new System.Windows.Forms.TabPage();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.materialLabel29 = new MaterialSkin.Controls.MaterialLabel();
             this.btnBuscarHabitacion = new MaterialSkin.Controls.MaterialButton();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.dataGridViewH = new System.Windows.Forms.DataGridView();
@@ -99,6 +107,7 @@
             this.txtNumero = new System.Windows.Forms.TextBox();
             this.tpTipoHabitaciones = new System.Windows.Forms.TabPage();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.materialLabel30 = new MaterialSkin.Controls.MaterialLabel();
             this.btnBuscarTH = new MaterialSkin.Controls.MaterialButton();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.dataGridViewTH = new System.Windows.Forms.DataGridView();
@@ -113,28 +122,9 @@
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.btnAgregarTH = new System.Windows.Forms.Button();
             this.txtTipo = new System.Windows.Forms.TextBox();
-            this.tpFacturas = new System.Windows.Forms.TabPage();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.btnBuscarFactura = new MaterialSkin.Controls.MaterialButton();
-            this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
-            this.dataGridViewFacturas = new System.Windows.Forms.DataGridView();
-            this.txtBuscarFactura = new System.Windows.Forms.TextBox();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.materialLabel31 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel30 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel29 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel28 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel27 = new MaterialSkin.Controls.MaterialLabel();
-            this.cmbReservas = new System.Windows.Forms.ComboBox();
-            this.dtpFactura = new System.Windows.Forms.DateTimePicker();
-            this.btnEliminarFact = new System.Windows.Forms.Button();
-            this.lblIdFactura = new System.Windows.Forms.Label();
-            this.btnActualizarFact = new System.Windows.Forms.Button();
-            this.txtDetalles = new System.Windows.Forms.TextBox();
-            this.txtTotalFactura = new System.Windows.Forms.TextBox();
-            this.btnAgregarFact = new System.Windows.Forms.Button();
             this.tpUsuarios = new System.Windows.Forms.TabPage();
             this.panData = new System.Windows.Forms.Panel();
+            this.materialLabel31 = new MaterialSkin.Controls.MaterialLabel();
             this.btnBuscar = new MaterialSkin.Controls.MaterialButton();
             this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
             this.dataGridViewUsuarios = new System.Windows.Forms.DataGridView();
@@ -158,6 +148,7 @@
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.tpPermisos = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.materialLabel51 = new MaterialSkin.Controls.MaterialLabel();
             this.btnBuscarPermiso = new MaterialSkin.Controls.MaterialButton();
             this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
             this.dataGridViewPermisos = new System.Windows.Forms.DataGridView();
@@ -172,6 +163,7 @@
             this.txtNombrePermiso = new System.Windows.Forms.TextBox();
             this.tpGrupos = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.materialLabel52 = new MaterialSkin.Controls.MaterialLabel();
             this.btnBuscarGrupo = new MaterialSkin.Controls.MaterialButton();
             this.materialLabel8 = new MaterialSkin.Controls.MaterialLabel();
             this.dataGridViewGrupos = new System.Windows.Forms.DataGridView();
@@ -186,6 +178,7 @@
             this.txtNombreGrupo = new System.Windows.Forms.TextBox();
             this.tpGruposPermisos = new System.Windows.Forms.TabPage();
             this.panel15 = new System.Windows.Forms.Panel();
+            this.materialLabel53 = new MaterialSkin.Controls.MaterialLabel();
             this.btnBuscarGrupoPermiso = new MaterialSkin.Controls.MaterialButton();
             this.materialLabel9 = new MaterialSkin.Controls.MaterialLabel();
             this.dataGridViewGruposPermisos = new System.Windows.Forms.DataGridView();
@@ -199,24 +192,14 @@
             this.btnEliminarGrupoPermiso = new System.Windows.Forms.Button();
             this.lblIdPermisosGrupos = new System.Windows.Forms.Label();
             this.btnAgregarGrupoPermiso = new System.Windows.Forms.Button();
-            this.tpConfiguraciones = new System.Windows.Forms.TabPage();
-            this.panel13 = new System.Windows.Forms.Panel();
-            this.btnBuscarConfig = new MaterialSkin.Controls.MaterialButton();
+            this.imageListIcons = new System.Windows.Forms.ImageList(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.materialLabel10 = new MaterialSkin.Controls.MaterialLabel();
-            this.dataGridViewConfig = new System.Windows.Forms.DataGridView();
-            this.txtBuscarConfig = new System.Windows.Forms.TextBox();
-            this.panel14 = new System.Windows.Forms.Panel();
-            this.materialLabel13 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel12 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel11 = new MaterialSkin.Controls.MaterialLabel();
-            this.btnEliminarConfig = new System.Windows.Forms.Button();
-            this.lblIdConfig = new System.Windows.Forms.Label();
-            this.btnActualizarConfig = new System.Windows.Forms.Button();
-            this.txtValor = new System.Windows.Forms.TextBox();
-            this.btnAgregarConfig = new System.Windows.Forms.Button();
-            this.txtClave = new System.Windows.Forms.TextBox();
-            this.imgListIcons = new System.Windows.Forms.ImageList(this.components);
+            this.cmbGrupoUsuario = new System.Windows.Forms.ComboBox();
+            this.lbPermisos = new System.Windows.Forms.ListBox();
             this.materialTabControl1.SuspendLayout();
+            this.tpInicio.SuspendLayout();
+            this.sstBarra.SuspendLayout();
             this.tbClientes.SuspendLayout();
             this.panDataCliente.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientes)).BeginInit();
@@ -233,10 +216,6 @@
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTH)).BeginInit();
             this.panel8.SuspendLayout();
-            this.tpFacturas.SuspendLayout();
-            this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFacturas)).BeginInit();
-            this.panel6.SuspendLayout();
             this.tpUsuarios.SuspendLayout();
             this.panData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsuarios)).BeginInit();
@@ -253,10 +232,6 @@
             this.panel15.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGruposPermisos)).BeginInit();
             this.panel16.SuspendLayout();
-            this.tpConfiguraciones.SuspendLayout();
-            this.panel13.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConfig)).BeginInit();
-            this.panel14.SuspendLayout();
             this.SuspendLayout();
             // 
             // materialTabControl1
@@ -266,15 +241,13 @@
             this.materialTabControl1.Controls.Add(this.tpReservas);
             this.materialTabControl1.Controls.Add(this.tpHabitaciones);
             this.materialTabControl1.Controls.Add(this.tpTipoHabitaciones);
-            this.materialTabControl1.Controls.Add(this.tpFacturas);
             this.materialTabControl1.Controls.Add(this.tpUsuarios);
             this.materialTabControl1.Controls.Add(this.tpPermisos);
             this.materialTabControl1.Controls.Add(this.tpGrupos);
             this.materialTabControl1.Controls.Add(this.tpGruposPermisos);
-            this.materialTabControl1.Controls.Add(this.tpConfiguraciones);
             this.materialTabControl1.Depth = 0;
             this.materialTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.materialTabControl1.ImageList = this.imgListIcons;
+            this.materialTabControl1.ImageList = this.imageListIcons;
             this.materialTabControl1.Location = new System.Drawing.Point(5, 79);
             this.materialTabControl1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.materialTabControl1.MouseState = MaterialSkin.MouseState.HOVER;
@@ -286,22 +259,49 @@
             // 
             // tpInicio
             // 
-            this.tpInicio.ImageKey = "dashboard.png";
-            this.tpInicio.Location = new System.Drawing.Point(4, 25);
+            this.tpInicio.Controls.Add(this.lbPermisos);
+            this.tpInicio.Controls.Add(this.sstBarra);
+            this.tpInicio.ImageKey = "icons8-dashboard-96.png";
+            this.tpInicio.Location = new System.Drawing.Point(4, 31);
             this.tpInicio.Name = "tpInicio";
-            this.tpInicio.Size = new System.Drawing.Size(1237, 579);
+            this.tpInicio.Size = new System.Drawing.Size(1237, 573);
             this.tpInicio.TabIndex = 0;
             this.tpInicio.Text = "Inicio";
             this.tpInicio.UseVisualStyleBackColor = true;
+            // 
+            // sstBarra
+            // 
+            this.sstBarra.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sstBarra.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsslBienvenida,
+            this.toolStripStatusLabel1});
+            this.sstBarra.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            this.sstBarra.Location = new System.Drawing.Point(0, 550);
+            this.sstBarra.Name = "sstBarra";
+            this.sstBarra.Size = new System.Drawing.Size(1237, 23);
+            this.sstBarra.TabIndex = 0;
+            this.sstBarra.Text = "statusStrip1";
+            // 
+            // tsslBienvenida
+            // 
+            this.tsslBienvenida.Name = "tsslBienvenida";
+            this.tsslBienvenida.Size = new System.Drawing.Size(98, 18);
+            this.tsslBienvenida.Text = "Bienvenido";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(46, 18);
+            this.toolStripStatusLabel1.Text = "Hora";
             // 
             // tbClientes
             // 
             this.tbClientes.Controls.Add(this.panDataCliente);
             this.tbClientes.Controls.Add(this.panCRUDCliente);
-            this.tbClientes.ImageKey = "client.png";
-            this.tbClientes.Location = new System.Drawing.Point(4, 25);
+            this.tbClientes.ImageKey = "icons8-client-80.png";
+            this.tbClientes.Location = new System.Drawing.Point(4, 31);
             this.tbClientes.Name = "tbClientes";
-            this.tbClientes.Size = new System.Drawing.Size(1237, 579);
+            this.tbClientes.Size = new System.Drawing.Size(1237, 573);
             this.tbClientes.TabIndex = 1;
             this.tbClientes.Text = "Clientes";
             this.tbClientes.UseVisualStyleBackColor = true;
@@ -309,6 +309,7 @@
             // panDataCliente
             // 
             this.panDataCliente.BackColor = System.Drawing.Color.Gainsboro;
+            this.panDataCliente.Controls.Add(this.materialLabel27);
             this.panDataCliente.Controls.Add(this.btnBuscarCliente);
             this.panDataCliente.Controls.Add(this.materialLabel1);
             this.panDataCliente.Controls.Add(this.dataGridViewClientes);
@@ -316,8 +317,20 @@
             this.panDataCliente.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panDataCliente.Location = new System.Drawing.Point(0, 0);
             this.panDataCliente.Name = "panDataCliente";
-            this.panDataCliente.Size = new System.Drawing.Size(1237, 266);
+            this.panDataCliente.Size = new System.Drawing.Size(1237, 259);
             this.panDataCliente.TabIndex = 27;
+            // 
+            // materialLabel27
+            // 
+            this.materialLabel27.AutoSize = true;
+            this.materialLabel27.Depth = 0;
+            this.materialLabel27.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel27.Location = new System.Drawing.Point(862, 55);
+            this.materialLabel27.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel27.Name = "materialLabel27";
+            this.materialLabel27.Size = new System.Drawing.Size(57, 19);
+            this.materialLabel27.TabIndex = 10;
+            this.materialLabel27.Text = "Clientes";
             // 
             // btnBuscarCliente
             // 
@@ -393,9 +406,9 @@
             this.panCRUDCliente.Controls.Add(this.btnAgregarCliente);
             this.panCRUDCliente.Controls.Add(this.txtNombreCliente);
             this.panCRUDCliente.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panCRUDCliente.Location = new System.Drawing.Point(0, 266);
+            this.panCRUDCliente.Location = new System.Drawing.Point(0, 259);
             this.panCRUDCliente.Name = "panCRUDCliente";
-            this.panCRUDCliente.Size = new System.Drawing.Size(1237, 313);
+            this.panCRUDCliente.Size = new System.Drawing.Size(1237, 314);
             this.panCRUDCliente.TabIndex = 26;
             // 
             // materialLabel50
@@ -559,10 +572,10 @@
             // 
             this.tpReservas.Controls.Add(this.panel11);
             this.tpReservas.Controls.Add(this.panel12);
-            this.tpReservas.ImageKey = "reserve.png";
-            this.tpReservas.Location = new System.Drawing.Point(4, 25);
+            this.tpReservas.ImageKey = "icons8-reserve-80.png";
+            this.tpReservas.Location = new System.Drawing.Point(4, 31);
             this.tpReservas.Name = "tpReservas";
-            this.tpReservas.Size = new System.Drawing.Size(1237, 579);
+            this.tpReservas.Size = new System.Drawing.Size(1237, 573);
             this.tpReservas.TabIndex = 2;
             this.tpReservas.Text = "Reservas";
             this.tpReservas.UseVisualStyleBackColor = true;
@@ -570,6 +583,7 @@
             // panel11
             // 
             this.panel11.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel11.Controls.Add(this.materialLabel28);
             this.panel11.Controls.Add(this.btnBuscarReserva);
             this.panel11.Controls.Add(this.materialLabel2);
             this.panel11.Controls.Add(this.dataGridViewReservas);
@@ -577,8 +591,20 @@
             this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel11.Location = new System.Drawing.Point(0, 0);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(1237, 255);
+            this.panel11.Size = new System.Drawing.Size(1237, 259);
             this.panel11.TabIndex = 29;
+            // 
+            // materialLabel28
+            // 
+            this.materialLabel28.AutoSize = true;
+            this.materialLabel28.Depth = 0;
+            this.materialLabel28.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel28.Location = new System.Drawing.Point(854, 56);
+            this.materialLabel28.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel28.Name = "materialLabel28";
+            this.materialLabel28.Size = new System.Drawing.Size(65, 19);
+            this.materialLabel28.TabIndex = 11;
+            this.materialLabel28.Text = "Reservas";
             // 
             // btnBuscarReserva
             // 
@@ -598,6 +624,7 @@
             this.btnBuscarReserva.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnBuscarReserva.UseAccentColor = false;
             this.btnBuscarReserva.UseVisualStyleBackColor = true;
+            this.btnBuscarReserva.Click += new System.EventHandler(this.btnBuscarReserva_Click);
             // 
             // materialLabel2
             // 
@@ -623,6 +650,7 @@
             this.dataGridViewReservas.ReadOnly = true;
             this.dataGridViewReservas.Size = new System.Drawing.Size(900, 150);
             this.dataGridViewReservas.TabIndex = 0;
+            this.dataGridViewReservas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewReservas_CellClick);
             // 
             // txtBuscarReserva
             // 
@@ -635,6 +663,8 @@
             // panel12
             // 
             this.panel12.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel12.Controls.Add(this.materialLabel5);
+            this.panel12.Controls.Add(this.cmbEstado);
             this.panel12.Controls.Add(this.materialLabel44);
             this.panel12.Controls.Add(this.materialLabel43);
             this.panel12.Controls.Add(this.materialLabel42);
@@ -651,10 +681,34 @@
             this.panel12.Controls.Add(this.txtNumeroHuespedes);
             this.panel12.Controls.Add(this.btnAgregarReserva);
             this.panel12.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel12.Location = new System.Drawing.Point(0, 255);
+            this.panel12.Location = new System.Drawing.Point(0, 259);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(1237, 324);
+            this.panel12.Size = new System.Drawing.Size(1237, 314);
             this.panel12.TabIndex = 28;
+            // 
+            // materialLabel5
+            // 
+            this.materialLabel5.AutoSize = true;
+            this.materialLabel5.Depth = 0;
+            this.materialLabel5.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel5.Location = new System.Drawing.Point(63, 115);
+            this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel5.Name = "materialLabel5";
+            this.materialLabel5.Size = new System.Drawing.Size(78, 19);
+            this.materialLabel5.TabIndex = 33;
+            this.materialLabel5.Text = "Habitación";
+            // 
+            // cmbEstado
+            // 
+            this.cmbEstado.FormattingEnabled = true;
+            this.cmbEstado.Items.AddRange(new object[] {
+            "Activo",
+            "Pendiente",
+            "Cancelado"});
+            this.cmbEstado.Location = new System.Drawing.Point(468, 115);
+            this.cmbEstado.Name = "cmbEstado";
+            this.cmbEstado.Size = new System.Drawing.Size(184, 24);
+            this.cmbEstado.TabIndex = 32;
             // 
             // materialLabel44
             // 
@@ -685,12 +739,12 @@
             this.materialLabel42.AutoSize = true;
             this.materialLabel42.Depth = 0;
             this.materialLabel42.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel42.Location = new System.Drawing.Point(384, 118);
+            this.materialLabel42.Location = new System.Drawing.Point(412, 118);
             this.materialLabel42.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel42.Name = "materialLabel42";
-            this.materialLabel42.Size = new System.Drawing.Size(78, 19);
+            this.materialLabel42.Size = new System.Drawing.Size(50, 19);
             this.materialLabel42.TabIndex = 29;
-            this.materialLabel42.Text = "Habitación";
+            this.materialLabel42.Text = "Estado";
             // 
             // materialLabel41
             // 
@@ -749,7 +803,7 @@
             // cmbHabitaciones
             // 
             this.cmbHabitaciones.FormattingEnabled = true;
-            this.cmbHabitaciones.Location = new System.Drawing.Point(468, 113);
+            this.cmbHabitaciones.Location = new System.Drawing.Point(147, 112);
             this.cmbHabitaciones.Name = "cmbHabitaciones";
             this.cmbHabitaciones.Size = new System.Drawing.Size(214, 24);
             this.cmbHabitaciones.TabIndex = 23;
@@ -772,6 +826,7 @@
             this.btnEliminarReserva.TabIndex = 3;
             this.btnEliminarReserva.Text = "Eliminar";
             this.btnEliminarReserva.UseVisualStyleBackColor = false;
+            this.btnEliminarReserva.Click += new System.EventHandler(this.btnEliminarReserva_Click);
             // 
             // lblIdReserva
             // 
@@ -791,6 +846,7 @@
             this.btnActualizarReserva.TabIndex = 2;
             this.btnActualizarReserva.Text = "Actualizar";
             this.btnActualizarReserva.UseVisualStyleBackColor = false;
+            this.btnActualizarReserva.Click += new System.EventHandler(this.btnActualizarReserva_Click);
             // 
             // txtNumeroHuespedes
             // 
@@ -809,15 +865,16 @@
             this.btnAgregarReserva.TabIndex = 1;
             this.btnAgregarReserva.Text = "Agregar";
             this.btnAgregarReserva.UseVisualStyleBackColor = false;
+            this.btnAgregarReserva.Click += new System.EventHandler(this.btnAgregarReserva_Click);
             // 
             // tpHabitaciones
             // 
             this.tpHabitaciones.Controls.Add(this.panel9);
             this.tpHabitaciones.Controls.Add(this.panel10);
-            this.tpHabitaciones.ImageKey = "hotel.png";
-            this.tpHabitaciones.Location = new System.Drawing.Point(4, 25);
+            this.tpHabitaciones.ImageKey = "icons8-rooms-64.png";
+            this.tpHabitaciones.Location = new System.Drawing.Point(4, 31);
             this.tpHabitaciones.Name = "tpHabitaciones";
-            this.tpHabitaciones.Size = new System.Drawing.Size(1237, 579);
+            this.tpHabitaciones.Size = new System.Drawing.Size(1237, 573);
             this.tpHabitaciones.TabIndex = 3;
             this.tpHabitaciones.Text = "Habitaciones";
             this.tpHabitaciones.UseVisualStyleBackColor = true;
@@ -825,6 +882,7 @@
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel9.Controls.Add(this.materialLabel29);
             this.panel9.Controls.Add(this.btnBuscarHabitacion);
             this.panel9.Controls.Add(this.materialLabel3);
             this.panel9.Controls.Add(this.dataGridViewH);
@@ -832,8 +890,20 @@
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel9.Location = new System.Drawing.Point(0, 0);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1237, 265);
+            this.panel9.Size = new System.Drawing.Size(1237, 259);
             this.panel9.TabIndex = 29;
+            // 
+            // materialLabel29
+            // 
+            this.materialLabel29.AutoSize = true;
+            this.materialLabel29.Depth = 0;
+            this.materialLabel29.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel29.Location = new System.Drawing.Point(825, 56);
+            this.materialLabel29.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel29.Name = "materialLabel29";
+            this.materialLabel29.Size = new System.Drawing.Size(94, 19);
+            this.materialLabel29.TabIndex = 12;
+            this.materialLabel29.Text = "Habitaciones";
             // 
             // btnBuscarHabitacion
             // 
@@ -853,6 +923,7 @@
             this.btnBuscarHabitacion.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnBuscarHabitacion.UseAccentColor = false;
             this.btnBuscarHabitacion.UseVisualStyleBackColor = true;
+            this.btnBuscarHabitacion.Click += new System.EventHandler(this.btnBuscarHabitacion_Click);
             // 
             // materialLabel3
             // 
@@ -878,6 +949,7 @@
             this.dataGridViewH.ReadOnly = true;
             this.dataGridViewH.Size = new System.Drawing.Size(900, 150);
             this.dataGridViewH.TabIndex = 0;
+            this.dataGridViewH.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewH_CellClick);
             // 
             // txtBuscarH
             // 
@@ -905,7 +977,7 @@
             this.panel10.Controls.Add(this.btnAgregarHabitacion);
             this.panel10.Controls.Add(this.txtNumero);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel10.Location = new System.Drawing.Point(0, 265);
+            this.panel10.Location = new System.Drawing.Point(0, 259);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(1237, 314);
             this.panel10.TabIndex = 28;
@@ -998,6 +1070,7 @@
             this.btnEliminarHabitacion.TabIndex = 3;
             this.btnEliminarHabitacion.Text = "Eliminar";
             this.btnEliminarHabitacion.UseVisualStyleBackColor = false;
+            this.btnEliminarHabitacion.Click += new System.EventHandler(this.btnEliminarHabitacion_Click);
             // 
             // lblIdH
             // 
@@ -1017,6 +1090,7 @@
             this.btnActualizarHabitacion.TabIndex = 2;
             this.btnActualizarHabitacion.Text = "Actualizar";
             this.btnActualizarHabitacion.UseVisualStyleBackColor = false;
+            this.btnActualizarHabitacion.Click += new System.EventHandler(this.btnActualizarHabitacion_Click);
             // 
             // txtPrecioXNoche
             // 
@@ -1042,6 +1116,7 @@
             this.btnAgregarHabitacion.TabIndex = 1;
             this.btnAgregarHabitacion.Text = "Agregar";
             this.btnAgregarHabitacion.UseVisualStyleBackColor = false;
+            this.btnAgregarHabitacion.Click += new System.EventHandler(this.btnAgregarHabitacion_Click);
             // 
             // txtNumero
             // 
@@ -1054,10 +1129,10 @@
             // 
             this.tpTipoHabitaciones.Controls.Add(this.panel7);
             this.tpTipoHabitaciones.Controls.Add(this.panel8);
-            this.tpTipoHabitaciones.ImageKey = "room.png";
-            this.tpTipoHabitaciones.Location = new System.Drawing.Point(4, 25);
+            this.tpTipoHabitaciones.ImageKey = "icons8-room-64.png";
+            this.tpTipoHabitaciones.Location = new System.Drawing.Point(4, 31);
             this.tpTipoHabitaciones.Name = "tpTipoHabitaciones";
-            this.tpTipoHabitaciones.Size = new System.Drawing.Size(1237, 579);
+            this.tpTipoHabitaciones.Size = new System.Drawing.Size(1237, 573);
             this.tpTipoHabitaciones.TabIndex = 4;
             this.tpTipoHabitaciones.Text = "Tipo de Habitaciones";
             this.tpTipoHabitaciones.UseVisualStyleBackColor = true;
@@ -1065,6 +1140,7 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel7.Controls.Add(this.materialLabel30);
             this.panel7.Controls.Add(this.btnBuscarTH);
             this.panel7.Controls.Add(this.materialLabel4);
             this.panel7.Controls.Add(this.dataGridViewTH);
@@ -1072,8 +1148,20 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(0, 0);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(1237, 316);
+            this.panel7.Size = new System.Drawing.Size(1237, 259);
             this.panel7.TabIndex = 29;
+            // 
+            // materialLabel30
+            // 
+            this.materialLabel30.AutoSize = true;
+            this.materialLabel30.Depth = 0;
+            this.materialLabel30.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel30.Location = new System.Drawing.Point(768, 56);
+            this.materialLabel30.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel30.Name = "materialLabel30";
+            this.materialLabel30.Size = new System.Drawing.Size(151, 19);
+            this.materialLabel30.TabIndex = 12;
+            this.materialLabel30.Text = "Tipo de Habitaciones";
             // 
             // btnBuscarTH
             // 
@@ -1142,9 +1230,9 @@
             this.panel8.Controls.Add(this.btnAgregarTH);
             this.panel8.Controls.Add(this.txtTipo);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel8.Location = new System.Drawing.Point(0, 316);
+            this.panel8.Location = new System.Drawing.Point(0, 259);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(1237, 263);
+            this.panel8.Size = new System.Drawing.Size(1237, 314);
             this.panel8.TabIndex = 28;
             // 
             // materialLabel33
@@ -1238,245 +1326,14 @@
             this.txtTipo.Size = new System.Drawing.Size(214, 23);
             this.txtTipo.TabIndex = 16;
             // 
-            // tpFacturas
-            // 
-            this.tpFacturas.Controls.Add(this.panel5);
-            this.tpFacturas.Controls.Add(this.panel6);
-            this.tpFacturas.ImageKey = "bill.png";
-            this.tpFacturas.Location = new System.Drawing.Point(4, 25);
-            this.tpFacturas.Name = "tpFacturas";
-            this.tpFacturas.Size = new System.Drawing.Size(1237, 579);
-            this.tpFacturas.TabIndex = 5;
-            this.tpFacturas.Text = "Facturas";
-            this.tpFacturas.UseVisualStyleBackColor = true;
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.Gainsboro;
-            this.panel5.Controls.Add(this.btnBuscarFactura);
-            this.panel5.Controls.Add(this.materialLabel5);
-            this.panel5.Controls.Add(this.dataGridViewFacturas);
-            this.panel5.Controls.Add(this.txtBuscarFactura);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(0, 0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1237, 256);
-            this.panel5.TabIndex = 29;
-            // 
-            // btnBuscarFactura
-            // 
-            this.btnBuscarFactura.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnBuscarFactura.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.btnBuscarFactura.Depth = 0;
-            this.btnBuscarFactura.HighEmphasis = true;
-            this.btnBuscarFactura.Icon = null;
-            this.btnBuscarFactura.Location = new System.Drawing.Point(299, 23);
-            this.btnBuscarFactura.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnBuscarFactura.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnBuscarFactura.Name = "btnBuscarFactura";
-            this.btnBuscarFactura.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnBuscarFactura.Size = new System.Drawing.Size(77, 36);
-            this.btnBuscarFactura.TabIndex = 11;
-            this.btnBuscarFactura.Text = "Buscar";
-            this.btnBuscarFactura.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.btnBuscarFactura.UseAccentColor = false;
-            this.btnBuscarFactura.UseVisualStyleBackColor = true;
-            // 
-            // materialLabel5
-            // 
-            this.materialLabel5.AutoSize = true;
-            this.materialLabel5.Depth = 0;
-            this.materialLabel5.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel5.Location = new System.Drawing.Point(16, 33);
-            this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel5.Name = "materialLabel5";
-            this.materialLabel5.Size = new System.Drawing.Size(50, 19);
-            this.materialLabel5.TabIndex = 9;
-            this.materialLabel5.Text = "Buscar";
-            // 
-            // dataGridViewFacturas
-            // 
-            this.dataGridViewFacturas.AllowUserToAddRows = false;
-            this.dataGridViewFacturas.AllowUserToDeleteRows = false;
-            this.dataGridViewFacturas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewFacturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewFacturas.Location = new System.Drawing.Point(19, 79);
-            this.dataGridViewFacturas.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.dataGridViewFacturas.Name = "dataGridViewFacturas";
-            this.dataGridViewFacturas.ReadOnly = true;
-            this.dataGridViewFacturas.Size = new System.Drawing.Size(900, 150);
-            this.dataGridViewFacturas.TabIndex = 0;
-            // 
-            // txtBuscarFactura
-            // 
-            this.txtBuscarFactura.Location = new System.Drawing.Point(104, 30);
-            this.txtBuscarFactura.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.txtBuscarFactura.Name = "txtBuscarFactura";
-            this.txtBuscarFactura.Size = new System.Drawing.Size(164, 23);
-            this.txtBuscarFactura.TabIndex = 6;
-            // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.Color.Gainsboro;
-            this.panel6.Controls.Add(this.materialLabel31);
-            this.panel6.Controls.Add(this.materialLabel30);
-            this.panel6.Controls.Add(this.materialLabel29);
-            this.panel6.Controls.Add(this.materialLabel28);
-            this.panel6.Controls.Add(this.materialLabel27);
-            this.panel6.Controls.Add(this.cmbReservas);
-            this.panel6.Controls.Add(this.dtpFactura);
-            this.panel6.Controls.Add(this.btnEliminarFact);
-            this.panel6.Controls.Add(this.lblIdFactura);
-            this.panel6.Controls.Add(this.btnActualizarFact);
-            this.panel6.Controls.Add(this.txtDetalles);
-            this.panel6.Controls.Add(this.txtTotalFactura);
-            this.panel6.Controls.Add(this.btnAgregarFact);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel6.Location = new System.Drawing.Point(0, 256);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1237, 323);
-            this.panel6.TabIndex = 28;
-            // 
-            // materialLabel31
-            // 
-            this.materialLabel31.AutoSize = true;
-            this.materialLabel31.Depth = 0;
-            this.materialLabel31.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel31.Location = new System.Drawing.Point(496, 17);
-            this.materialLabel31.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel31.Name = "materialLabel31";
-            this.materialLabel31.Size = new System.Drawing.Size(147, 19);
-            this.materialLabel31.TabIndex = 28;
-            this.materialLabel31.Text = "Detalles de Servicios";
-            // 
-            // materialLabel30
-            // 
-            this.materialLabel30.AutoSize = true;
-            this.materialLabel30.Depth = 0;
-            this.materialLabel30.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel30.Location = new System.Drawing.Point(101, 25);
-            this.materialLabel30.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel30.Name = "materialLabel30";
-            this.materialLabel30.Size = new System.Drawing.Size(44, 19);
-            this.materialLabel30.TabIndex = 27;
-            this.materialLabel30.Text = "Fecha";
-            // 
-            // materialLabel29
-            // 
-            this.materialLabel29.AutoSize = true;
-            this.materialLabel29.Depth = 0;
-            this.materialLabel29.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel29.Location = new System.Drawing.Point(107, 71);
-            this.materialLabel29.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel29.Name = "materialLabel29";
-            this.materialLabel29.Size = new System.Drawing.Size(38, 19);
-            this.materialLabel29.TabIndex = 26;
-            this.materialLabel29.Text = "Total";
-            // 
-            // materialLabel28
-            // 
-            this.materialLabel28.AutoSize = true;
-            this.materialLabel28.Depth = 0;
-            this.materialLabel28.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel28.Location = new System.Drawing.Point(88, 119);
-            this.materialLabel28.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel28.Name = "materialLabel28";
-            this.materialLabel28.Size = new System.Drawing.Size(57, 19);
-            this.materialLabel28.TabIndex = 25;
-            this.materialLabel28.Text = "Reserva";
-            // 
-            // materialLabel27
-            // 
-            this.materialLabel27.AutoSize = true;
-            this.materialLabel27.Depth = 0;
-            this.materialLabel27.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel27.Location = new System.Drawing.Point(16, 20);
-            this.materialLabel27.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel27.Name = "materialLabel27";
-            this.materialLabel27.Size = new System.Drawing.Size(14, 19);
-            this.materialLabel27.TabIndex = 24;
-            this.materialLabel27.Text = "Id";
-            // 
-            // cmbReservas
-            // 
-            this.cmbReservas.FormattingEnabled = true;
-            this.cmbReservas.Location = new System.Drawing.Point(185, 116);
-            this.cmbReservas.Name = "cmbReservas";
-            this.cmbReservas.Size = new System.Drawing.Size(255, 24);
-            this.cmbReservas.TabIndex = 23;
-            // 
-            // dtpFactura
-            // 
-            this.dtpFactura.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFactura.Location = new System.Drawing.Point(162, 20);
-            this.dtpFactura.Name = "dtpFactura";
-            this.dtpFactura.Size = new System.Drawing.Size(139, 23);
-            this.dtpFactura.TabIndex = 22;
-            // 
-            // btnEliminarFact
-            // 
-            this.btnEliminarFact.BackColor = System.Drawing.Color.RosyBrown;
-            this.btnEliminarFact.Location = new System.Drawing.Point(441, 167);
-            this.btnEliminarFact.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.btnEliminarFact.Name = "btnEliminarFact";
-            this.btnEliminarFact.Size = new System.Drawing.Size(125, 32);
-            this.btnEliminarFact.TabIndex = 3;
-            this.btnEliminarFact.Text = "Eliminar";
-            this.btnEliminarFact.UseVisualStyleBackColor = false;
-            // 
-            // lblIdFactura
-            // 
-            this.lblIdFactura.AutoSize = true;
-            this.lblIdFactura.Location = new System.Drawing.Point(36, 23);
-            this.lblIdFactura.Name = "lblIdFactura";
-            this.lblIdFactura.Size = new System.Drawing.Size(0, 16);
-            this.lblIdFactura.TabIndex = 21;
-            // 
-            // btnActualizarFact
-            // 
-            this.btnActualizarFact.BackColor = System.Drawing.Color.RosyBrown;
-            this.btnActualizarFact.Location = new System.Drawing.Point(280, 167);
-            this.btnActualizarFact.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.btnActualizarFact.Name = "btnActualizarFact";
-            this.btnActualizarFact.Size = new System.Drawing.Size(125, 32);
-            this.btnActualizarFact.TabIndex = 2;
-            this.btnActualizarFact.Text = "Actualizar";
-            this.btnActualizarFact.UseVisualStyleBackColor = false;
-            // 
-            // txtDetalles
-            // 
-            this.txtDetalles.Location = new System.Drawing.Point(489, 41);
-            this.txtDetalles.Multiline = true;
-            this.txtDetalles.Name = "txtDetalles";
-            this.txtDetalles.Size = new System.Drawing.Size(162, 82);
-            this.txtDetalles.TabIndex = 18;
-            // 
-            // txtTotalFactura
-            // 
-            this.txtTotalFactura.Location = new System.Drawing.Point(162, 68);
-            this.txtTotalFactura.Name = "txtTotalFactura";
-            this.txtTotalFactura.Size = new System.Drawing.Size(162, 23);
-            this.txtTotalFactura.TabIndex = 17;
-            // 
-            // btnAgregarFact
-            // 
-            this.btnAgregarFact.BackColor = System.Drawing.Color.RosyBrown;
-            this.btnAgregarFact.Location = new System.Drawing.Point(123, 169);
-            this.btnAgregarFact.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.btnAgregarFact.Name = "btnAgregarFact";
-            this.btnAgregarFact.Size = new System.Drawing.Size(125, 32);
-            this.btnAgregarFact.TabIndex = 1;
-            this.btnAgregarFact.Text = "Agregar";
-            this.btnAgregarFact.UseVisualStyleBackColor = false;
-            // 
             // tpUsuarios
             // 
             this.tpUsuarios.Controls.Add(this.panData);
             this.tpUsuarios.Controls.Add(this.panCRUD);
-            this.tpUsuarios.ImageKey = "user.png";
-            this.tpUsuarios.Location = new System.Drawing.Point(4, 25);
+            this.tpUsuarios.ImageKey = "icons8-user-64.png";
+            this.tpUsuarios.Location = new System.Drawing.Point(4, 31);
             this.tpUsuarios.Name = "tpUsuarios";
-            this.tpUsuarios.Size = new System.Drawing.Size(1237, 579);
+            this.tpUsuarios.Size = new System.Drawing.Size(1237, 573);
             this.tpUsuarios.TabIndex = 6;
             this.tpUsuarios.Text = "Usuarios";
             this.tpUsuarios.UseVisualStyleBackColor = true;
@@ -1484,6 +1341,7 @@
             // panData
             // 
             this.panData.BackColor = System.Drawing.Color.Gainsboro;
+            this.panData.Controls.Add(this.materialLabel31);
             this.panData.Controls.Add(this.btnBuscar);
             this.panData.Controls.Add(this.materialLabel6);
             this.panData.Controls.Add(this.dataGridViewUsuarios);
@@ -1491,8 +1349,20 @@
             this.panData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panData.Location = new System.Drawing.Point(0, 0);
             this.panData.Name = "panData";
-            this.panData.Size = new System.Drawing.Size(1237, 281);
+            this.panData.Size = new System.Drawing.Size(1237, 259);
             this.panData.TabIndex = 25;
+            // 
+            // materialLabel31
+            // 
+            this.materialLabel31.AutoSize = true;
+            this.materialLabel31.Depth = 0;
+            this.materialLabel31.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel31.Location = new System.Drawing.Point(856, 56);
+            this.materialLabel31.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel31.Name = "materialLabel31";
+            this.materialLabel31.Size = new System.Drawing.Size(63, 19);
+            this.materialLabel31.TabIndex = 12;
+            this.materialLabel31.Text = "Usuarios";
             // 
             // btnBuscar
             // 
@@ -1550,6 +1420,8 @@
             // panCRUD
             // 
             this.panCRUD.BackColor = System.Drawing.Color.Gainsboro;
+            this.panCRUD.Controls.Add(this.materialLabel10);
+            this.panCRUD.Controls.Add(this.cmbGrupoUsuario);
             this.panCRUD.Controls.Add(this.chkIsActive);
             this.panCRUD.Controls.Add(this.materialLabel26);
             this.panCRUD.Controls.Add(this.materialLabel25);
@@ -1567,9 +1439,9 @@
             this.panCRUD.Controls.Add(this.btnAgregar);
             this.panCRUD.Controls.Add(this.txtUsuario);
             this.panCRUD.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panCRUD.Location = new System.Drawing.Point(0, 281);
+            this.panCRUD.Location = new System.Drawing.Point(0, 259);
             this.panCRUD.Name = "panCRUD";
-            this.panCRUD.Size = new System.Drawing.Size(1237, 298);
+            this.panCRUD.Size = new System.Drawing.Size(1237, 314);
             this.panCRUD.TabIndex = 24;
             // 
             // chkIsActive
@@ -1667,7 +1539,7 @@
             // btnEliminar
             // 
             this.btnEliminar.BackColor = System.Drawing.Color.RosyBrown;
-            this.btnEliminar.Location = new System.Drawing.Point(550, 116);
+            this.btnEliminar.Location = new System.Drawing.Point(410, 148);
             this.btnEliminar.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(125, 32);
@@ -1701,7 +1573,7 @@
             // btnActualizar
             // 
             this.btnActualizar.BackColor = System.Drawing.Color.RosyBrown;
-            this.btnActualizar.Location = new System.Drawing.Point(403, 116);
+            this.btnActualizar.Location = new System.Drawing.Point(263, 148);
             this.btnActualizar.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(125, 32);
@@ -1727,7 +1599,7 @@
             // btnAgregar
             // 
             this.btnAgregar.BackColor = System.Drawing.Color.RosyBrown;
-            this.btnAgregar.Location = new System.Drawing.Point(244, 116);
+            this.btnAgregar.Location = new System.Drawing.Point(104, 148);
             this.btnAgregar.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(125, 32);
@@ -1747,10 +1619,10 @@
             // 
             this.tpPermisos.Controls.Add(this.panel3);
             this.tpPermisos.Controls.Add(this.panel4);
-            this.tpPermisos.ImageKey = "key.png";
-            this.tpPermisos.Location = new System.Drawing.Point(4, 25);
+            this.tpPermisos.ImageKey = "icons8-user-rights-50.png";
+            this.tpPermisos.Location = new System.Drawing.Point(4, 31);
             this.tpPermisos.Name = "tpPermisos";
-            this.tpPermisos.Size = new System.Drawing.Size(1237, 579);
+            this.tpPermisos.Size = new System.Drawing.Size(1237, 573);
             this.tpPermisos.TabIndex = 7;
             this.tpPermisos.Text = "Permisos";
             this.tpPermisos.UseVisualStyleBackColor = true;
@@ -1758,6 +1630,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel3.Controls.Add(this.materialLabel51);
             this.panel3.Controls.Add(this.btnBuscarPermiso);
             this.panel3.Controls.Add(this.materialLabel7);
             this.panel3.Controls.Add(this.dataGridViewPermisos);
@@ -1765,8 +1638,20 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1237, 270);
+            this.panel3.Size = new System.Drawing.Size(1237, 259);
             this.panel3.TabIndex = 29;
+            // 
+            // materialLabel51
+            // 
+            this.materialLabel51.AutoSize = true;
+            this.materialLabel51.Depth = 0;
+            this.materialLabel51.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel51.Location = new System.Drawing.Point(852, 56);
+            this.materialLabel51.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel51.Name = "materialLabel51";
+            this.materialLabel51.Size = new System.Drawing.Size(67, 19);
+            this.materialLabel51.TabIndex = 12;
+            this.materialLabel51.Text = "Permisos";
             // 
             // btnBuscarPermiso
             // 
@@ -1833,9 +1718,9 @@
             this.panel4.Controls.Add(this.btnAgregarPermiso);
             this.panel4.Controls.Add(this.txtNombrePermiso);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(0, 270);
+            this.panel4.Location = new System.Drawing.Point(0, 259);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1237, 309);
+            this.panel4.Size = new System.Drawing.Size(1237, 314);
             this.panel4.TabIndex = 28;
             // 
             // materialLabel20
@@ -1917,10 +1802,10 @@
             // 
             this.tpGrupos.Controls.Add(this.panel1);
             this.tpGrupos.Controls.Add(this.panel2);
-            this.tpGrupos.ImageKey = "people.png";
-            this.tpGrupos.Location = new System.Drawing.Point(4, 25);
+            this.tpGrupos.ImageKey = "icons8-user-groups-50.png";
+            this.tpGrupos.Location = new System.Drawing.Point(4, 31);
             this.tpGrupos.Name = "tpGrupos";
-            this.tpGrupos.Size = new System.Drawing.Size(1237, 579);
+            this.tpGrupos.Size = new System.Drawing.Size(1237, 573);
             this.tpGrupos.TabIndex = 8;
             this.tpGrupos.Text = "Grupos";
             this.tpGrupos.UseVisualStyleBackColor = true;
@@ -1928,6 +1813,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel1.Controls.Add(this.materialLabel52);
             this.panel1.Controls.Add(this.btnBuscarGrupo);
             this.panel1.Controls.Add(this.materialLabel8);
             this.panel1.Controls.Add(this.dataGridViewGrupos);
@@ -1935,8 +1821,20 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1237, 350);
+            this.panel1.Size = new System.Drawing.Size(1237, 259);
             this.panel1.TabIndex = 29;
+            // 
+            // materialLabel52
+            // 
+            this.materialLabel52.AutoSize = true;
+            this.materialLabel52.Depth = 0;
+            this.materialLabel52.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel52.Location = new System.Drawing.Point(867, 56);
+            this.materialLabel52.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel52.Name = "materialLabel52";
+            this.materialLabel52.Size = new System.Drawing.Size(52, 19);
+            this.materialLabel52.TabIndex = 12;
+            this.materialLabel52.Text = "Grupos";
             // 
             // btnBuscarGrupo
             // 
@@ -2003,9 +1901,9 @@
             this.panel2.Controls.Add(this.btnAgregarGrupo);
             this.panel2.Controls.Add(this.txtNombreGrupo);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 350);
+            this.panel2.Location = new System.Drawing.Point(0, 259);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1237, 229);
+            this.panel2.Size = new System.Drawing.Size(1237, 314);
             this.panel2.TabIndex = 28;
             // 
             // materialLabel18
@@ -2087,10 +1985,10 @@
             // 
             this.tpGruposPermisos.Controls.Add(this.panel15);
             this.tpGruposPermisos.Controls.Add(this.panel16);
-            this.tpGruposPermisos.ImageKey = "shield.png";
-            this.tpGruposPermisos.Location = new System.Drawing.Point(4, 25);
+            this.tpGruposPermisos.ImageKey = "icons8-business-group-48.png";
+            this.tpGruposPermisos.Location = new System.Drawing.Point(4, 31);
             this.tpGruposPermisos.Name = "tpGruposPermisos";
-            this.tpGruposPermisos.Size = new System.Drawing.Size(1237, 579);
+            this.tpGruposPermisos.Size = new System.Drawing.Size(1237, 573);
             this.tpGruposPermisos.TabIndex = 9;
             this.tpGruposPermisos.Text = "Grupos/Permisos";
             this.tpGruposPermisos.UseVisualStyleBackColor = true;
@@ -2098,6 +1996,7 @@
             // panel15
             // 
             this.panel15.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel15.Controls.Add(this.materialLabel53);
             this.panel15.Controls.Add(this.btnBuscarGrupoPermiso);
             this.panel15.Controls.Add(this.materialLabel9);
             this.panel15.Controls.Add(this.dataGridViewGruposPermisos);
@@ -2105,8 +2004,20 @@
             this.panel15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel15.Location = new System.Drawing.Point(0, 0);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(1237, 283);
+            this.panel15.Size = new System.Drawing.Size(1237, 259);
             this.panel15.TabIndex = 29;
+            // 
+            // materialLabel53
+            // 
+            this.materialLabel53.AutoSize = true;
+            this.materialLabel53.Depth = 0;
+            this.materialLabel53.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel53.Location = new System.Drawing.Point(794, 56);
+            this.materialLabel53.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel53.Name = "materialLabel53";
+            this.materialLabel53.Size = new System.Drawing.Size(125, 19);
+            this.materialLabel53.TabIndex = 12;
+            this.materialLabel53.Text = "Grupos/Permisos";
             // 
             // btnBuscarGrupoPermiso
             // 
@@ -2126,6 +2037,7 @@
             this.btnBuscarGrupoPermiso.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnBuscarGrupoPermiso.UseAccentColor = false;
             this.btnBuscarGrupoPermiso.UseVisualStyleBackColor = true;
+            this.btnBuscarGrupoPermiso.Click += new System.EventHandler(this.btnBuscarGrupoPermiso_Click);
             // 
             // materialLabel9
             // 
@@ -2151,6 +2063,7 @@
             this.dataGridViewGruposPermisos.ReadOnly = true;
             this.dataGridViewGruposPermisos.Size = new System.Drawing.Size(900, 150);
             this.dataGridViewGruposPermisos.TabIndex = 0;
+            this.dataGridViewGruposPermisos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewGruposPermisos_CellClick);
             // 
             // txtBuscarGrupoPermiso
             // 
@@ -2172,9 +2085,9 @@
             this.panel16.Controls.Add(this.lblIdPermisosGrupos);
             this.panel16.Controls.Add(this.btnAgregarGrupoPermiso);
             this.panel16.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel16.Location = new System.Drawing.Point(0, 283);
+            this.panel16.Location = new System.Drawing.Point(0, 259);
             this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(1237, 296);
+            this.panel16.Size = new System.Drawing.Size(1237, 314);
             this.panel16.TabIndex = 28;
             // 
             // materialLabel16
@@ -2239,6 +2152,7 @@
             this.btnEliminarGrupoPermiso.TabIndex = 3;
             this.btnEliminarGrupoPermiso.Text = "Eliminar";
             this.btnEliminarGrupoPermiso.UseVisualStyleBackColor = false;
+            this.btnEliminarGrupoPermiso.Click += new System.EventHandler(this.btnEliminarGrupoPermiso_Click);
             // 
             // lblIdPermisosGrupos
             // 
@@ -2258,213 +2172,56 @@
             this.btnAgregarGrupoPermiso.TabIndex = 1;
             this.btnAgregarGrupoPermiso.Text = "Agregar";
             this.btnAgregarGrupoPermiso.UseVisualStyleBackColor = false;
+            this.btnAgregarGrupoPermiso.Click += new System.EventHandler(this.btnAgregarGrupoPermiso_Click);
             // 
-            // tpConfiguraciones
+            // imageListIcons
             // 
-            this.tpConfiguraciones.Controls.Add(this.panel13);
-            this.tpConfiguraciones.Controls.Add(this.panel14);
-            this.tpConfiguraciones.ImageKey = "setting.png";
-            this.tpConfiguraciones.Location = new System.Drawing.Point(4, 25);
-            this.tpConfiguraciones.Name = "tpConfiguraciones";
-            this.tpConfiguraciones.Size = new System.Drawing.Size(1237, 579);
-            this.tpConfiguraciones.TabIndex = 10;
-            this.tpConfiguraciones.Text = "Configuraciones";
-            this.tpConfiguraciones.UseVisualStyleBackColor = true;
+            this.imageListIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListIcons.ImageStream")));
+            this.imageListIcons.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageListIcons.Images.SetKeyName(0, "icons8-business-group-48.png");
+            this.imageListIcons.Images.SetKeyName(1, "icons8-client-80.png");
+            this.imageListIcons.Images.SetKeyName(2, "icons8-dashboard-96.png");
+            this.imageListIcons.Images.SetKeyName(3, "icons8-reserve-80.png");
+            this.imageListIcons.Images.SetKeyName(4, "icons8-room-64.png");
+            this.imageListIcons.Images.SetKeyName(5, "icons8-rooms-64.png");
+            this.imageListIcons.Images.SetKeyName(6, "icons8-settings-50.png");
+            this.imageListIcons.Images.SetKeyName(7, "icons8-user-64.png");
+            this.imageListIcons.Images.SetKeyName(8, "icons8-user-groups-50.png");
+            this.imageListIcons.Images.SetKeyName(9, "icons8-user-rights-50.png");
             // 
-            // panel13
+            // timer1
             // 
-            this.panel13.BackColor = System.Drawing.Color.Gainsboro;
-            this.panel13.Controls.Add(this.btnBuscarConfig);
-            this.panel13.Controls.Add(this.materialLabel10);
-            this.panel13.Controls.Add(this.dataGridViewConfig);
-            this.panel13.Controls.Add(this.txtBuscarConfig);
-            this.panel13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel13.Location = new System.Drawing.Point(0, 0);
-            this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(1237, 265);
-            this.panel13.TabIndex = 29;
-            // 
-            // btnBuscarConfig
-            // 
-            this.btnBuscarConfig.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnBuscarConfig.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.btnBuscarConfig.Depth = 0;
-            this.btnBuscarConfig.HighEmphasis = true;
-            this.btnBuscarConfig.Icon = null;
-            this.btnBuscarConfig.Location = new System.Drawing.Point(299, 23);
-            this.btnBuscarConfig.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnBuscarConfig.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnBuscarConfig.Name = "btnBuscarConfig";
-            this.btnBuscarConfig.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnBuscarConfig.Size = new System.Drawing.Size(77, 36);
-            this.btnBuscarConfig.TabIndex = 12;
-            this.btnBuscarConfig.Text = "Buscar";
-            this.btnBuscarConfig.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.btnBuscarConfig.UseAccentColor = false;
-            this.btnBuscarConfig.UseVisualStyleBackColor = true;
-            this.btnBuscarConfig.Click += new System.EventHandler(this.btnBuscarConfig_Click);
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // materialLabel10
             // 
             this.materialLabel10.AutoSize = true;
             this.materialLabel10.Depth = 0;
             this.materialLabel10.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel10.Location = new System.Drawing.Point(16, 33);
+            this.materialLabel10.Location = new System.Drawing.Point(128, 103);
             this.materialLabel10.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel10.Name = "materialLabel10";
-            this.materialLabel10.Size = new System.Drawing.Size(50, 19);
-            this.materialLabel10.TabIndex = 9;
-            this.materialLabel10.Text = "Buscar";
+            this.materialLabel10.Size = new System.Drawing.Size(44, 19);
+            this.materialLabel10.TabIndex = 30;
+            this.materialLabel10.Text = "Grupo";
             // 
-            // dataGridViewConfig
+            // cmbGrupoUsuario
             // 
-            this.dataGridViewConfig.AllowUserToAddRows = false;
-            this.dataGridViewConfig.AllowUserToDeleteRows = false;
-            this.dataGridViewConfig.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewConfig.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewConfig.Location = new System.Drawing.Point(19, 79);
-            this.dataGridViewConfig.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.dataGridViewConfig.Name = "dataGridViewConfig";
-            this.dataGridViewConfig.ReadOnly = true;
-            this.dataGridViewConfig.Size = new System.Drawing.Size(900, 150);
-            this.dataGridViewConfig.TabIndex = 0;
-            this.dataGridViewConfig.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewConfiguraciones_CellClick);
+            this.cmbGrupoUsuario.FormattingEnabled = true;
+            this.cmbGrupoUsuario.Location = new System.Drawing.Point(189, 100);
+            this.cmbGrupoUsuario.Name = "cmbGrupoUsuario";
+            this.cmbGrupoUsuario.Size = new System.Drawing.Size(214, 24);
+            this.cmbGrupoUsuario.TabIndex = 29;
             // 
-            // txtBuscarConfig
+            // lbPermisos
             // 
-            this.txtBuscarConfig.Location = new System.Drawing.Point(104, 30);
-            this.txtBuscarConfig.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.txtBuscarConfig.Name = "txtBuscarConfig";
-            this.txtBuscarConfig.Size = new System.Drawing.Size(164, 23);
-            this.txtBuscarConfig.TabIndex = 6;
-            // 
-            // panel14
-            // 
-            this.panel14.BackColor = System.Drawing.Color.Gainsboro;
-            this.panel14.Controls.Add(this.materialLabel13);
-            this.panel14.Controls.Add(this.materialLabel12);
-            this.panel14.Controls.Add(this.materialLabel11);
-            this.panel14.Controls.Add(this.btnEliminarConfig);
-            this.panel14.Controls.Add(this.lblIdConfig);
-            this.panel14.Controls.Add(this.btnActualizarConfig);
-            this.panel14.Controls.Add(this.txtValor);
-            this.panel14.Controls.Add(this.btnAgregarConfig);
-            this.panel14.Controls.Add(this.txtClave);
-            this.panel14.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel14.Location = new System.Drawing.Point(0, 265);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(1237, 314);
-            this.panel14.TabIndex = 28;
-            // 
-            // materialLabel13
-            // 
-            this.materialLabel13.AutoSize = true;
-            this.materialLabel13.Depth = 0;
-            this.materialLabel13.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel13.Location = new System.Drawing.Point(16, 7);
-            this.materialLabel13.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel13.Name = "materialLabel13";
-            this.materialLabel13.Size = new System.Drawing.Size(14, 19);
-            this.materialLabel13.TabIndex = 24;
-            this.materialLabel13.Text = "Id";
-            // 
-            // materialLabel12
-            // 
-            this.materialLabel12.AutoSize = true;
-            this.materialLabel12.Depth = 0;
-            this.materialLabel12.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel12.Location = new System.Drawing.Point(101, 15);
-            this.materialLabel12.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel12.Name = "materialLabel12";
-            this.materialLabel12.Size = new System.Drawing.Size(40, 19);
-            this.materialLabel12.TabIndex = 23;
-            this.materialLabel12.Text = "Clave";
-            // 
-            // materialLabel11
-            // 
-            this.materialLabel11.AutoSize = true;
-            this.materialLabel11.Depth = 0;
-            this.materialLabel11.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel11.Location = new System.Drawing.Point(101, 58);
-            this.materialLabel11.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel11.Name = "materialLabel11";
-            this.materialLabel11.Size = new System.Drawing.Size(38, 19);
-            this.materialLabel11.TabIndex = 22;
-            this.materialLabel11.Text = "Valor";
-            // 
-            // btnEliminarConfig
-            // 
-            this.btnEliminarConfig.BackColor = System.Drawing.Color.RosyBrown;
-            this.btnEliminarConfig.Location = new System.Drawing.Point(620, 7);
-            this.btnEliminarConfig.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.btnEliminarConfig.Name = "btnEliminarConfig";
-            this.btnEliminarConfig.Size = new System.Drawing.Size(125, 32);
-            this.btnEliminarConfig.TabIndex = 3;
-            this.btnEliminarConfig.Text = "Eliminar";
-            this.btnEliminarConfig.UseVisualStyleBackColor = false;
-            this.btnEliminarConfig.Click += new System.EventHandler(this.btnEliminarConfig_Click);
-            // 
-            // lblIdConfig
-            // 
-            this.lblIdConfig.AutoSize = true;
-            this.lblIdConfig.Location = new System.Drawing.Point(36, 10);
-            this.lblIdConfig.Name = "lblIdConfig";
-            this.lblIdConfig.Size = new System.Drawing.Size(0, 16);
-            this.lblIdConfig.TabIndex = 21;
-            // 
-            // btnActualizarConfig
-            // 
-            this.btnActualizarConfig.BackColor = System.Drawing.Color.RosyBrown;
-            this.btnActualizarConfig.Location = new System.Drawing.Point(438, 58);
-            this.btnActualizarConfig.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.btnActualizarConfig.Name = "btnActualizarConfig";
-            this.btnActualizarConfig.Size = new System.Drawing.Size(125, 32);
-            this.btnActualizarConfig.TabIndex = 2;
-            this.btnActualizarConfig.Text = "Actualizar";
-            this.btnActualizarConfig.UseVisualStyleBackColor = false;
-            this.btnActualizarConfig.Click += new System.EventHandler(this.btnActualizarConfig_Click);
-            // 
-            // txtValor
-            // 
-            this.txtValor.Location = new System.Drawing.Point(161, 57);
-            this.txtValor.Name = "txtValor";
-            this.txtValor.Size = new System.Drawing.Size(214, 23);
-            this.txtValor.TabIndex = 17;
-            // 
-            // btnAgregarConfig
-            // 
-            this.btnAgregarConfig.BackColor = System.Drawing.Color.RosyBrown;
-            this.btnAgregarConfig.Location = new System.Drawing.Point(438, 7);
-            this.btnAgregarConfig.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.btnAgregarConfig.Name = "btnAgregarConfig";
-            this.btnAgregarConfig.Size = new System.Drawing.Size(125, 32);
-            this.btnAgregarConfig.TabIndex = 1;
-            this.btnAgregarConfig.Text = "Agregar";
-            this.btnAgregarConfig.UseVisualStyleBackColor = false;
-            this.btnAgregarConfig.Click += new System.EventHandler(this.btnAgregarConfig_Click);
-            // 
-            // txtClave
-            // 
-            this.txtClave.Location = new System.Drawing.Point(161, 12);
-            this.txtClave.Name = "txtClave";
-            this.txtClave.Size = new System.Drawing.Size(214, 23);
-            this.txtClave.TabIndex = 16;
-            // 
-            // imgListIcons
-            // 
-            this.imgListIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgListIcons.ImageStream")));
-            this.imgListIcons.TransparentColor = System.Drawing.Color.Transparent;
-            this.imgListIcons.Images.SetKeyName(0, "bill.png");
-            this.imgListIcons.Images.SetKeyName(1, "client.png");
-            this.imgListIcons.Images.SetKeyName(2, "dashboard.png");
-            this.imgListIcons.Images.SetKeyName(3, "hotel.png");
-            this.imgListIcons.Images.SetKeyName(4, "key.png");
-            this.imgListIcons.Images.SetKeyName(5, "people.png");
-            this.imgListIcons.Images.SetKeyName(6, "reserve.png");
-            this.imgListIcons.Images.SetKeyName(7, "room.png");
-            this.imgListIcons.Images.SetKeyName(8, "setting.png");
-            this.imgListIcons.Images.SetKeyName(9, "shield.png");
-            this.imgListIcons.Images.SetKeyName(10, "user.png");
+            this.lbPermisos.FormattingEnabled = true;
+            this.lbPermisos.ItemHeight = 16;
+            this.lbPermisos.Location = new System.Drawing.Point(72, 79);
+            this.lbPermisos.Name = "lbPermisos";
+            this.lbPermisos.Size = new System.Drawing.Size(414, 276);
+            this.lbPermisos.TabIndex = 1;
             // 
             // Dashboard
             // 
@@ -2484,6 +2241,10 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard";
             this.materialTabControl1.ResumeLayout(false);
+            this.tpInicio.ResumeLayout(false);
+            this.tpInicio.PerformLayout();
+            this.sstBarra.ResumeLayout(false);
+            this.sstBarra.PerformLayout();
             this.tbClientes.ResumeLayout(false);
             this.panDataCliente.ResumeLayout(false);
             this.panDataCliente.PerformLayout();
@@ -2508,12 +2269,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTH)).EndInit();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
-            this.tpFacturas.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFacturas)).EndInit();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
             this.tpUsuarios.ResumeLayout(false);
             this.panData.ResumeLayout(false);
             this.panData.PerformLayout();
@@ -2538,12 +2293,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGruposPermisos)).EndInit();
             this.panel16.ResumeLayout(false);
             this.panel16.PerformLayout();
-            this.tpConfiguraciones.ResumeLayout(false);
-            this.panel13.ResumeLayout(false);
-            this.panel13.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConfig)).EndInit();
-            this.panel14.ResumeLayout(false);
-            this.panel14.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2582,12 +2331,10 @@
         private System.Windows.Forms.Button btnAgregarReserva;
         private System.Windows.Forms.TabPage tpHabitaciones;
         private System.Windows.Forms.TabPage tpTipoHabitaciones;
-        private System.Windows.Forms.TabPage tpFacturas;
         private System.Windows.Forms.TabPage tpUsuarios;
         private System.Windows.Forms.TabPage tpPermisos;
         private System.Windows.Forms.TabPage tpGrupos;
         private System.Windows.Forms.TabPage tpGruposPermisos;
-        private System.Windows.Forms.TabPage tpConfiguraciones;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.DataGridView dataGridViewH;
         private System.Windows.Forms.TextBox txtBuscarH;
@@ -2612,18 +2359,6 @@
         private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.Button btnAgregarTH;
         private System.Windows.Forms.TextBox txtTipo;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.DataGridView dataGridViewFacturas;
-        private System.Windows.Forms.TextBox txtBuscarFactura;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.ComboBox cmbReservas;
-        private System.Windows.Forms.DateTimePicker dtpFactura;
-        private System.Windows.Forms.Button btnEliminarFact;
-        private System.Windows.Forms.Label lblIdFactura;
-        private System.Windows.Forms.Button btnActualizarFact;
-        private System.Windows.Forms.TextBox txtDetalles;
-        private System.Windows.Forms.TextBox txtTotalFactura;
-        private System.Windows.Forms.Button btnAgregarFact;
         private System.Windows.Forms.Panel panData;
         private System.Windows.Forms.DataGridView dataGridViewUsuarios;
         private System.Windows.Forms.TextBox txtBuscar;
@@ -2664,29 +2399,14 @@
         private System.Windows.Forms.Button btnEliminarGrupoPermiso;
         private System.Windows.Forms.Label lblIdPermisosGrupos;
         private System.Windows.Forms.Button btnAgregarGrupoPermiso;
-        private System.Windows.Forms.Panel panel13;
-        private System.Windows.Forms.DataGridView dataGridViewConfig;
-        private System.Windows.Forms.TextBox txtBuscarConfig;
-        private System.Windows.Forms.Panel panel14;
-        private System.Windows.Forms.Button btnEliminarConfig;
-        private System.Windows.Forms.Label lblIdConfig;
-        private System.Windows.Forms.Button btnActualizarConfig;
-        private System.Windows.Forms.TextBox txtValor;
-        private System.Windows.Forms.Button btnAgregarConfig;
-        private System.Windows.Forms.TextBox txtClave;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
         private MaterialSkin.Controls.MaterialLabel materialLabel4;
-        private MaterialSkin.Controls.MaterialLabel materialLabel5;
         private MaterialSkin.Controls.MaterialLabel materialLabel6;
         private MaterialSkin.Controls.MaterialLabel materialLabel7;
         private MaterialSkin.Controls.MaterialLabel materialLabel8;
         private MaterialSkin.Controls.MaterialLabel materialLabel9;
-        private MaterialSkin.Controls.MaterialLabel materialLabel10;
-        private MaterialSkin.Controls.MaterialLabel materialLabel13;
-        private MaterialSkin.Controls.MaterialLabel materialLabel12;
-        private MaterialSkin.Controls.MaterialLabel materialLabel11;
         private MaterialSkin.Controls.MaterialLabel materialLabel16;
         private MaterialSkin.Controls.MaterialLabel materialLabel15;
         private MaterialSkin.Controls.MaterialLabel materialLabel14;
@@ -2700,11 +2420,6 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel23;
         private MaterialSkin.Controls.MaterialLabel materialLabel22;
         private MaterialSkin.Controls.MaterialLabel materialLabel21;
-        private MaterialSkin.Controls.MaterialLabel materialLabel31;
-        private MaterialSkin.Controls.MaterialLabel materialLabel30;
-        private MaterialSkin.Controls.MaterialLabel materialLabel29;
-        private MaterialSkin.Controls.MaterialLabel materialLabel28;
-        private MaterialSkin.Controls.MaterialLabel materialLabel27;
         private MaterialSkin.Controls.MaterialCheckbox chkIsActive;
         private MaterialSkin.Controls.MaterialLabel materialLabel38;
         private MaterialSkin.Controls.MaterialLabel materialLabel37;
@@ -2729,12 +2444,27 @@
         private MaterialSkin.Controls.MaterialButton btnBuscarReserva;
         private MaterialSkin.Controls.MaterialButton btnBuscarHabitacion;
         private MaterialSkin.Controls.MaterialButton btnBuscarTH;
-        private MaterialSkin.Controls.MaterialButton btnBuscarFactura;
         private MaterialSkin.Controls.MaterialButton btnBuscar;
         private MaterialSkin.Controls.MaterialButton btnBuscarPermiso;
         private MaterialSkin.Controls.MaterialButton btnBuscarGrupo;
         private MaterialSkin.Controls.MaterialButton btnBuscarGrupoPermiso;
-        private MaterialSkin.Controls.MaterialButton btnBuscarConfig;
-        private System.Windows.Forms.ImageList imgListIcons;
+        private MaterialSkin.Controls.MaterialLabel materialLabel5;
+        private System.Windows.Forms.ComboBox cmbEstado;
+        private System.Windows.Forms.ImageList imageListIcons;
+        private MaterialSkin.Controls.MaterialLabel materialLabel27;
+        private MaterialSkin.Controls.MaterialLabel materialLabel28;
+        private MaterialSkin.Controls.MaterialLabel materialLabel29;
+        private MaterialSkin.Controls.MaterialLabel materialLabel30;
+        private MaterialSkin.Controls.MaterialLabel materialLabel31;
+        private MaterialSkin.Controls.MaterialLabel materialLabel51;
+        private MaterialSkin.Controls.MaterialLabel materialLabel52;
+        private MaterialSkin.Controls.MaterialLabel materialLabel53;
+        private System.Windows.Forms.StatusStrip sstBarra;
+        private System.Windows.Forms.ToolStripStatusLabel tsslBienvenida;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.Timer timer1;
+        private MaterialSkin.Controls.MaterialLabel materialLabel10;
+        private System.Windows.Forms.ComboBox cmbGrupoUsuario;
+        private System.Windows.Forms.ListBox lbPermisos;
     }
 }
