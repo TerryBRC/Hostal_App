@@ -89,3 +89,12 @@ C:\Users\Admin\Documents\GitHub\Hostal_App\Hostal_App\Hostal_App\bin\Debug\Syste
 C:\Users\Admin\Documents\GitHub\Hostal_App\Hostal_App\Hostal_App\obj\Debug\Hostal_App.csproj.Up2Date
 C:\Users\Admin\Documents\GitHub\Hostal_App\Hostal_App\Hostal_App\obj\Debug\Hostal_App.exe
 C:\Users\Admin\Documents\GitHub\Hostal_App\Hostal_App\Hostal_App\obj\Debug\Hostal_App.pdb
+C:\Users\Admin\Documents\GitHub\Hostal_App\Hostal_App\Hostal_App\obj\Debug\Hostal_App.DashboardForm.resources
+C:\Users\Admin\Documents\GitHub\Hostal_App\Hostal_App\Hostal_App\obj\Debug\Hostal_App.Views.Clientes.resources
+C:\Users\Admin\Documents\GitHub\Hostal_App\Hostal_App\Hostal_App\obj\Debug\Hostal_App.Views.Grupos.resources
+C:\Users\Admin\Documents\GitHub\Hostal_App\Hostal_App\Hostal_App\obj\Debug\Hostal_App.Views.GruposPermisos.resources
+C:\Users\Admin\Documents\GitHub\Hostal_App\Hostal_App\Hostal_App\obj\Debug\Hostal_App.Views.Habitaciones.resources
+C:\Users\Admin\Documents\GitHub\Hostal_App\Hostal_App\Hostal_App\obj\Debug\Hostal_App.Views.Permisos.resources
+C:\Users\Admin\Documents\GitHub\Hostal_App\Hostal_App\Hostal_App\obj\Debug\Hostal_App.Views.Reservas.resources
+C:\Users\Admin\Documents\GitHub\Hostal_App\Hostal_App\Hostal_App\obj\Debug\Hostal_App.Views.TipoHabitaciones.resources
+C:\Users\Admin\Documents\GitHub\Hostal_App\Hostal_App\Hostal_App\obj\Debug\Hostal_App.Views.Usuarios.resources

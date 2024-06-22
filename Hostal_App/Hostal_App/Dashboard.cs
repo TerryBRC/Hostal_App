@@ -23,13 +23,15 @@ namespace Hostal_App
         private readonly GruposPermisosService gruposPermisosService;
         private readonly HabitacionService habitacionService;
         private readonly ReservaService reservaService;
-
-
+        private readonly DashboardService dashboardService;
         private readonly List<Permiso> permisosLogin;
+
         public Dashboard(List<Permiso> permisos)
         {
             InitializeComponent();
             this.permisosLogin = permisos;
+            dashboardService = new DashboardService();
+            dashboardService.ApplyPermissions(permisosLogin, materialTabControl1);
             CargarListaPermisos();
             InitializeTimer();
             usuarioService = new UsuarioService();
@@ -109,6 +111,7 @@ namespace Hostal_App
             string apellido = txtApellido.Text;
             string correo = txtCorreo.Text;
             bool isActive = chkIsActive.Checked;
+            string grupo = cmbGrupoUsuario.SelectedValue.ToString();
 
             if (string.IsNullOrWhiteSpace(usuario) || string.IsNullOrWhiteSpace(password) ||
                 string.IsNullOrWhiteSpace(nombre) || string.IsNullOrWhiteSpace(apellido) ||
@@ -118,8 +121,8 @@ namespace Hostal_App
                 return;
             }
             string passwordEnc = EncryptionHelper.EncryptPassword(password);
-
-            if (usuarioService.CrearUsuario(passwordEnc, usuario, nombre, apellido, correo, isActive))
+            int grupoId = int.Parse(grupo);
+            if (usuarioService.CrearUsuario(passwordEnc, usuario, nombre, apellido, correo, isActive,grupoId))
             {
                 MessageBox.Show("Usuario guardado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Limpiar();
@@ -133,30 +136,56 @@ namespace Hostal_App
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            int id = int.Parse(lblId.Text);
-            string usuario = txtUsuario.Text;
-            string password = txtPass.Text;
-            string nombre = txtNombre.Text;
-            string apellido = txtApellido.Text;
-            string correo = txtCorreo.Text;
-            bool isActive = chkIsActive.Checked;
+            try
+            {
+                int id = int.Parse(lblId.Text);
+                string usuario = txtUsuario.Text;
+                string nombre = txtNombre.Text;
+                string apellido = txtApellido.Text;
+                string correo = txtCorreo.Text;
+                bool isActive = chkIsActive.Checked;
+                int grupoID = (int)cmbGrupoUsuario.SelectedValue; // Obtener el grupo_id seleccionado
 
-            if (string.IsNullOrWhiteSpace(usuario) || string.IsNullOrWhiteSpace(nombre) ||
-                string.IsNullOrWhiteSpace(apellido) || string.IsNullOrWhiteSpace(correo))
-            {
-                MessageBox.Show("Por favor, complete todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                string passwordEnc = null;
 
-            if (usuarioService.ActualizarUsuario(id, password, usuario, nombre, apellido, correo, isActive))
-            {
-                MessageBox.Show("Usuario actualizado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Limpiar();
-                LoadData();
+                // Verificar si se ingresó una nueva contraseña
+                if (!string.IsNullOrWhiteSpace(txtPass.Text))
+                {
+                    passwordEnc = EncryptionHelper.EncryptPassword(txtPass.Text);
+                }
+
+                if (string.IsNullOrWhiteSpace(usuario) || string.IsNullOrWhiteSpace(nombre) ||
+                    string.IsNullOrWhiteSpace(apellido) || string.IsNullOrWhiteSpace(correo))
+                {
+                    MessageBox.Show("Por favor, complete todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Llamar al método ActualizarUsuario correspondiente según la situación de la contraseña
+                bool updated = false;
+                if (string.IsNullOrEmpty(passwordEnc))
+                {
+                    updated = usuarioService.ActualizarUsuario(id, usuario, nombre, apellido, correo, isActive, grupoID);
+                }
+                else
+                {
+                    updated = usuarioService.ActualizarUsuario(id, passwordEnc, usuario, nombre, apellido, correo, isActive, grupoID);
+                }
+
+                if (updated)
+                {
+                    MessageBox.Show("Usuario actualizado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Limpiar();
+                    LoadData();
+                }
+                else
+                {
+                    MessageBox.Show("Error al actualizar el usuario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Error al actualizar el usuario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

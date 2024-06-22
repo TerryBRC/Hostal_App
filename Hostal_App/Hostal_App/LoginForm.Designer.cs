@@ -113,7 +113,7 @@
             this.cmbGrupos.Location = new System.Drawing.Point(80, 205);
             this.cmbGrupos.Name = "cmbGrupos";
             this.cmbGrupos.Size = new System.Drawing.Size(157, 26);
-            this.cmbGrupos.TabIndex = 4;
+            this.cmbGrupos.TabIndex = 2;
             // 
             // LoginForm
             // 

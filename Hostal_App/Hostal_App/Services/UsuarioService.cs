@@ -1,4 +1,5 @@
 ﻿using Hostal_App.Helper;
+using Hostal_App.Models;
 using MySql.Data.MySqlClient;
 using System;
 using System.Configuration;
@@ -16,7 +17,7 @@ namespace Hostal_App.Services
         }
 
         // Método para crear un nuevo usuario
-        public bool CrearUsuario(string password, string usuario, string nombre, string apellido, string email, bool isActive)
+        public bool CrearUsuario(string password, string usuario, string nombre, string apellido, string email, bool isActive, int grupoId)
         {
             // Encriptar la contraseña antes de almacenarla
             string encryptedPassword = EncryptionHelper.EncryptPassword(password);
@@ -31,6 +32,7 @@ namespace Hostal_App.Services
                 command.Parameters.AddWithValue("@p_apellido", apellido);
                 command.Parameters.AddWithValue("@p_email", email);
                 command.Parameters.AddWithValue("@p_is_active", Convert.ToInt32(isActive));
+                command.Parameters.AddWithValue("@p_grupoId", grupoId);
 
                 connection.Open();
                 int rowsAffected = command.ExecuteNonQuery();
@@ -38,8 +40,28 @@ namespace Hostal_App.Services
             }
         }
 
-        // Método para actualizar un usuario existente
-        public bool ActualizarUsuario(int id, string password, string usuario, string nombre, string apellido, string email, bool isActive)
+
+        public bool ActualizarUsuario(int id, string usuario, string nombre, string apellido, string email, bool isActive, int grupoID)
+        {
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                MySqlCommand command = new MySqlCommand("sp_update_usuario_x", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@p_id", id);
+                command.Parameters.AddWithValue("@p_usuario", usuario);
+                command.Parameters.AddWithValue("@p_nombre", nombre);
+                command.Parameters.AddWithValue("@p_apellido", apellido);
+                command.Parameters.AddWithValue("@p_email", email);
+                command.Parameters.AddWithValue("@p_is_active", Convert.ToInt32(isActive));
+                command.Parameters.AddWithValue("@p_grupoId", grupoID);
+
+                connection.Open();
+                int rowsAffected = command.ExecuteNonQuery();
+                return rowsAffected > 0;
+            }
+        }
+        public bool ActualizarUsuario(int id, string password, string usuario, string nombre, string apellido, string email, bool isActive,int grupoID)
         {
             // Encriptar la nueva contraseña antes de actualizarla
             string encryptedPassword = EncryptionHelper.EncryptPassword(password);
@@ -55,6 +77,7 @@ namespace Hostal_App.Services
                 command.Parameters.AddWithValue("@p_apellido", apellido);
                 command.Parameters.AddWithValue("@p_email", email);
                 command.Parameters.AddWithValue("@p_is_active", Convert.ToInt32(isActive));
+                command.Parameters.AddWithValue("@p_grupoId", grupoID);
 
                 connection.Open();
                 int rowsAffected = command.ExecuteNonQuery();

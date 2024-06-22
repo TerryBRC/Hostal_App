@@ -108,6 +108,12 @@
     <Compile Include="Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="DashboardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DashboardForm.Designer.cs">
+      <DependentUpon>DashboardForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helper\EncryptionHelper.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -139,8 +145,59 @@
     <Compile Include="Services\ClienteService.cs" />
     <Compile Include="Services\HabitacionService.cs" />
     <Compile Include="Services\TipoHabitacionService.cs" />
+    <Compile Include="Views\Clientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Clientes.Designer.cs">
+      <DependentUpon>Clientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Grupos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Grupos.Designer.cs">
+      <DependentUpon>Grupos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GruposPermisos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\GruposPermisos.Designer.cs">
+      <DependentUpon>GruposPermisos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Habitaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Habitaciones.Designer.cs">
+      <DependentUpon>Habitaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Permisos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Permisos.Designer.cs">
+      <DependentUpon>Permisos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Reservas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Reservas.Designer.cs">
+      <DependentUpon>Reservas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TipoHabitaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\TipoHabitaciones.Designer.cs">
+      <DependentUpon>TipoHabitaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Usuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Usuarios.Designer.cs">
+      <DependentUpon>Usuarios.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DashboardForm.resx">
+      <DependentUpon>DashboardForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -155,6 +212,30 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\Clientes.resx">
+      <DependentUpon>Clientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Grupos.resx">
+      <DependentUpon>Grupos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\GruposPermisos.resx">
+      <DependentUpon>GruposPermisos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Habitaciones.resx">
+      <DependentUpon>Habitaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Permisos.resx">
+      <DependentUpon>Permisos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Reservas.resx">
+      <DependentUpon>Reservas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\TipoHabitaciones.resx">
+      <DependentUpon>TipoHabitaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Usuarios.resx">
+      <DependentUpon>Usuarios.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

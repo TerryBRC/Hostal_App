@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -133,7 +134,6 @@ namespace Hostal_App.Services
                 return -1; // Valor que indica que no se encontró el permiso
             }
         }
-
 
 
     }

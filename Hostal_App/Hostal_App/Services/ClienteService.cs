@@ -15,7 +15,7 @@ namespace Hostal_App.Services
         }
 
         // Método para crear un nuevo cliente
-        public bool CrearCliente(string nombre, string apellido, string direccion, string telefono, string email)
+        public bool CrearCliente(string nombre, string apellido, string direccion, string telefono, string identificacion)
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
@@ -25,7 +25,7 @@ namespace Hostal_App.Services
                 command.Parameters.AddWithValue("@p_apellido", apellido);
                 command.Parameters.AddWithValue("@p_direccion", direccion);
                 command.Parameters.AddWithValue("@p_telefono", telefono);
-                command.Parameters.AddWithValue("@p_email", email);
+                command.Parameters.AddWithValue("@p_identificacion", identificacion);
                 command.Parameters.AddWithValue("@p_fecha_registro", DateTime.Now);
 
                 connection.Open();
@@ -51,7 +51,7 @@ namespace Hostal_App.Services
         }
 
         // Método para actualizar un cliente existente
-        public bool ActualizarCliente(int id, string nombre, string apellido, string direccion, string telefono, string email)
+        public bool ActualizarCliente(int id, string nombre, string apellido, string direccion, string telefono, string identificacion)
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
@@ -62,7 +62,7 @@ namespace Hostal_App.Services
                 command.Parameters.AddWithValue("@p_apellido", apellido);
                 command.Parameters.AddWithValue("@p_direccion", direccion);
                 command.Parameters.AddWithValue("@p_telefono", telefono);
-                command.Parameters.AddWithValue("@p_email", email);
+                command.Parameters.AddWithValue("@p_identificacion", identificacion);
                 command.Parameters.AddWithValue("@p_fecha_registro", DateTime.Now);
 
                 connection.Open();

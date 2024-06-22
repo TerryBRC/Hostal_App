@@ -32,10 +32,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             this.tpInicio = new System.Windows.Forms.TabPage();
+            this.lbPermisos = new System.Windows.Forms.ListBox();
             this.sstBarra = new System.Windows.Forms.StatusStrip();
             this.tsslBienvenida = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tbClientes = new System.Windows.Forms.TabPage();
+            this.tpCliente = new System.Windows.Forms.TabPage();
             this.panDataCliente = new System.Windows.Forms.Panel();
             this.materialLabel27 = new MaterialSkin.Controls.MaterialLabel();
             this.btnBuscarCliente = new MaterialSkin.Controls.MaterialButton();
@@ -58,7 +59,7 @@
             this.txtApellidoCliente = new System.Windows.Forms.TextBox();
             this.btnAgregarCliente = new System.Windows.Forms.Button();
             this.txtNombreCliente = new System.Windows.Forms.TextBox();
-            this.tpReservas = new System.Windows.Forms.TabPage();
+            this.tpReserva = new System.Windows.Forms.TabPage();
             this.panel11 = new System.Windows.Forms.Panel();
             this.materialLabel28 = new MaterialSkin.Controls.MaterialLabel();
             this.btnBuscarReserva = new MaterialSkin.Controls.MaterialButton();
@@ -83,7 +84,7 @@
             this.btnActualizarReserva = new System.Windows.Forms.Button();
             this.txtNumeroHuespedes = new System.Windows.Forms.TextBox();
             this.btnAgregarReserva = new System.Windows.Forms.Button();
-            this.tpHabitaciones = new System.Windows.Forms.TabPage();
+            this.tpHabitacion = new System.Windows.Forms.TabPage();
             this.panel9 = new System.Windows.Forms.Panel();
             this.materialLabel29 = new MaterialSkin.Controls.MaterialLabel();
             this.btnBuscarHabitacion = new MaterialSkin.Controls.MaterialButton();
@@ -105,7 +106,7 @@
             this.txtCapacidad = new System.Windows.Forms.TextBox();
             this.btnAgregarHabitacion = new System.Windows.Forms.Button();
             this.txtNumero = new System.Windows.Forms.TextBox();
-            this.tpTipoHabitaciones = new System.Windows.Forms.TabPage();
+            this.tpTipoHabitacion = new System.Windows.Forms.TabPage();
             this.panel7 = new System.Windows.Forms.Panel();
             this.materialLabel30 = new MaterialSkin.Controls.MaterialLabel();
             this.btnBuscarTH = new MaterialSkin.Controls.MaterialButton();
@@ -122,7 +123,7 @@
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.btnAgregarTH = new System.Windows.Forms.Button();
             this.txtTipo = new System.Windows.Forms.TextBox();
-            this.tpUsuarios = new System.Windows.Forms.TabPage();
+            this.tpUsuario = new System.Windows.Forms.TabPage();
             this.panData = new System.Windows.Forms.Panel();
             this.materialLabel31 = new MaterialSkin.Controls.MaterialLabel();
             this.btnBuscar = new MaterialSkin.Controls.MaterialButton();
@@ -130,6 +131,8 @@
             this.dataGridViewUsuarios = new System.Windows.Forms.DataGridView();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.panCRUD = new System.Windows.Forms.Panel();
+            this.materialLabel10 = new MaterialSkin.Controls.MaterialLabel();
+            this.cmbGrupoUsuario = new System.Windows.Forms.ComboBox();
             this.chkIsActive = new MaterialSkin.Controls.MaterialCheckbox();
             this.materialLabel26 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel25 = new MaterialSkin.Controls.MaterialLabel();
@@ -146,7 +149,7 @@
             this.txtPass = new System.Windows.Forms.TextBox();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.txtUsuario = new System.Windows.Forms.TextBox();
-            this.tpPermisos = new System.Windows.Forms.TabPage();
+            this.tpPermiso = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
             this.materialLabel51 = new MaterialSkin.Controls.MaterialLabel();
             this.btnBuscarPermiso = new MaterialSkin.Controls.MaterialButton();
@@ -161,7 +164,7 @@
             this.btnActualizarPermiso = new System.Windows.Forms.Button();
             this.btnAgregarPermiso = new System.Windows.Forms.Button();
             this.txtNombrePermiso = new System.Windows.Forms.TextBox();
-            this.tpGrupos = new System.Windows.Forms.TabPage();
+            this.tpGrupo = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.materialLabel52 = new MaterialSkin.Controls.MaterialLabel();
             this.btnBuscarGrupo = new MaterialSkin.Controls.MaterialButton();
@@ -194,37 +197,34 @@
             this.btnAgregarGrupoPermiso = new System.Windows.Forms.Button();
             this.imageListIcons = new System.Windows.Forms.ImageList(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.materialLabel10 = new MaterialSkin.Controls.MaterialLabel();
-            this.cmbGrupoUsuario = new System.Windows.Forms.ComboBox();
-            this.lbPermisos = new System.Windows.Forms.ListBox();
             this.materialTabControl1.SuspendLayout();
             this.tpInicio.SuspendLayout();
             this.sstBarra.SuspendLayout();
-            this.tbClientes.SuspendLayout();
+            this.tpCliente.SuspendLayout();
             this.panDataCliente.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientes)).BeginInit();
             this.panCRUDCliente.SuspendLayout();
-            this.tpReservas.SuspendLayout();
+            this.tpReserva.SuspendLayout();
             this.panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReservas)).BeginInit();
             this.panel12.SuspendLayout();
-            this.tpHabitaciones.SuspendLayout();
+            this.tpHabitacion.SuspendLayout();
             this.panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewH)).BeginInit();
             this.panel10.SuspendLayout();
-            this.tpTipoHabitaciones.SuspendLayout();
+            this.tpTipoHabitacion.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTH)).BeginInit();
             this.panel8.SuspendLayout();
-            this.tpUsuarios.SuspendLayout();
+            this.tpUsuario.SuspendLayout();
             this.panData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsuarios)).BeginInit();
             this.panCRUD.SuspendLayout();
-            this.tpPermisos.SuspendLayout();
+            this.tpPermiso.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPermisos)).BeginInit();
             this.panel4.SuspendLayout();
-            this.tpGrupos.SuspendLayout();
+            this.tpGrupo.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGrupos)).BeginInit();
             this.panel2.SuspendLayout();
@@ -237,13 +237,13 @@
             // materialTabControl1
             // 
             this.materialTabControl1.Controls.Add(this.tpInicio);
-            this.materialTabControl1.Controls.Add(this.tbClientes);
-            this.materialTabControl1.Controls.Add(this.tpReservas);
-            this.materialTabControl1.Controls.Add(this.tpHabitaciones);
-            this.materialTabControl1.Controls.Add(this.tpTipoHabitaciones);
-            this.materialTabControl1.Controls.Add(this.tpUsuarios);
-            this.materialTabControl1.Controls.Add(this.tpPermisos);
-            this.materialTabControl1.Controls.Add(this.tpGrupos);
+            this.materialTabControl1.Controls.Add(this.tpCliente);
+            this.materialTabControl1.Controls.Add(this.tpReserva);
+            this.materialTabControl1.Controls.Add(this.tpHabitacion);
+            this.materialTabControl1.Controls.Add(this.tpTipoHabitacion);
+            this.materialTabControl1.Controls.Add(this.tpUsuario);
+            this.materialTabControl1.Controls.Add(this.tpPermiso);
+            this.materialTabControl1.Controls.Add(this.tpGrupo);
             this.materialTabControl1.Controls.Add(this.tpGruposPermisos);
             this.materialTabControl1.Depth = 0;
             this.materialTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -259,8 +259,8 @@
             // 
             // tpInicio
             // 
-            this.tpInicio.Controls.Add(this.lbPermisos);
             this.tpInicio.Controls.Add(this.sstBarra);
+            this.tpInicio.Controls.Add(this.lbPermisos);
             this.tpInicio.ImageKey = "icons8-dashboard-96.png";
             this.tpInicio.Location = new System.Drawing.Point(4, 31);
             this.tpInicio.Name = "tpInicio";
@@ -268,6 +268,15 @@
             this.tpInicio.TabIndex = 0;
             this.tpInicio.Text = "Inicio";
             this.tpInicio.UseVisualStyleBackColor = true;
+            // 
+            // lbPermisos
+            // 
+            this.lbPermisos.FormattingEnabled = true;
+            this.lbPermisos.ItemHeight = 16;
+            this.lbPermisos.Location = new System.Drawing.Point(72, 79);
+            this.lbPermisos.Name = "lbPermisos";
+            this.lbPermisos.Size = new System.Drawing.Size(414, 276);
+            this.lbPermisos.TabIndex = 1;
             // 
             // sstBarra
             // 
@@ -294,17 +303,17 @@
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(46, 18);
             this.toolStripStatusLabel1.Text = "Hora";
             // 
-            // tbClientes
+            // tpCliente
             // 
-            this.tbClientes.Controls.Add(this.panDataCliente);
-            this.tbClientes.Controls.Add(this.panCRUDCliente);
-            this.tbClientes.ImageKey = "icons8-client-80.png";
-            this.tbClientes.Location = new System.Drawing.Point(4, 31);
-            this.tbClientes.Name = "tbClientes";
-            this.tbClientes.Size = new System.Drawing.Size(1237, 573);
-            this.tbClientes.TabIndex = 1;
-            this.tbClientes.Text = "Clientes";
-            this.tbClientes.UseVisualStyleBackColor = true;
+            this.tpCliente.Controls.Add(this.panDataCliente);
+            this.tpCliente.Controls.Add(this.panCRUDCliente);
+            this.tpCliente.ImageKey = "icons8-client-80.png";
+            this.tpCliente.Location = new System.Drawing.Point(4, 31);
+            this.tpCliente.Name = "tpCliente";
+            this.tpCliente.Size = new System.Drawing.Size(1237, 573);
+            this.tpCliente.TabIndex = 1;
+            this.tpCliente.Text = "Clientes";
+            this.tpCliente.UseVisualStyleBackColor = true;
             // 
             // panDataCliente
             // 
@@ -568,17 +577,17 @@
             this.txtNombreCliente.Size = new System.Drawing.Size(284, 23);
             this.txtNombreCliente.TabIndex = 16;
             // 
-            // tpReservas
+            // tpReserva
             // 
-            this.tpReservas.Controls.Add(this.panel11);
-            this.tpReservas.Controls.Add(this.panel12);
-            this.tpReservas.ImageKey = "icons8-reserve-80.png";
-            this.tpReservas.Location = new System.Drawing.Point(4, 31);
-            this.tpReservas.Name = "tpReservas";
-            this.tpReservas.Size = new System.Drawing.Size(1237, 573);
-            this.tpReservas.TabIndex = 2;
-            this.tpReservas.Text = "Reservas";
-            this.tpReservas.UseVisualStyleBackColor = true;
+            this.tpReserva.Controls.Add(this.panel11);
+            this.tpReserva.Controls.Add(this.panel12);
+            this.tpReserva.ImageKey = "icons8-reserve-80.png";
+            this.tpReserva.Location = new System.Drawing.Point(4, 31);
+            this.tpReserva.Name = "tpReserva";
+            this.tpReserva.Size = new System.Drawing.Size(1237, 573);
+            this.tpReserva.TabIndex = 2;
+            this.tpReserva.Text = "Reservas";
+            this.tpReserva.UseVisualStyleBackColor = true;
             // 
             // panel11
             // 
@@ -867,17 +876,17 @@
             this.btnAgregarReserva.UseVisualStyleBackColor = false;
             this.btnAgregarReserva.Click += new System.EventHandler(this.btnAgregarReserva_Click);
             // 
-            // tpHabitaciones
+            // tpHabitacion
             // 
-            this.tpHabitaciones.Controls.Add(this.panel9);
-            this.tpHabitaciones.Controls.Add(this.panel10);
-            this.tpHabitaciones.ImageKey = "icons8-rooms-64.png";
-            this.tpHabitaciones.Location = new System.Drawing.Point(4, 31);
-            this.tpHabitaciones.Name = "tpHabitaciones";
-            this.tpHabitaciones.Size = new System.Drawing.Size(1237, 573);
-            this.tpHabitaciones.TabIndex = 3;
-            this.tpHabitaciones.Text = "Habitaciones";
-            this.tpHabitaciones.UseVisualStyleBackColor = true;
+            this.tpHabitacion.Controls.Add(this.panel9);
+            this.tpHabitacion.Controls.Add(this.panel10);
+            this.tpHabitacion.ImageKey = "icons8-rooms-64.png";
+            this.tpHabitacion.Location = new System.Drawing.Point(4, 31);
+            this.tpHabitacion.Name = "tpHabitacion";
+            this.tpHabitacion.Size = new System.Drawing.Size(1237, 573);
+            this.tpHabitacion.TabIndex = 3;
+            this.tpHabitacion.Text = "Habitaciones";
+            this.tpHabitacion.UseVisualStyleBackColor = true;
             // 
             // panel9
             // 
@@ -1125,17 +1134,17 @@
             this.txtNumero.Size = new System.Drawing.Size(192, 23);
             this.txtNumero.TabIndex = 16;
             // 
-            // tpTipoHabitaciones
+            // tpTipoHabitacion
             // 
-            this.tpTipoHabitaciones.Controls.Add(this.panel7);
-            this.tpTipoHabitaciones.Controls.Add(this.panel8);
-            this.tpTipoHabitaciones.ImageKey = "icons8-room-64.png";
-            this.tpTipoHabitaciones.Location = new System.Drawing.Point(4, 31);
-            this.tpTipoHabitaciones.Name = "tpTipoHabitaciones";
-            this.tpTipoHabitaciones.Size = new System.Drawing.Size(1237, 573);
-            this.tpTipoHabitaciones.TabIndex = 4;
-            this.tpTipoHabitaciones.Text = "Tipo de Habitaciones";
-            this.tpTipoHabitaciones.UseVisualStyleBackColor = true;
+            this.tpTipoHabitacion.Controls.Add(this.panel7);
+            this.tpTipoHabitacion.Controls.Add(this.panel8);
+            this.tpTipoHabitacion.ImageKey = "icons8-room-64.png";
+            this.tpTipoHabitacion.Location = new System.Drawing.Point(4, 31);
+            this.tpTipoHabitacion.Name = "tpTipoHabitacion";
+            this.tpTipoHabitacion.Size = new System.Drawing.Size(1237, 573);
+            this.tpTipoHabitacion.TabIndex = 4;
+            this.tpTipoHabitacion.Text = "Tipo de Habitaciones";
+            this.tpTipoHabitacion.UseVisualStyleBackColor = true;
             // 
             // panel7
             // 
@@ -1326,17 +1335,17 @@
             this.txtTipo.Size = new System.Drawing.Size(214, 23);
             this.txtTipo.TabIndex = 16;
             // 
-            // tpUsuarios
+            // tpUsuario
             // 
-            this.tpUsuarios.Controls.Add(this.panData);
-            this.tpUsuarios.Controls.Add(this.panCRUD);
-            this.tpUsuarios.ImageKey = "icons8-user-64.png";
-            this.tpUsuarios.Location = new System.Drawing.Point(4, 31);
-            this.tpUsuarios.Name = "tpUsuarios";
-            this.tpUsuarios.Size = new System.Drawing.Size(1237, 573);
-            this.tpUsuarios.TabIndex = 6;
-            this.tpUsuarios.Text = "Usuarios";
-            this.tpUsuarios.UseVisualStyleBackColor = true;
+            this.tpUsuario.Controls.Add(this.panData);
+            this.tpUsuario.Controls.Add(this.panCRUD);
+            this.tpUsuario.ImageKey = "icons8-user-64.png";
+            this.tpUsuario.Location = new System.Drawing.Point(4, 31);
+            this.tpUsuario.Name = "tpUsuario";
+            this.tpUsuario.Size = new System.Drawing.Size(1237, 573);
+            this.tpUsuario.TabIndex = 6;
+            this.tpUsuario.Text = "Usuarios";
+            this.tpUsuario.UseVisualStyleBackColor = true;
             // 
             // panData
             // 
@@ -1443,6 +1452,26 @@
             this.panCRUD.Name = "panCRUD";
             this.panCRUD.Size = new System.Drawing.Size(1237, 314);
             this.panCRUD.TabIndex = 24;
+            // 
+            // materialLabel10
+            // 
+            this.materialLabel10.AutoSize = true;
+            this.materialLabel10.Depth = 0;
+            this.materialLabel10.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel10.Location = new System.Drawing.Point(128, 103);
+            this.materialLabel10.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel10.Name = "materialLabel10";
+            this.materialLabel10.Size = new System.Drawing.Size(44, 19);
+            this.materialLabel10.TabIndex = 30;
+            this.materialLabel10.Text = "Grupo";
+            // 
+            // cmbGrupoUsuario
+            // 
+            this.cmbGrupoUsuario.FormattingEnabled = true;
+            this.cmbGrupoUsuario.Location = new System.Drawing.Point(189, 100);
+            this.cmbGrupoUsuario.Name = "cmbGrupoUsuario";
+            this.cmbGrupoUsuario.Size = new System.Drawing.Size(214, 24);
+            this.cmbGrupoUsuario.TabIndex = 29;
             // 
             // chkIsActive
             // 
@@ -1615,17 +1644,17 @@
             this.txtUsuario.Size = new System.Drawing.Size(214, 23);
             this.txtUsuario.TabIndex = 16;
             // 
-            // tpPermisos
+            // tpPermiso
             // 
-            this.tpPermisos.Controls.Add(this.panel3);
-            this.tpPermisos.Controls.Add(this.panel4);
-            this.tpPermisos.ImageKey = "icons8-user-rights-50.png";
-            this.tpPermisos.Location = new System.Drawing.Point(4, 31);
-            this.tpPermisos.Name = "tpPermisos";
-            this.tpPermisos.Size = new System.Drawing.Size(1237, 573);
-            this.tpPermisos.TabIndex = 7;
-            this.tpPermisos.Text = "Permisos";
-            this.tpPermisos.UseVisualStyleBackColor = true;
+            this.tpPermiso.Controls.Add(this.panel3);
+            this.tpPermiso.Controls.Add(this.panel4);
+            this.tpPermiso.ImageKey = "icons8-user-rights-50.png";
+            this.tpPermiso.Location = new System.Drawing.Point(4, 31);
+            this.tpPermiso.Name = "tpPermiso";
+            this.tpPermiso.Size = new System.Drawing.Size(1237, 573);
+            this.tpPermiso.TabIndex = 7;
+            this.tpPermiso.Text = "Permisos";
+            this.tpPermiso.UseVisualStyleBackColor = true;
             // 
             // panel3
             // 
@@ -1798,17 +1827,17 @@
             this.txtNombrePermiso.Size = new System.Drawing.Size(214, 23);
             this.txtNombrePermiso.TabIndex = 16;
             // 
-            // tpGrupos
+            // tpGrupo
             // 
-            this.tpGrupos.Controls.Add(this.panel1);
-            this.tpGrupos.Controls.Add(this.panel2);
-            this.tpGrupos.ImageKey = "icons8-user-groups-50.png";
-            this.tpGrupos.Location = new System.Drawing.Point(4, 31);
-            this.tpGrupos.Name = "tpGrupos";
-            this.tpGrupos.Size = new System.Drawing.Size(1237, 573);
-            this.tpGrupos.TabIndex = 8;
-            this.tpGrupos.Text = "Grupos";
-            this.tpGrupos.UseVisualStyleBackColor = true;
+            this.tpGrupo.Controls.Add(this.panel1);
+            this.tpGrupo.Controls.Add(this.panel2);
+            this.tpGrupo.ImageKey = "icons8-user-groups-50.png";
+            this.tpGrupo.Location = new System.Drawing.Point(4, 31);
+            this.tpGrupo.Name = "tpGrupo";
+            this.tpGrupo.Size = new System.Drawing.Size(1237, 573);
+            this.tpGrupo.TabIndex = 8;
+            this.tpGrupo.Text = "Grupos";
+            this.tpGrupo.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -2194,35 +2223,6 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // materialLabel10
-            // 
-            this.materialLabel10.AutoSize = true;
-            this.materialLabel10.Depth = 0;
-            this.materialLabel10.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel10.Location = new System.Drawing.Point(128, 103);
-            this.materialLabel10.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel10.Name = "materialLabel10";
-            this.materialLabel10.Size = new System.Drawing.Size(44, 19);
-            this.materialLabel10.TabIndex = 30;
-            this.materialLabel10.Text = "Grupo";
-            // 
-            // cmbGrupoUsuario
-            // 
-            this.cmbGrupoUsuario.FormattingEnabled = true;
-            this.cmbGrupoUsuario.Location = new System.Drawing.Point(189, 100);
-            this.cmbGrupoUsuario.Name = "cmbGrupoUsuario";
-            this.cmbGrupoUsuario.Size = new System.Drawing.Size(214, 24);
-            this.cmbGrupoUsuario.TabIndex = 29;
-            // 
-            // lbPermisos
-            // 
-            this.lbPermisos.FormattingEnabled = true;
-            this.lbPermisos.ItemHeight = 16;
-            this.lbPermisos.Location = new System.Drawing.Point(72, 79);
-            this.lbPermisos.Name = "lbPermisos";
-            this.lbPermisos.Size = new System.Drawing.Size(414, 276);
-            this.lbPermisos.TabIndex = 1;
-            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -2245,43 +2245,43 @@
             this.tpInicio.PerformLayout();
             this.sstBarra.ResumeLayout(false);
             this.sstBarra.PerformLayout();
-            this.tbClientes.ResumeLayout(false);
+            this.tpCliente.ResumeLayout(false);
             this.panDataCliente.ResumeLayout(false);
             this.panDataCliente.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientes)).EndInit();
             this.panCRUDCliente.ResumeLayout(false);
             this.panCRUDCliente.PerformLayout();
-            this.tpReservas.ResumeLayout(false);
+            this.tpReserva.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReservas)).EndInit();
             this.panel12.ResumeLayout(false);
             this.panel12.PerformLayout();
-            this.tpHabitaciones.ResumeLayout(false);
+            this.tpHabitacion.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewH)).EndInit();
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
-            this.tpTipoHabitaciones.ResumeLayout(false);
+            this.tpTipoHabitacion.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTH)).EndInit();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
-            this.tpUsuarios.ResumeLayout(false);
+            this.tpUsuario.ResumeLayout(false);
             this.panData.ResumeLayout(false);
             this.panData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsuarios)).EndInit();
             this.panCRUD.ResumeLayout(false);
             this.panCRUD.PerformLayout();
-            this.tpPermisos.ResumeLayout(false);
+            this.tpPermiso.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPermisos)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.tpGrupos.ResumeLayout(false);
+            this.tpGrupo.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGrupos)).EndInit();
@@ -2301,8 +2301,8 @@
 
         private MaterialSkin.Controls.MaterialTabControl materialTabControl1;
         private System.Windows.Forms.TabPage tpInicio;
-        private System.Windows.Forms.TabPage tbClientes;
-        private System.Windows.Forms.TabPage tpReservas;
+        private System.Windows.Forms.TabPage tpCliente;
+        private System.Windows.Forms.TabPage tpReserva;
         private System.Windows.Forms.Panel panDataCliente;
         private System.Windows.Forms.DataGridView dataGridViewClientes;
         private System.Windows.Forms.TextBox txtBuscarCliente;
@@ -2329,11 +2329,11 @@
         private System.Windows.Forms.Button btnActualizarReserva;
         private System.Windows.Forms.TextBox txtNumeroHuespedes;
         private System.Windows.Forms.Button btnAgregarReserva;
-        private System.Windows.Forms.TabPage tpHabitaciones;
-        private System.Windows.Forms.TabPage tpTipoHabitaciones;
-        private System.Windows.Forms.TabPage tpUsuarios;
-        private System.Windows.Forms.TabPage tpPermisos;
-        private System.Windows.Forms.TabPage tpGrupos;
+        private System.Windows.Forms.TabPage tpHabitacion;
+        private System.Windows.Forms.TabPage tpTipoHabitacion;
+        private System.Windows.Forms.TabPage tpUsuario;
+        private System.Windows.Forms.TabPage tpPermiso;
+        private System.Windows.Forms.TabPage tpGrupo;
         private System.Windows.Forms.TabPage tpGruposPermisos;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.DataGridView dataGridViewH;
