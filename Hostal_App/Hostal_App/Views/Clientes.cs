@@ -1,4 +1,5 @@
-﻿using Hostal_App.Services;
+﻿using Hostal_App.Models;
+using Hostal_App.Services;
 using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
@@ -15,11 +16,39 @@ namespace Hostal_App.Views
     public partial class Clientes : MaterialForm
     {
         private readonly ClienteService clienteService;
-        public Clientes()
+        private readonly List<Permiso> permisosLogin;
+        public Clientes(List<Permiso> permisos)
         {
             InitializeComponent();
+            this.permisosLogin = permisos;
             clienteService = new ClienteService();
             LoadDataClientes();
+            Configurar();
+            LimpiarClientes();
+        }
+        private void Configurar()
+        {
+            btnActualizarCliente.Enabled = false;
+            btnAgregarCliente.Enabled = false;
+            btnEliminarCliente.Enabled = false;
+            foreach (var permiso in permisosLogin)
+            {
+                switch (permiso.Nombre)
+                {
+                    case "c cliente":
+                        btnAgregarCliente.Enabled = true;
+                        break;
+                    case "u cliente":
+                        btnActualizarCliente.Enabled = true;
+                        break;
+                    case "d cliente":
+                        btnEliminarCliente.Enabled = true;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
         }
         #region Clientes
         private void LimpiarClientes()
@@ -31,12 +60,16 @@ namespace Hostal_App.Views
             txtIdentificacion.Clear();
             txtDireccionCliente.Clear();
             txtNombreCliente.Focus();
+            btnActualizarCliente.Enabled = false;
+            btnEliminarCliente.Enabled= false;
+            btnAgregarCliente.Enabled = true;
         }
         private void LoadDataClientes()
         {
             dataGridViewClientes.DataSource = clienteService.ObtenerClientes();
             // Ocultar la columna de encabezado de fila
             dataGridViewClientes.RowHeadersVisible = false;
+            dataGridViewClientes.Columns["fecha_registro"].Visible = false;
         }
 
         private void btnAgregarCliente_Click(object sender, EventArgs e)
@@ -44,18 +77,18 @@ namespace Hostal_App.Views
             string nombre = txtNombreCliente.Text;
             string apellido = txtApellidoCliente.Text;
             string telefono = txtTelefonoCliente.Text;
-            string correo = txtIdentificacion.Text;
+            string identificacion = txtIdentificacion.Text;
             string direccion = txtDireccionCliente.Text;
 
             if (string.IsNullOrWhiteSpace(nombre) || string.IsNullOrWhiteSpace(apellido) ||
-                string.IsNullOrWhiteSpace(telefono) || string.IsNullOrWhiteSpace(correo) ||
+                string.IsNullOrWhiteSpace(telefono) || string.IsNullOrWhiteSpace(identificacion) ||
                 string.IsNullOrWhiteSpace(direccion))
             {
                 MessageBox.Show("Por favor, complete todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (clienteService.CrearCliente(nombre, apellido, telefono, correo, direccion))
+            if (clienteService.CrearCliente(nombre, apellido, direccion, telefono, identificacion))
             {
                 MessageBox.Show("Cliente guardado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LimpiarClientes();
@@ -72,7 +105,7 @@ namespace Hostal_App.Views
             int id = int.Parse(lblIdCliente.Text);
             string nombre = txtNombreCliente.Text;
             string apellido = txtApellidoCliente.Text;
-            string telefono = txtTelefonoCliente.Text.ToString();
+            string telefono = txtTelefonoCliente.Text;
             string identificacion = txtIdentificacion.Text;
             string direccion = txtDireccionCliente.Text;
 
@@ -84,7 +117,7 @@ namespace Hostal_App.Views
                 return;
             }
 
-            if (clienteService.ActualizarCliente(id, nombre, apellido, telefono, identificacion, direccion))
+            if (clienteService.ActualizarCliente(id, nombre, apellido, direccion, telefono, identificacion))
             {
                 MessageBox.Show("Cliente actualizado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LimpiarClientes();
@@ -130,6 +163,9 @@ namespace Hostal_App.Views
                     txtTelefonoCliente.Text = row.Cells["telefono"].Value.ToString();
                     txtIdentificacion.Text = row.Cells["identificacion"].Value.ToString();
                     txtDireccionCliente.Text = row.Cells["direccion"].Value.ToString();
+                    // Habilitar los botones de Actualizar y Eliminar al seleccionar una fila
+                    Configurar();
+                    btnAgregarCliente.Enabled = false;
                 }
             }
             catch (Exception ex)
@@ -158,5 +194,11 @@ namespace Hostal_App.Views
             }
         }
         #endregion Clientes
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            LimpiarClientes();
+
+        }
     }
 }

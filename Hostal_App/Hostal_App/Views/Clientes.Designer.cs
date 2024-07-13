@@ -35,21 +35,22 @@
             this.dataGridViewClientes = new System.Windows.Forms.DataGridView();
             this.txtBuscarCliente = new System.Windows.Forms.TextBox();
             this.panCRUDCliente = new System.Windows.Forms.Panel();
+            this.btnEliminarCliente = new MaterialSkin.Controls.MaterialButton();
+            this.btnActualizarCliente = new MaterialSkin.Controls.MaterialButton();
+            this.btnAgregarCliente = new MaterialSkin.Controls.MaterialButton();
+            this.btnLimpiar = new MaterialSkin.Controls.MaterialButton();
             this.materialLabel50 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel49 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel48 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel47 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel46 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel45 = new MaterialSkin.Controls.MaterialLabel();
-            this.btnEliminarCliente = new System.Windows.Forms.Button();
             this.lblIdCliente = new System.Windows.Forms.Label();
             this.txtIdentificacion = new System.Windows.Forms.TextBox();
-            this.txtTelefonoCliente = new System.Windows.Forms.TextBox();
-            this.btnActualizarCliente = new System.Windows.Forms.Button();
             this.txtDireccionCliente = new System.Windows.Forms.TextBox();
             this.txtApellidoCliente = new System.Windows.Forms.TextBox();
-            this.btnAgregarCliente = new System.Windows.Forms.Button();
             this.txtNombreCliente = new System.Windows.Forms.TextBox();
+            this.txtTelefonoCliente = new System.Windows.Forms.TextBox();
             this.panDataCliente.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientes)).BeginInit();
             this.panCRUDCliente.SuspendLayout();
@@ -139,20 +140,21 @@
             // panCRUDCliente
             // 
             this.panCRUDCliente.BackColor = System.Drawing.Color.Gainsboro;
+            this.panCRUDCliente.Controls.Add(this.txtTelefonoCliente);
+            this.panCRUDCliente.Controls.Add(this.btnEliminarCliente);
+            this.panCRUDCliente.Controls.Add(this.btnActualizarCliente);
+            this.panCRUDCliente.Controls.Add(this.btnAgregarCliente);
+            this.panCRUDCliente.Controls.Add(this.btnLimpiar);
             this.panCRUDCliente.Controls.Add(this.materialLabel50);
             this.panCRUDCliente.Controls.Add(this.materialLabel49);
             this.panCRUDCliente.Controls.Add(this.materialLabel48);
             this.panCRUDCliente.Controls.Add(this.materialLabel47);
             this.panCRUDCliente.Controls.Add(this.materialLabel46);
             this.panCRUDCliente.Controls.Add(this.materialLabel45);
-            this.panCRUDCliente.Controls.Add(this.btnEliminarCliente);
             this.panCRUDCliente.Controls.Add(this.lblIdCliente);
             this.panCRUDCliente.Controls.Add(this.txtIdentificacion);
-            this.panCRUDCliente.Controls.Add(this.txtTelefonoCliente);
-            this.panCRUDCliente.Controls.Add(this.btnActualizarCliente);
             this.panCRUDCliente.Controls.Add(this.txtDireccionCliente);
             this.panCRUDCliente.Controls.Add(this.txtApellidoCliente);
-            this.panCRUDCliente.Controls.Add(this.btnAgregarCliente);
             this.panCRUDCliente.Controls.Add(this.txtNombreCliente);
             this.panCRUDCliente.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panCRUDCliente.Location = new System.Drawing.Point(3, 309);
@@ -160,12 +162,92 @@
             this.panCRUDCliente.Size = new System.Drawing.Size(994, 238);
             this.panCRUDCliente.TabIndex = 28;
             // 
+            // btnEliminarCliente
+            // 
+            this.btnEliminarCliente.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnEliminarCliente.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnEliminarCliente.Depth = 0;
+            this.btnEliminarCliente.HighEmphasis = true;
+            this.btnEliminarCliente.Icon = null;
+            this.btnEliminarCliente.Location = new System.Drawing.Point(339, 172);
+            this.btnEliminarCliente.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnEliminarCliente.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnEliminarCliente.Name = "btnEliminarCliente";
+            this.btnEliminarCliente.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnEliminarCliente.Size = new System.Drawing.Size(88, 36);
+            this.btnEliminarCliente.TabIndex = 31;
+            this.btnEliminarCliente.Text = "Eliminar";
+            this.btnEliminarCliente.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnEliminarCliente.UseAccentColor = false;
+            this.btnEliminarCliente.UseVisualStyleBackColor = true;
+            this.btnEliminarCliente.Click += new System.EventHandler(this.btnEliminarCliente_Click);
+            // 
+            // btnActualizarCliente
+            // 
+            this.btnActualizarCliente.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnActualizarCliente.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnActualizarCliente.Depth = 0;
+            this.btnActualizarCliente.HighEmphasis = true;
+            this.btnActualizarCliente.Icon = null;
+            this.btnActualizarCliente.Location = new System.Drawing.Point(201, 172);
+            this.btnActualizarCliente.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnActualizarCliente.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnActualizarCliente.Name = "btnActualizarCliente";
+            this.btnActualizarCliente.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnActualizarCliente.Size = new System.Drawing.Size(109, 36);
+            this.btnActualizarCliente.TabIndex = 30;
+            this.btnActualizarCliente.Text = "Actualizar";
+            this.btnActualizarCliente.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnActualizarCliente.UseAccentColor = false;
+            this.btnActualizarCliente.UseVisualStyleBackColor = true;
+            this.btnActualizarCliente.Click += new System.EventHandler(this.btnActualizarCliente_Click);
+            // 
+            // btnAgregarCliente
+            // 
+            this.btnAgregarCliente.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnAgregarCliente.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnAgregarCliente.Depth = 0;
+            this.btnAgregarCliente.HighEmphasis = true;
+            this.btnAgregarCliente.Icon = null;
+            this.btnAgregarCliente.Location = new System.Drawing.Point(86, 172);
+            this.btnAgregarCliente.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnAgregarCliente.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnAgregarCliente.Name = "btnAgregarCliente";
+            this.btnAgregarCliente.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnAgregarCliente.Size = new System.Drawing.Size(88, 36);
+            this.btnAgregarCliente.TabIndex = 29;
+            this.btnAgregarCliente.Text = "Agregar";
+            this.btnAgregarCliente.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnAgregarCliente.UseAccentColor = false;
+            this.btnAgregarCliente.UseVisualStyleBackColor = true;
+            this.btnAgregarCliente.Click += new System.EventHandler(this.btnAgregarCliente_Click);
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnLimpiar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnLimpiar.Depth = 0;
+            this.btnLimpiar.HighEmphasis = true;
+            this.btnLimpiar.Icon = null;
+            this.btnLimpiar.Location = new System.Drawing.Point(879, 172);
+            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnLimpiar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnLimpiar.Size = new System.Drawing.Size(79, 36);
+            this.btnLimpiar.TabIndex = 28;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnLimpiar.UseAccentColor = false;
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
             // materialLabel50
             // 
             this.materialLabel50.AutoSize = true;
             this.materialLabel50.Depth = 0;
             this.materialLabel50.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel50.Location = new System.Drawing.Point(529, 27);
+            this.materialLabel50.Location = new System.Drawing.Point(532, 23);
             this.materialLabel50.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel50.Name = "materialLabel50";
             this.materialLabel50.Size = new System.Drawing.Size(67, 19);
@@ -177,7 +259,7 @@
             this.materialLabel49.AutoSize = true;
             this.materialLabel49.Depth = 0;
             this.materialLabel49.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel49.Location = new System.Drawing.Point(532, 77);
+            this.materialLabel49.Location = new System.Drawing.Point(532, 75);
             this.materialLabel49.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel49.Name = "materialLabel49";
             this.materialLabel49.Size = new System.Drawing.Size(64, 19);
@@ -232,18 +314,6 @@
             this.materialLabel45.TabIndex = 22;
             this.materialLabel45.Text = "Id";
             // 
-            // btnEliminarCliente
-            // 
-            this.btnEliminarCliente.BackColor = System.Drawing.Color.RosyBrown;
-            this.btnEliminarCliente.Location = new System.Drawing.Point(476, 171);
-            this.btnEliminarCliente.Margin = new System.Windows.Forms.Padding(7, 5, 7, 5);
-            this.btnEliminarCliente.Name = "btnEliminarCliente";
-            this.btnEliminarCliente.Size = new System.Drawing.Size(167, 39);
-            this.btnEliminarCliente.TabIndex = 3;
-            this.btnEliminarCliente.Text = "Eliminar";
-            this.btnEliminarCliente.UseVisualStyleBackColor = false;
-            this.btnEliminarCliente.Click += new System.EventHandler(this.btnEliminarCliente_Click);
-            // 
             // lblIdCliente
             // 
             this.lblIdCliente.AutoSize = true;
@@ -261,26 +331,6 @@
             this.txtIdentificacion.Size = new System.Drawing.Size(284, 20);
             this.txtIdentificacion.TabIndex = 20;
             // 
-            // txtTelefonoCliente
-            // 
-            this.txtTelefonoCliente.Location = new System.Drawing.Point(604, 74);
-            this.txtTelefonoCliente.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.txtTelefonoCliente.Name = "txtTelefonoCliente";
-            this.txtTelefonoCliente.Size = new System.Drawing.Size(284, 20);
-            this.txtTelefonoCliente.TabIndex = 19;
-            // 
-            // btnActualizarCliente
-            // 
-            this.btnActualizarCliente.BackColor = System.Drawing.Color.RosyBrown;
-            this.btnActualizarCliente.Location = new System.Drawing.Point(270, 171);
-            this.btnActualizarCliente.Margin = new System.Windows.Forms.Padding(7, 5, 7, 5);
-            this.btnActualizarCliente.Name = "btnActualizarCliente";
-            this.btnActualizarCliente.Size = new System.Drawing.Size(167, 39);
-            this.btnActualizarCliente.TabIndex = 2;
-            this.btnActualizarCliente.Text = "Actualizar";
-            this.btnActualizarCliente.UseVisualStyleBackColor = false;
-            this.btnActualizarCliente.Click += new System.EventHandler(this.btnActualizarCliente_Click);
-            // 
             // txtDireccionCliente
             // 
             this.txtDireccionCliente.Location = new System.Drawing.Point(604, 23);
@@ -297,18 +347,6 @@
             this.txtApellidoCliente.Size = new System.Drawing.Size(284, 20);
             this.txtApellidoCliente.TabIndex = 17;
             // 
-            // btnAgregarCliente
-            // 
-            this.btnAgregarCliente.BackColor = System.Drawing.Color.RosyBrown;
-            this.btnAgregarCliente.Location = new System.Drawing.Point(53, 171);
-            this.btnAgregarCliente.Margin = new System.Windows.Forms.Padding(7, 5, 7, 5);
-            this.btnAgregarCliente.Name = "btnAgregarCliente";
-            this.btnAgregarCliente.Size = new System.Drawing.Size(167, 39);
-            this.btnAgregarCliente.TabIndex = 1;
-            this.btnAgregarCliente.Text = "Agregar";
-            this.btnAgregarCliente.UseVisualStyleBackColor = false;
-            this.btnAgregarCliente.Click += new System.EventHandler(this.btnAgregarCliente_Click);
-            // 
             // txtNombreCliente
             // 
             this.txtNombreCliente.Location = new System.Drawing.Point(201, 13);
@@ -316,6 +354,13 @@
             this.txtNombreCliente.Name = "txtNombreCliente";
             this.txtNombreCliente.Size = new System.Drawing.Size(284, 20);
             this.txtNombreCliente.TabIndex = 16;
+            // 
+            // txtTelefonoCliente
+            // 
+            this.txtTelefonoCliente.Location = new System.Drawing.Point(604, 74);
+            this.txtTelefonoCliente.Name = "txtTelefonoCliente";
+            this.txtTelefonoCliente.Size = new System.Drawing.Size(284, 20);
+            this.txtTelefonoCliente.TabIndex = 32;
             // 
             // Clientes
             // 
@@ -354,14 +399,15 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel47;
         private MaterialSkin.Controls.MaterialLabel materialLabel46;
         private MaterialSkin.Controls.MaterialLabel materialLabel45;
-        private System.Windows.Forms.Button btnEliminarCliente;
         private System.Windows.Forms.Label lblIdCliente;
         private System.Windows.Forms.TextBox txtIdentificacion;
-        private System.Windows.Forms.TextBox txtTelefonoCliente;
-        private System.Windows.Forms.Button btnActualizarCliente;
         private System.Windows.Forms.TextBox txtDireccionCliente;
         private System.Windows.Forms.TextBox txtApellidoCliente;
-        private System.Windows.Forms.Button btnAgregarCliente;
         private System.Windows.Forms.TextBox txtNombreCliente;
+        private MaterialSkin.Controls.MaterialButton btnLimpiar;
+        private MaterialSkin.Controls.MaterialButton btnAgregarCliente;
+        private MaterialSkin.Controls.MaterialButton btnActualizarCliente;
+        private MaterialSkin.Controls.MaterialButton btnEliminarCliente;
+        private System.Windows.Forms.TextBox txtTelefonoCliente;
     }
 }

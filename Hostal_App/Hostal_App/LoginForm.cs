@@ -1,24 +1,29 @@
 ﻿using Hostal_App.Services;
+using MaterialSkin.Controls;
 using System;
 using System.Windows.Forms;
 
 namespace Hostal_App
 {
-    public partial class LoginForm : Form
+    public partial class LoginForm : MaterialForm
     {
         private readonly LoginService loginService;
         private readonly GrupoService grupoService;
+        private readonly ErrorProvider errorProvider;
 
         public LoginForm()
         {
             InitializeComponent();
             loginService = new LoginService();
             grupoService = new GrupoService();
+            errorProvider = new ErrorProvider();
             CargarComboBoxGrupos();
         }
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
+            // Limpiar errores antes de validar
+            errorProvider.Clear();
             string usuario = txtUsuario.Text;
             string password = txtPass.Text;
             int grupoId = (int)cmbGrupos.SelectedValue;
@@ -27,11 +32,7 @@ namespace Hostal_App
             {
                 if (string.IsNullOrWhiteSpace(usuario) || string.IsNullOrWhiteSpace(password) || grupoId <= 0)
                 {
-                    MessageBox.Show("Todos los campos Requeridos", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtUsuario.Clear();
-                    txtPass.Clear();
-                    cmbGrupos.SelectedValue = -1;
-                    txtUsuario.Focus();
+                    MessageBox.Show("Todos los campos son obligatorios.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 else
@@ -48,7 +49,8 @@ namespace Hostal_App
 
                         MessageBox.Show("¡Inicio de sesión exitoso!", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Hide(); // Ocultar el formulario de login
-                        DashboardForm dashboardForm = new DashboardForm();
+                                     // Mostrar el formulario principal
+                        DashboardForm dashboardForm = new DashboardForm(permisos,grupoId);
                         dashboardForm.ShowDialog();
                         this.Close();
                     }
@@ -72,5 +74,53 @@ namespace Hostal_App
             cmbGrupos.ValueMember = "Id";
             cmbGrupos.SelectedIndex = -1;
         }
+
+
+        // Métodos de validación
+        private void TxtUsuario_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtUsuario.Text))
+            {
+                e.Cancel = true;
+                errorProvider.SetError(txtUsuario, "El nombre de usuario es obligatorio.");
+            }
+            else
+            {
+                errorProvider.SetError(txtUsuario, string.Empty);
+            }
+        }
+
+        private void TxtPass_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtPass.Text))
+            {
+                e.Cancel = true;
+                errorProvider.SetError(txtPass, "La contraseña es obligatoria.");
+            }
+            else
+            {
+                errorProvider.SetError(txtPass, string.Empty);
+            }
+        }
+
+        private void CmbGrupos_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (cmbGrupos.SelectedValue == null || (int)cmbGrupos.SelectedValue <= 0)
+            {
+                e.Cancel = true;
+                errorProvider.SetError(cmbGrupos, "Selecciona un grupo.");
+            }
+            else
+            {
+                errorProvider.SetError(cmbGrupos, string.Empty);
+            }
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+
     }
 }

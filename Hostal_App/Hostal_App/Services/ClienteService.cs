@@ -39,7 +39,7 @@ namespace Hostal_App.Services
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
-                MySqlCommand command = new MySqlCommand("sp_read_cliente", connection);
+                MySqlCommand command = new MySqlCommand("sp_read_cliente_reserva", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);

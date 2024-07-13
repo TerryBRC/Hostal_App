@@ -1,6 +1,9 @@
 ﻿using MySql.Data.MySqlClient;
+using System;
 using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace Hostal_App.Services
 {
@@ -47,6 +50,20 @@ namespace Hostal_App.Services
                 return dataTable;
             }
         }
+        public DataTable ObtenerHabitacionesDisponibles()
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                MySqlCommand command = new MySqlCommand("sp_read_habitacion_reserva", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                return dataTable;
+            }
+        }
 
         // Método para actualizar una habitación existente
         public bool ActualizarHabitacion(long id, string numero, int capacidadMaxima, decimal precioPorNoche, bool disponible, long tipoHabitacionId)
@@ -65,6 +82,30 @@ namespace Hostal_App.Services
                 connection.Open();
                 int rowsAffected = command.ExecuteNonQuery();
                 return rowsAffected > 0;
+            }
+        }
+
+
+        public bool ActualizarDisponibilidadHabitacion(long habitacionId)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using (MySqlCommand cmd = new MySqlCommand("sp_update_disponible_habitacion", connection))
+                    {
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@p_id_h", habitacionId);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al actualizar la disponibilidad de la habitación: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
         }
 

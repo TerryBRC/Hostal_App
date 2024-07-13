@@ -116,6 +116,7 @@ namespace Hostal_App.Services
 
             return nombresGrupos;
         }
+ 
 
 
         public int ObtenerIdGrupoPorNombre(string nombreGrupo)
@@ -134,6 +135,23 @@ namespace Hostal_App.Services
                 return -1; // Valor que indica que no se encontró el grupo
             }
         }
+        public string ObtenerNombreGrupoPorId(int idGrupo)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                MySqlCommand command = new MySqlCommand("SELECT nombre FROM grupos WHERE id = @IdGrupo", connection);
+                command.Parameters.AddWithValue("@IdGrupo", idGrupo);
+
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null)
+                {
+                    return result.ToString(); // Devuelve el nombre del grupo encontrado
+                }
+                return null; // Si no se encontró ningún grupo con ese ID
+            }
+        }
+
 
 
 
