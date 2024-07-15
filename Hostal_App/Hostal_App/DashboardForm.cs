@@ -61,6 +61,7 @@ namespace Hostal_App
             reservasToolStripMenuItem.Visible = false;
             usuariosToolStripMenuItem.Visible = false;
             informesToolStripMenuItem.Visible = false;
+            opcionesDeReservaToolStripMenuItem.Visible = false;
 
             // Configurar menús basado en los permisos
             foreach (var permiso in permisosLogin)
@@ -85,6 +86,7 @@ namespace Hostal_App
                     case "r reserva":
                         reservasToolStripMenuItem.Visible = true;
                         informesToolStripMenuItem.Visible= true;
+                        opcionesDeReservaToolStripMenuItem.Visible = true;
                         cartesianChart2.Visible= true;
                         cartesianChart1.Visible= true;
                         lblrm.Visible= true;
@@ -356,6 +358,23 @@ namespace Hostal_App
         {
             Reportes infor = new Reportes();
             infor.ShowDialog();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void acercaDeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutBox AB = new AboutBox();
+            AB.ShowDialog();
+        }
+
+        private void opcionesDeReservaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReservaOp OR = new ReservaOp();
+            OR.ShowDialog();
         }
     }
 

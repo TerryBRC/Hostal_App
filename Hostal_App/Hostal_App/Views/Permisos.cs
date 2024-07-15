@@ -23,7 +23,6 @@ namespace Hostal_App.Views
             LoadDataPermisos();
             this.permisosLogin = permisosLogin;
             Configurar();
-            LimpiarPermisos();
         }
         private void Configurar()
         {
@@ -54,9 +53,7 @@ namespace Hostal_App.Views
             lblIdPermiso.Text = "";
             txtNombrePermiso.Clear();
             txtNombrePermiso.Focus();
-            btnActualizarPermiso.Enabled = false;
-            btnAgregarPermiso.Enabled = true;
-            btnEliminarPermiso.Enabled = false;
+            Configurar();
         }
         private void LoadDataPermisos()
         {

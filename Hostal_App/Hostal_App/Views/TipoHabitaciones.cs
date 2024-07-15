@@ -23,7 +23,6 @@ namespace Hostal_App.Views
             this.permisosLogin = permisosLogin;
             LoadDataTipoHabitacion();
             Configurar();
-            LimpiarTipoHabitacion();
         }
 
         private void Configurar()
@@ -56,9 +55,7 @@ namespace Hostal_App.Views
             txtTipo.Clear();
             txtDescripcion.Clear();
             txtTipo.Focus();
-            btnAgregarTH.Enabled = true;
-            btnActualizarTH.Enabled = false;
-            btnEliminarTH.Enabled = false;
+            Configurar();
         }
 
         private void LoadDataTipoHabitacion()

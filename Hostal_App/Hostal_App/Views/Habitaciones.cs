@@ -28,7 +28,6 @@ namespace Hostal_App.Views
             ConfigurarAccesos();
             LoadDataHabitacion();
             CargarComboBoxTipoHabitacion();
-            LimpiarHabitacion();
         }
         private void ConfigurarAccesos()
         {
@@ -67,9 +66,7 @@ namespace Hostal_App.Views
             ckbDisponible.Checked = true;
             cmbTipoHabitacion.SelectedIndex = -1;
             txtNumero.Focus();
-            btnAgregarHabitacion.Enabled = true;
-            btnActualizarHabitacion.Enabled = false;
-            btnEliminarHabitacion.Enabled = false;
+            ConfigurarAccesos();
         }
 
         private void LoadDataHabitacion()

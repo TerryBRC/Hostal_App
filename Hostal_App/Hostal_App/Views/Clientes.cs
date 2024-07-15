@@ -24,7 +24,6 @@ namespace Hostal_App.Views
             clienteService = new ClienteService();
             LoadDataClientes();
             Configurar();
-            LimpiarClientes();
         }
         private void Configurar()
         {
@@ -60,9 +59,7 @@ namespace Hostal_App.Views
             txtIdentificacion.Clear();
             txtDireccionCliente.Clear();
             txtNombreCliente.Focus();
-            btnActualizarCliente.Enabled = false;
-            btnEliminarCliente.Enabled= false;
-            btnAgregarCliente.Enabled = true;
+            Configurar();
         }
         private void LoadDataClientes()
         {

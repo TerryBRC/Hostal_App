@@ -27,7 +27,6 @@ namespace Hostal_App.Views
             LoadDataReservas();
             this.permisosLogin = permisosLogin;
             Configurar();
-            LimpiarReserva();
         }
         private void Configurar()
         {
@@ -68,15 +67,15 @@ namespace Hostal_App.Views
             dtpEntrada.Value = DateTime.Today;
             dtpSalida.Value = DateTime.Today;
             dtpEntrada.Focus();
-            btnAgregarReserva.Enabled = true;
-            btnEliminarReserva.Enabled = false;
-            btnActualizarReserva .Enabled = false;
+            Configurar();
         }
 
         private void LoadDataReservas()
         {
             dataGridViewReservas.DataSource = reservaService.ObtenerReservas();
             dataGridViewReservas.RowHeadersVisible = false;
+            dataGridViewReservas.Columns["cliente_id"].Visible = false;
+            dataGridViewReservas.Columns["habitacion_id"].Visible = false;
 
             // Cargar los ComboBox de clientes y habitaciones
             CargarComboBoxClientes();
@@ -88,21 +87,21 @@ namespace Hostal_App.Views
             // Obtener la lista de clientes
             DataTable clientes = clienteService.ObtenerClientes();
 
+            // Crear una nueva columna para el nombre completo
+            clientes.Columns.Add("NombreCompleto", typeof(string), "nombre + ' ' + apellido");
+
             // Asignar la lista de clientes al ComboBox de clientes
             cmbClientes.DataSource = clientes;
-            cmbClientes.DisplayMember = "nombre apellido"; // Reemplaza "nombre" con el campo correcto que deseas mostrar en el ComboBox
-            cmbClientes.ValueMember = "id"; // Reemplaza "id" con el campo correcto que representa el valor seleccionado del ComboBox
-            cmbClientes.SelectedIndex = -1; // Seleccionar el índice -1 para deseleccionar cualquier elemento inicialmente
-
-            // Si deseas mostrar un texto inicial en el ComboBox de clientes, puedes agregar un elemento vacío o predeterminado
-            // cmbClientes.Items.Insert(0, new { id = 0, nombre = "Seleccionar Cliente" });
+            cmbClientes.DisplayMember = "NombreCompleto"; 
+            cmbClientes.ValueMember = "id"; 
+            cmbClientes.SelectedIndex = -1;
         }
 
         private void CargarComboBoxHabitaciones()
         {
             DataTable habitaciones = habitacionService.ObtenerHabitaciones();
             cmbHabitaciones.DataSource = habitaciones;
-            cmbHabitaciones.DisplayMember = "numero"; 
+            cmbHabitaciones.DisplayMember = "Habitacion"; 
             cmbHabitaciones.ValueMember = "id"; 
             cmbHabitaciones.SelectedIndex = -1; 
         }
@@ -113,15 +112,19 @@ namespace Hostal_App.Views
                 if (e.RowIndex >= 0)
                 {
                     DataGridViewRow row = dataGridViewReservas.Rows[e.RowIndex];
-                    lblIdReserva.Text = row.Cells["id"].Value.ToString();
-                    dtpEntrada.Value = Convert.ToDateTime(row.Cells["fecha_entrada"].Value);
-                    dtpSalida.Value = Convert.ToDateTime(row.Cells["fecha_salida"].Value);
-                    txtNumeroHuespedes.Text = row.Cells["numero_huespedes"].Value.ToString();
+                    lblIdReserva.Text = row.Cells["Reserva"].Value.ToString();
+                    dtpEntrada.Value = Convert.ToDateTime(row.Cells["Entrada"].Value);
+                    dtpSalida.Value = Convert.ToDateTime(row.Cells["Salida"].Value);
+                    txtNumeroHuespedes.Text = row.Cells["Cantidad"].Value.ToString();
                     cmbEstado.Text = row.Cells["estado"].Value.ToString();
                     cmbClientes.SelectedValue = row.Cells["cliente_id"].Value;
                     cmbHabitaciones.SelectedValue = row.Cells["habitacion_id"].Value;
                     Configurar();
                     btnAgregarReserva.Enabled = false;
+
+                    //formato de celdas
+                    dataGridViewReservas.CellFormatting += new DataGridViewCellFormattingEventHandler(dataGridViewReservas_CellFormatting);
+
                 }
             }
             catch (Exception ex)
@@ -246,5 +249,60 @@ namespace Hostal_App.Views
         }
 
         #endregion Reservas
+
+        private void dataGridViewReservas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex >= 0 && dataGridViewReservas.Rows[e.RowIndex].Cells["Estado"].Value != null)
+            {
+                // Verificar si la fecha de salida se ha cumplido
+                DateTime fechaSalida = Convert.ToDateTime(dataGridViewReservas.Rows[e.RowIndex].Cells["Salida"].Value);
+                if (fechaSalida < DateTime.Now)
+                {
+                    // Establecer el color de la fila en blanco si la fecha de salida ya se cumplió
+                    dataGridViewReservas.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
+                    dataGridViewReservas.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Black;
+                }
+                else
+                {
+                    string estado = dataGridViewReservas.Rows[e.RowIndex].Cells["Estado"].Value.ToString();
+
+                    if (estado.Equals("Activo", StringComparison.OrdinalIgnoreCase))
+                    {
+                        dataGridViewReservas.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Green;
+                        dataGridViewReservas.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.White;
+                    }
+                    else if (estado.Equals("Pendiente", StringComparison.OrdinalIgnoreCase))
+                    {
+                        dataGridViewReservas.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Yellow;
+                        dataGridViewReservas.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Black;
+                    }
+                    else if (estado.Equals("Cancelado", StringComparison.OrdinalIgnoreCase))
+                    {
+                        dataGridViewReservas.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
+                        dataGridViewReservas.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.White;
+                    }
+                    else if (estado.Equals("Finalizado", StringComparison.OrdinalIgnoreCase))
+                    {
+                        dataGridViewReservas.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Blue;
+                        dataGridViewReservas.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.White;
+                    }
+                    else if (estado.Equals("No Presentado", StringComparison.OrdinalIgnoreCase))
+                    {
+                        dataGridViewReservas.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Gray;
+                        dataGridViewReservas.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.White;
+                    }
+                    else if (estado.Equals("En Proceso", StringComparison.OrdinalIgnoreCase))
+                    {
+                        dataGridViewReservas.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Orange;
+                        dataGridViewReservas.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Black;
+                    }
+                    else
+                    {
+                        dataGridViewReservas.Rows[e.RowIndex].DefaultCellStyle.BackColor = dataGridViewReservas.DefaultCellStyle.BackColor;
+                        dataGridViewReservas.Rows[e.RowIndex].DefaultCellStyle.ForeColor = dataGridViewReservas.DefaultCellStyle.ForeColor;
+                    }
+                }
+            }
+        }
     }
 }

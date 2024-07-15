@@ -48,7 +48,7 @@ namespace Hostal_App.Services
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
-                MySqlCommand command = new MySqlCommand("sp_search_grupo_permisos", connection);
+                MySqlCommand command = new MySqlCommand("sp_search_grupos_permisos", connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@p_filter", "%" + filtro + "%");
 

@@ -129,6 +129,7 @@
             this.dataGridViewReservas.Size = new System.Drawing.Size(900, 150);
             this.dataGridViewReservas.TabIndex = 0;
             this.dataGridViewReservas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewReservas_CellClick);
+            this.dataGridViewReservas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewReservas_CellFormatting);
             // 
             // txtBuscarReserva
             // 
@@ -263,7 +264,10 @@
             this.cmbEstado.Items.AddRange(new object[] {
             "Activo",
             "Pendiente",
-            "Cancelado"});
+            "Cancelado",
+            "Finalizado",
+            "No Presentado",
+            "En Proceso"});
             this.cmbEstado.Location = new System.Drawing.Point(468, 115);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(184, 21);

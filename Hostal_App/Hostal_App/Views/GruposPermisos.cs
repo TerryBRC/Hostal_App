@@ -29,7 +29,6 @@ namespace Hostal_App.Views
             CargarComboBoxPermisos();
             this.permisosLogin = permisosLogin;
             Configurar();
-            LimpiarGruposPermisos();
         }
         private void Configurar()
         {
@@ -57,8 +56,7 @@ namespace Hostal_App.Views
             cmbPermisos.SelectedIndex = -1;
             cmbGrupos.SelectedIndex = -1;
             cmbGrupos.Focus();
-            btnAgregarGrupoPermiso.Enabled = true;
-            btnEliminarGrupoPermiso.Enabled = false;
+            Configurar();
         }
         private void CargarComboBoxPermisos()
         {

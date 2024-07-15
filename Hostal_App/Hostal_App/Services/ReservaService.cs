@@ -95,7 +95,7 @@ namespace Hostal_App.Services
             {
                 MySqlCommand command = new MySqlCommand("sp_search_reserva", connection);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@filter", "%" + filtro + "%");
+                command.Parameters.AddWithValue("@p_filter", "%" + filtro + "%");
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                 DataTable dataTable = new DataTable();

@@ -24,7 +24,6 @@ namespace Hostal_App.Views
             LoadDataGrupos();
             this.permisosLogin = permisosLogin;
             Configurar();
-            LimpiarGrupo();
         }
 
         private void Configurar()
@@ -56,9 +55,7 @@ namespace Hostal_App.Views
             lblIdGrupo.Text = "";
             txtNombreGrupo.Clear();
             txtNombreGrupo.Focus();
-            btnAgregarGrupo.Enabled = true;
-            btnActualizarGrupo.Enabled = false;
-            btnEliminarGrupo.Enabled = false;
+            Configurar();
         }
         private void LoadDataGrupos()
         {

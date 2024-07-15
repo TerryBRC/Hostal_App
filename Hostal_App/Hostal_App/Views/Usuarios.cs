@@ -28,7 +28,6 @@ namespace Hostal_App.Views
             LoadComboBoxGrupo();
             this.permisosLogin = permisosLogin;
             Configurar();
-            Limpiar();
         }
         private void Configurar()
         {
@@ -74,9 +73,7 @@ namespace Hostal_App.Views
             txtCorreo.Clear();
             cmbGrupoUsuario.SelectedIndex = -1;
             chkIsActive.Checked = true;
-            btnAgregar.Enabled = true;
-            btnActualizar.Enabled = false;
-            btnEliminar .Enabled = false;
+            Configurar();
         }
         private void LoadData()
         {

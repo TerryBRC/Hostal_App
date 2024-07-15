@@ -41,11 +41,13 @@
             this.gruposPermisosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.informesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSesiónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lbPermisos = new System.Windows.Forms.ListBox();
             this.btnBackup = new MaterialSkin.Controls.MaterialButton();
             this.btnRestore = new MaterialSkin.Controls.MaterialButton();
             this.lblrm = new MaterialSkin.Controls.MaterialLabel();
             this.lblrth = new MaterialSkin.Controls.MaterialLabel();
+            this.opcionesDeReservaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,7 +81,9 @@
             this.gruposToolStripMenuItem,
             this.gruposPermisosToolStripMenuItem,
             this.informesToolStripMenuItem,
-            this.cerrarSesiónToolStripMenuItem});
+            this.opcionesDeReservaToolStripMenuItem,
+            this.cerrarSesiónToolStripMenuItem,
+            this.acercaDeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(3, 64);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1872, 24);
@@ -156,6 +160,13 @@
             this.cerrarSesiónToolStripMenuItem.Text = "Cerrar Sesión";
             this.cerrarSesiónToolStripMenuItem.Click += new System.EventHandler(this.cerrarSesiónToolStripMenuItem_Click);
             // 
+            // acercaDeToolStripMenuItem
+            // 
+            this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
+            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
+            this.acercaDeToolStripMenuItem.Text = "Acerca de";
+            this.acercaDeToolStripMenuItem.Click += new System.EventHandler(this.acercaDeToolStripMenuItem_Click);
+            // 
             // lbPermisos
             // 
             this.lbPermisos.FormattingEnabled = true;
@@ -231,11 +242,18 @@
             this.lblrth.Text = "RESERVA POR TIPO DE HABITACION";
             this.lblrth.Visible = false;
             // 
+            // opcionesDeReservaToolStripMenuItem
+            // 
+            this.opcionesDeReservaToolStripMenuItem.Name = "opcionesDeReservaToolStripMenuItem";
+            this.opcionesDeReservaToolStripMenuItem.Size = new System.Drawing.Size(128, 20);
+            this.opcionesDeReservaToolStripMenuItem.Text = "Opciones de Reserva";
+            this.opcionesDeReservaToolStripMenuItem.Click += new System.EventHandler(this.opcionesDeReservaToolStripMenuItem_Click);
+            // 
             // DashboardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1878, 1065);
+            this.ClientSize = new System.Drawing.Size(1878, 1100);
             this.Controls.Add(this.lblrth);
             this.Controls.Add(this.lblrm);
             this.Controls.Add(this.btnRestore);
@@ -248,7 +266,6 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "DashboardForm";
-            this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mi Hostal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -279,5 +296,7 @@
         private System.Windows.Forms.ToolStripMenuItem informesToolStripMenuItem;
         private MaterialSkin.Controls.MaterialLabel lblrm;
         private MaterialSkin.Controls.MaterialLabel lblrth;
+        private System.Windows.Forms.ToolStripMenuItem acercaDeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem opcionesDeReservaToolStripMenuItem;
     }
 }

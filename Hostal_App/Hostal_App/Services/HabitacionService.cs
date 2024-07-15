@@ -130,7 +130,7 @@ namespace Hostal_App.Services
             {
                 MySqlCommand command = new MySqlCommand("sp_search_habitacion", connection);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@p_numero", "%" + filtroNumero + "%");
+                command.Parameters.AddWithValue("@p_filter", "%" + filtroNumero + "%");
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                 DataTable dataTable = new DataTable();
