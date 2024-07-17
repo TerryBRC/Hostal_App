@@ -43,6 +43,8 @@
             this.materialLabel19 = new MaterialSkin.Controls.MaterialLabel();
             this.lblIdPermiso = new System.Windows.Forms.Label();
             this.txtNombrePermiso = new System.Windows.Forms.TextBox();
+            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPermisos)).BeginInit();
             this.panel4.SuspendLayout();
@@ -131,6 +133,8 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel4.Controls.Add(this.materialLabel1);
+            this.panel4.Controls.Add(this.txtDescripcion);
             this.panel4.Controls.Add(this.btnEliminarPermiso);
             this.panel4.Controls.Add(this.btnActualizarPermiso);
             this.panel4.Controls.Add(this.btnAgregarPermiso);
@@ -264,6 +268,25 @@
             this.txtNombrePermiso.Size = new System.Drawing.Size(214, 20);
             this.txtNombrePermiso.TabIndex = 16;
             // 
+            // materialLabel1
+            // 
+            this.materialLabel1.AutoSize = true;
+            this.materialLabel1.Depth = 0;
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel1.Location = new System.Drawing.Point(444, 18);
+            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel1.Name = "materialLabel1";
+            this.materialLabel1.Size = new System.Drawing.Size(84, 19);
+            this.materialLabel1.TabIndex = 39;
+            this.materialLabel1.Text = "Descripción";
+            // 
+            // txtDescripcion
+            // 
+            this.txtDescripcion.Location = new System.Drawing.Point(545, 15);
+            this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.Size = new System.Drawing.Size(214, 20);
+            this.txtDescripcion.TabIndex = 38;
+            // 
             // Permisos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -301,5 +324,7 @@
         private MaterialSkin.Controls.MaterialButton btnEliminarPermiso;
         private MaterialSkin.Controls.MaterialButton btnActualizarPermiso;
         private MaterialSkin.Controls.MaterialButton btnAgregarPermiso;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private System.Windows.Forms.TextBox txtDescripcion;
     }
 }

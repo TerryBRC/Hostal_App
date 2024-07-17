@@ -30,7 +30,7 @@ namespace Hostal_App.Views
             this.permisosLogin = permisosLogin;
             Configurar();
         }
-        private void Configurar()
+        private void Configurar(bool isRowSelected = false)
         {
             btnAgregarGrupoPermiso.Enabled = false;            
             btnEliminarGrupoPermiso.Enabled = false;
@@ -39,10 +39,10 @@ namespace Hostal_App.Views
                 switch (item.Nombre)
                 {
                     case "c grupospermisos":
-                        btnAgregarGrupoPermiso.Enabled = true;
+                        btnAgregarGrupoPermiso.Enabled = !isRowSelected;
                         break;
                     case "d grupospermisos":
-                        btnEliminarGrupoPermiso.Enabled = true;
+                        btnEliminarGrupoPermiso.Enabled = isRowSelected;
                         break;
                     default:
                         break;
@@ -114,8 +114,7 @@ namespace Hostal_App.Views
                     lblIdPermisosGrupos.Text = idGruposPermisos; // Mostrar el ID en un control Label
                     cmbGrupos.SelectedItem = nombreGrupo;
                     cmbPermisos.SelectedItem = nombrePermiso;
-                    Configurar();
-                    btnAgregarGrupoPermiso.Enabled = false;
+                    Configurar(true);
                 }
             }
             catch (Exception ex)

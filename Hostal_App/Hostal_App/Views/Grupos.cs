@@ -26,23 +26,24 @@ namespace Hostal_App.Views
             Configurar();
         }
 
-        private void Configurar()
+        private void Configurar(bool isRowSelected = false)
         {
             btnAgregarGrupo.Enabled = false;
             btnActualizarGrupo.Enabled = false;
             btnEliminarGrupo.Enabled = false;
+
             foreach (var item in permisosLogin)
             {
                 switch (item.Nombre)
                 {
                     case "c cliente":
-                        btnAgregarGrupo.Enabled = true;
+                        btnAgregarGrupo.Enabled = !isRowSelected;
                         break;
                     case "u cliente":
-                        btnActualizarGrupo.Enabled = true;
+                        btnActualizarGrupo.Enabled = isRowSelected;
                         break;
                     case "d cliente":
-                        btnEliminarGrupo.Enabled = true;
+                        btnEliminarGrupo.Enabled = isRowSelected;
                         break;
                     default:
                         break;
@@ -76,8 +77,7 @@ namespace Hostal_App.Views
                     DataGridViewRow row = dataGridViewGrupos.Rows[e.RowIndex];
                     lblIdGrupo.Text = row.Cells["id"].Value.ToString();
                     txtNombreGrupo.Text = row.Cells["nombre"].Value.ToString();
-                    Configurar();
-                    btnAgregarGrupo.Enabled = false;
+                    Configurar(true);
                 }
             }
             catch (Exception ex)

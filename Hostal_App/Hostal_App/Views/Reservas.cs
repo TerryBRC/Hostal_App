@@ -28,23 +28,24 @@ namespace Hostal_App.Views
             this.permisosLogin = permisosLogin;
             Configurar();
         }
-        private void Configurar()
+        private void Configurar(bool isRowSelected = false)
         {
             btnAgregarReserva.Enabled = false;
             btnActualizarReserva.Enabled = false;
             btnEliminarReserva.Enabled = false;
+
             foreach (var item in permisosLogin)
             {
                 switch (item.Nombre)
                 {
                     case "c reserva":
-                        btnAgregarReserva.Enabled = true;
+                        btnAgregarReserva.Enabled = !isRowSelected;
                         break;
                     case "u reserva":
-                        btnActualizarReserva.Enabled = true;
+                        btnActualizarReserva.Enabled = isRowSelected;
                         break;
                     case "d reserva":
-                        btnEliminarReserva.Enabled = true;
+                        btnEliminarReserva.Enabled = isRowSelected;
                         break;
                     default:
                         break;
@@ -119,8 +120,8 @@ namespace Hostal_App.Views
                     cmbEstado.Text = row.Cells["estado"].Value.ToString();
                     cmbClientes.SelectedValue = row.Cells["cliente_id"].Value;
                     cmbHabitaciones.SelectedValue = row.Cells["habitacion_id"].Value;
-                    Configurar();
-                    btnAgregarReserva.Enabled = false;
+                    Configurar(true);
+                    
 
                     //formato de celdas
                     dataGridViewReservas.CellFormatting += new DataGridViewCellFormattingEventHandler(dataGridViewReservas_CellFormatting);

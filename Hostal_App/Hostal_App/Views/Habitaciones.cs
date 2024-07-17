@@ -29,7 +29,7 @@ namespace Hostal_App.Views
             LoadDataHabitacion();
             CargarComboBoxTipoHabitacion();
         }
-        private void ConfigurarAccesos()
+        private void ConfigurarAccesos(bool isRowSelected = false)
         {
             btnAgregarHabitacion.Enabled = false;
             btnActualizarHabitacion.Enabled = false;
@@ -41,13 +41,13 @@ namespace Hostal_App.Views
                 switch (permiso.Nombre)
                 {
                     case "c habitacion":
-                        btnAgregarHabitacion.Enabled = true;
+                        btnAgregarHabitacion.Enabled = !isRowSelected;
                         break;
                     case "u habitacion":
-                        btnActualizarHabitacion.Enabled =true;
+                        btnActualizarHabitacion.Enabled = isRowSelected;
                         break;
                     case "d habitacion":
-                        btnEliminarHabitacion.Enabled = true;
+                        btnEliminarHabitacion.Enabled = isRowSelected;
                         break;
                     default:
                         break;
@@ -99,9 +99,7 @@ namespace Hostal_App.Views
                     txtPrecioXNoche.Text = row.Cells["Precio"].Value.ToString();
                     ckbDisponible.Checked = Convert.ToBoolean(row.Cells["Disponible"].Value);
                     cmbTipoHabitacion.SelectedValue = row.Cells["idTipo"].Value;
-                    ConfigurarAccesos();
-                    btnAgregarHabitacion.Enabled = false;
-                }
+                    ConfigurarAccesos(true);                }
             }
             catch (Exception ex)
             {

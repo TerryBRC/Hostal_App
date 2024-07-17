@@ -24,7 +24,7 @@ namespace Hostal_App.Views
             this.permisosLogin = permisosLogin;
             Configurar();
         }
-        private void Configurar()
+        private void Configurar(bool isRowSelected = false)
         {
             btnAgregarPermiso.Enabled = false;
             btnActualizarPermiso.Enabled = false;
@@ -34,13 +34,13 @@ namespace Hostal_App.Views
                 switch (item.Nombre)
                 {
                     case "c permiso":
-                        btnAgregarPermiso.Enabled = true;
+                        btnAgregarPermiso.Enabled = !isRowSelected;
                         break;
                     case "u permiso":
-                        btnActualizarPermiso.Enabled = true;
+                        btnActualizarPermiso.Enabled = isRowSelected;
                         break;
                     case "d permiso":
-                        btnEliminarPermiso.Enabled = true;
+                        btnEliminarPermiso.Enabled = isRowSelected;
                         break;
                     default:
                         break;
@@ -52,6 +52,7 @@ namespace Hostal_App.Views
         {
             lblIdPermiso.Text = "";
             txtNombrePermiso.Clear();
+            txtDescripcion.Clear();
             txtNombrePermiso.Focus();
             Configurar();
         }
@@ -59,6 +60,7 @@ namespace Hostal_App.Views
         {
             dataGridViewPermisos.DataSource = permisoService.ObtenerPermisos();
             dataGridViewPermisos.RowHeadersVisible = false;
+            dataGridViewPermisos.Columns["nombre"].Visible = false;
         }
         private void LoadFilteredDataPermisos(string filter)
         {
@@ -74,9 +76,8 @@ namespace Hostal_App.Views
                     DataGridViewRow row = dataGridViewPermisos.Rows[e.RowIndex];
                     lblIdPermiso.Text = row.Cells["id"].Value.ToString();
                     txtNombrePermiso.Text = row.Cells["nombre"].Value.ToString();
-                    Configurar();
-                    btnAgregarPermiso.Enabled = false;
-                    btnAgregarPermiso.Enabled = false;
+                    txtDescripcion.Text = row.Cells["descripcion"].Value.ToString();
+                    Configurar(true);
                 }
             }
             catch (Exception ex)
@@ -87,14 +88,15 @@ namespace Hostal_App.Views
         private void btnAgregarPermiso_Click(object sender, EventArgs e)
         {
             string nombrePermiso = txtNombrePermiso.Text;
+            string descripcion = txtDescripcion.Text;
 
-            if (string.IsNullOrWhiteSpace(nombrePermiso))
+            if (string.IsNullOrWhiteSpace(nombrePermiso) || string.IsNullOrWhiteSpace(descripcion))
             {
                 MessageBox.Show("Por favor, complete todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (permisoService.CrearPermiso(nombrePermiso))
+            if (permisoService.CrearPermiso(nombrePermiso,descripcion))
             {
                 MessageBox.Show("Permiso guardado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LimpiarPermisos();
@@ -109,6 +111,7 @@ namespace Hostal_App.Views
         {
             int id = int.Parse(lblIdPermiso.Text);
             string nombrePermiso = txtNombrePermiso.Text;
+            string descripcion = txtDescripcion.Text;
 
             if (id.Equals("") || string.IsNullOrWhiteSpace(nombrePermiso))
             {
@@ -116,7 +119,7 @@ namespace Hostal_App.Views
                 return;
             }
 
-            if (permisoService.ActualizarPermiso(id, nombrePermiso))
+            if (permisoService.ActualizarPermiso(id, nombrePermiso,descripcion))
             {
                 MessageBox.Show("Permiso actualizado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LimpiarPermisos();

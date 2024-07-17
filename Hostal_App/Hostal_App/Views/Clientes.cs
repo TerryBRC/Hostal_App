@@ -25,23 +25,24 @@ namespace Hostal_App.Views
             LoadDataClientes();
             Configurar();
         }
-        private void Configurar()
+        private void Configurar(bool isRowSelected = false)
         {
             btnActualizarCliente.Enabled = false;
             btnAgregarCliente.Enabled = false;
             btnEliminarCliente.Enabled = false;
+
             foreach (var permiso in permisosLogin)
             {
                 switch (permiso.Nombre)
                 {
                     case "c cliente":
-                        btnAgregarCliente.Enabled = true;
+                        btnAgregarCliente.Enabled = !isRowSelected;
                         break;
                     case "u cliente":
-                        btnActualizarCliente.Enabled = true;
+                        btnActualizarCliente.Enabled = isRowSelected;
                         break;
                     case "d cliente":
-                        btnEliminarCliente.Enabled = true;
+                        btnEliminarCliente.Enabled = isRowSelected;
                         break;
                     default:
                         break;
@@ -59,7 +60,7 @@ namespace Hostal_App.Views
             txtIdentificacion.Clear();
             txtDireccionCliente.Clear();
             txtNombreCliente.Focus();
-            Configurar();
+            Configurar(); // Restablece la configuración a estado inicial
         }
         private void LoadDataClientes()
         {
@@ -161,8 +162,8 @@ namespace Hostal_App.Views
                     txtIdentificacion.Text = row.Cells["identificacion"].Value.ToString();
                     txtDireccionCliente.Text = row.Cells["direccion"].Value.ToString();
                     // Habilitar los botones de Actualizar y Eliminar al seleccionar una fila
-                    Configurar();
-                    btnAgregarCliente.Enabled = false;
+                    Configurar(true); // Indica que se ha seleccionado una fila
+
                 }
             }
             catch (Exception ex)

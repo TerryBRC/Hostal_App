@@ -29,7 +29,7 @@ namespace Hostal_App.Views
             this.permisosLogin = permisosLogin;
             Configurar();
         }
-        private void Configurar()
+        private void Configurar(bool isRowSelected = false)
         {
             btnAgregar.Enabled = false;
             btnActualizar.Enabled = false;
@@ -39,13 +39,13 @@ namespace Hostal_App.Views
                 switch (item.Nombre)
                 {
                     case "c usuario":
-                        btnAgregar.Enabled = true;
+                        btnAgregar.Enabled =!isRowSelected;
                         break;
                     case "u usuario":
-                        btnActualizar.Enabled = true;
+                        btnActualizar.Enabled = isRowSelected;
                         break;
                     case "d usuario":
-                        btnEliminar.Enabled = true;
+                        btnEliminar.Enabled = isRowSelected;
                         break;
                     default:
                         break;
@@ -98,8 +98,7 @@ namespace Hostal_App.Views
                     txtCorreo.Text = row.Cells["email"].Value.ToString();
                     cmbGrupoUsuario.SelectedValue = row.Cells["grupo_id"].Value.ToString();
                     chkIsActive.Checked = Convert.ToBoolean(row.Cells["is_active"].Value);
-                    Configurar();
-                    btnAgregar.Enabled = false;
+                    Configurar(true);
                 }
             }
             catch (Exception ex)

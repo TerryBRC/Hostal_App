@@ -2,12 +2,6 @@
 using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Hostal_App.Views
@@ -25,7 +19,7 @@ namespace Hostal_App.Views
             Configurar();
         }
 
-        private void Configurar()
+        private void Configurar(bool isRowSelected = false)
         {
             btnAgregarTH.Enabled = false;
             btnActualizarTH.Enabled = false;
@@ -35,13 +29,13 @@ namespace Hostal_App.Views
                 switch (item.Nombre)
                 {
                     case "c tipohabitacion":
-                        btnAgregarTH.Enabled = true;
+                        btnAgregarTH.Enabled = !isRowSelected;
                         break;
                     case "u tipohabitacion":
-                        btnActualizarTH.Enabled = true;
+                        btnActualizarTH.Enabled = isRowSelected;
                         break;
                     case "d tipohabitacion":
-                        btnEliminarTH.Enabled = true;
+                        btnEliminarTH.Enabled = isRowSelected;
                         break;
                     default:
                         break;
@@ -145,8 +139,7 @@ namespace Hostal_App.Views
                     lblIdTH.Text = row.Cells["id"].Value.ToString();
                     txtTipo.Text = row.Cells["tipo"].Value.ToString();
                     txtDescripcion.Text = row.Cells["descripcion"].Value.ToString();
-                    Configurar();
-                    btnAgregarTH.Enabled = false;
+                    Configurar(true);
                 }
             }
             catch (Exception ex)

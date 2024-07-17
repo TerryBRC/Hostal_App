@@ -16,13 +16,14 @@ namespace Hostal_App.Services
         }
 
         // Método para crear un nuevo permiso
-        public bool CrearPermiso(string nombre)
+        public bool CrearPermiso(string nombre, string descripcion)
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 MySqlCommand command = new MySqlCommand("sp_create_permiso", connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@p_nombre", nombre);
+                command.Parameters.AddWithValue("@p_descripcion", descripcion);
 
                 connection.Open();
                 int rowsAffected = command.ExecuteNonQuery();
@@ -47,7 +48,7 @@ namespace Hostal_App.Services
         }
 
         // Método para actualizar un permiso existente
-        public bool ActualizarPermiso(int id, string nombre)
+        public bool ActualizarPermiso(int id, string nombre,string descripcion)
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
@@ -55,6 +56,7 @@ namespace Hostal_App.Services
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@p_id", id);
                 command.Parameters.AddWithValue("@p_nombre", nombre);
+                command.Parameters.AddWithValue("@p_descripcion", descripcion);
 
                 connection.Open();
                 int rowsAffected = command.ExecuteNonQuery();
@@ -108,7 +110,7 @@ namespace Hostal_App.Services
                 {
                     while (reader.Read())
                     {
-                        string nombrePermiso = reader["nombre"].ToString();
+                        string nombrePermiso = reader["descripcion"].ToString();
                         nombresPermisos.Add(nombrePermiso);
                     }
                 }
@@ -122,7 +124,7 @@ namespace Hostal_App.Services
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
-                MySqlCommand command = new MySqlCommand("SELECT id FROM permisos WHERE nombre = @nombrePermiso", connection);
+                MySqlCommand command = new MySqlCommand("SELECT id FROM permisos WHERE descripcion = @nombrePermiso", connection);
                 command.Parameters.AddWithValue("@nombrePermiso", nombrePermiso);
 
                 connection.Open();
