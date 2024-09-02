@@ -1,4 +1,6 @@
-﻿using Hostal_App.Models;
+﻿using DocumentFormat.OpenXml.Office2010.Excel;
+using Hostal_App.Models;
+using Hostal_App.Views;
 using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 using System.Configuration;
@@ -134,6 +136,21 @@ namespace Hostal_App.Services
                 }
                 return -1; // Valor que indica que no se encontró el grupo
             }
+        }public int ObtenerGrupoIDPorUsuario(string usuario)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                MySqlCommand command = new MySqlCommand("SELECT grupo_id FROM usuarios WHERE usuario = @usuario", connection);
+                command.Parameters.AddWithValue("@usuario", usuario);
+
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null && int.TryParse(result.ToString(), out int grupoId))
+                {
+                    return grupoId;
+                }
+                return -1; // Valor que indica que no se encontró el grupo
+            }
         }
         public string ObtenerNombreGrupoPorId(int idGrupo)
         {
@@ -155,18 +172,21 @@ namespace Hostal_App.Services
 
 
 
-        public List<Permiso> ObtenerPermisosPorGrupo(int grupoId)
+        public List<Permiso> ObtenerPermisosPorUsuario(string usuario)
         {
             List<Permiso> permisos = new List<Permiso>();
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
-                string query = "SELECT p.id, p.nombre FROM Permisos p " +
-                               "INNER JOIN grupos_permisos gp ON p.id = gp.permiso_id " +
-                               "WHERE gp.grupo_id = @grupoId";
+                string query ="SELECT p.id, p.nombre FROM " +
+                                    " grupos AS g  JOIN "+
+                                    " grupos_permisos AS gp ON gp.grupo_id = g.id  JOIN" +
+                                    " permisos AS p ON p.id = gp.permiso_id JOIN" +
+                                    " usuarios as us on us.grupo_id = g.id " +
+                                    "where us.usuario = @usuario";
 
                 MySqlCommand command = new MySqlCommand(query, connection);
-                command.Parameters.AddWithValue("@grupoId", grupoId);
+                command.Parameters.AddWithValue("@usuario", usuario);
 
                 connection.Open();
                 using (MySqlDataReader reader = command.ExecuteReader())

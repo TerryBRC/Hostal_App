@@ -15,7 +15,7 @@ namespace Hostal_App.Services
             this.connectionString = ConfigurationManager.ConnectionStrings["conn"].ConnectionString;
         }
 
-        public bool AutenticarUsuario(string usuario, string password, int grupoId)
+        public bool AutenticarUsuario(string usuario, string password)
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
@@ -23,7 +23,6 @@ namespace Hostal_App.Services
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@p_usuario", usuario);
                 command.Parameters.AddWithValue("@p_password", EncryptionHelper.EncryptPassword(password));
-                command.Parameters.AddWithValue("@p_grupo_id", grupoId);
 
                 connection.Open();
                 using (MySqlDataReader reader = command.ExecuteReader())

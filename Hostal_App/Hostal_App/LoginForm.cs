@@ -17,7 +17,6 @@ namespace Hostal_App
             loginService = new LoginService();
             grupoService = new GrupoService();
             errorProvider = new ErrorProvider();
-            CargarComboBoxGrupos();
         }
 
         private void btnEntrar_Click(object sender, EventArgs e)
@@ -26,11 +25,10 @@ namespace Hostal_App
             errorProvider.Clear();
             string usuario = txtUsuario.Text;
             string password = txtPass.Text;
-            int grupoId = (int)cmbGrupos.SelectedValue;
 
             try
             {
-                if (string.IsNullOrWhiteSpace(usuario) || string.IsNullOrWhiteSpace(password) || grupoId <= 0)
+                if (string.IsNullOrWhiteSpace(usuario) || string.IsNullOrWhiteSpace(password))
                 {
                     MessageBox.Show("Todos los campos son obligatorios.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -40,13 +38,13 @@ namespace Hostal_App
 
 
                     // Autenticar usuario
-                    bool autenticado = loginService.AutenticarUsuario(usuario, password, grupoId);
+                    bool autenticado = loginService.AutenticarUsuario(usuario, password);
 
                     if (autenticado)
                     {
                         // Obtener permisos del usuario y realizar otras acciones
-                        var permisos = grupoService.ObtenerPermisosPorGrupo(grupoId);
-
+                        var permisos = grupoService.ObtenerPermisosPorUsuario(usuario);
+                        int grupoId = grupoService.ObtenerGrupoIDPorUsuario(usuario);
                         MessageBox.Show("¡Inicio de sesión exitoso!", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Hide(); // Ocultar el formulario de login
                                      // Mostrar el formulario principal
@@ -66,15 +64,6 @@ namespace Hostal_App
             }
             
         }
-
-        private void CargarComboBoxGrupos()
-        { 
-            cmbGrupos.DataSource = grupoService.ObtenerGrupos();
-            cmbGrupos.DisplayMember = "nombre";
-            cmbGrupos.ValueMember = "Id";
-            cmbGrupos.SelectedIndex = -1;
-        }
-
 
         // Métodos de validación
         private void TxtUsuario_Validating(object sender, System.ComponentModel.CancelEventArgs e)
@@ -102,20 +91,6 @@ namespace Hostal_App
                 errorProvider.SetError(txtPass, string.Empty);
             }
         }
-
-        private void CmbGrupos_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (cmbGrupos.SelectedValue == null || (int)cmbGrupos.SelectedValue <= 0)
-            {
-                e.Cancel = true;
-                errorProvider.SetError(cmbGrupos, "Selecciona un grupo.");
-            }
-            else
-            {
-                errorProvider.SetError(cmbGrupos, string.Empty);
-            }
-        }
-
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();

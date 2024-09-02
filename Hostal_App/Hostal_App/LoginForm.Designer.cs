@@ -33,8 +33,6 @@
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.txtPass = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cmbGrupos = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -103,44 +101,19 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Usuario";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(361, 135);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 23);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Grupo";
-            // 
-            // cmbGrupos
-            // 
-            this.cmbGrupos.FormattingEnabled = true;
-            this.cmbGrupos.Location = new System.Drawing.Point(457, 134);
-            this.cmbGrupos.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.cmbGrupos.Name = "cmbGrupos";
-            this.cmbGrupos.Size = new System.Drawing.Size(133, 24);
-            this.cmbGrupos.TabIndex = 2;
-            this.cmbGrupos.Validating += new System.ComponentModel.CancelEventHandler(this.CmbGrupos_Validating);
-            // 
             // panel1
             // 
             this.panel1.BackgroundImage = global::Hostal_App.Properties.Resources.joanna_kosinska_7ACuHoezUYk_unsplash;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.cmbGrupos);
             this.panel1.Controls.Add(this.btnEntrar);
-            this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.txtPass);
             this.panel1.Controls.Add(this.txtUsuario);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(2, 57);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(714, 476);
+            this.panel1.Size = new System.Drawing.Size(730, 515);
             this.panel1.TabIndex = 4;
             // 
             // LoginForm
@@ -149,7 +122,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(718, 536);
+            this.ClientSize = new System.Drawing.Size(734, 575);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -175,8 +148,6 @@
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.TextBox txtPass;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cmbGrupos;
         private System.Windows.Forms.Panel panel1;
     }
 }
