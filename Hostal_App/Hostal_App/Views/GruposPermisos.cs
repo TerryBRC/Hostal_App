@@ -108,7 +108,7 @@ namespace Hostal_App.Views
                     // Obtener datos de la fila seleccionada
                     string idGruposPermisos = row.Cells["Id"].Value.ToString();
                     string nombreGrupo = row.Cells["Grupo"].Value.ToString();
-                    string nombrePermiso = row.Cells["Permiso"].Value.ToString();
+                    string nombrePermiso = row.Cells["Descripcion"].Value.ToString();
 
                     // Mostrar los datos en los ComboBox correspondientes
                     lblIdPermisosGrupos.Text = idGruposPermisos; // Mostrar el ID en un control Label
