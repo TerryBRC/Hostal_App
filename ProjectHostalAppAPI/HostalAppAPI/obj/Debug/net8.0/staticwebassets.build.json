@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "EGxX3TrsfXKxA4PQII2CXohd2DaJChz3lUlgSwm6TVs=",
+  "Source": "HostalAppAPI",
+  "BasePath": "_content/HostalAppAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

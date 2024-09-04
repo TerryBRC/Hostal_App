@@ -1,0 +1,109 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Admin\\Documents\\Github\\ProjectHostalAppAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D9BC4DB5-681A-4E14-B281-AF3A35C06D91}|HostalAppAPI\\HostalAppAPI.csproj|c:\\users\\admin\\documents\\github\\projecthostalappapi\\hostalappapi\\controllers\\grupocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9BC4DB5-681A-4E14-B281-AF3A35C06D91}|HostalAppAPI\\HostalAppAPI.csproj|solutionrelative:hostalappapi\\controllers\\grupocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9BC4DB5-681A-4E14-B281-AF3A35C06D91}|HostalAppAPI\\HostalAppAPI.csproj|c:\\users\\admin\\documents\\github\\projecthostalappapi\\hostalappapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9BC4DB5-681A-4E14-B281-AF3A35C06D91}|HostalAppAPI\\HostalAppAPI.csproj|solutionrelative:hostalappapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9BC4DB5-681A-4E14-B281-AF3A35C06D91}|HostalAppAPI\\HostalAppAPI.csproj|c:\\users\\admin\\documents\\github\\projecthostalappapi\\hostalappapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{D9BC4DB5-681A-4E14-B281-AF3A35C06D91}|HostalAppAPI\\HostalAppAPI.csproj|solutionrelative:hostalappapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9BC4DB5-681A-4E14-B281-AF3A35C06D91}|HostalAppAPI\\HostalAppAPI.csproj|c:\\users\\admin\\documents\\github\\projecthostalappapi\\hostalappapi\\context\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9BC4DB5-681A-4E14-B281-AF3A35C06D91}|HostalAppAPI\\HostalAppAPI.csproj|solutionrelative:hostalappapi\\context\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9BC4DB5-681A-4E14-B281-AF3A35C06D91}|HostalAppAPI\\HostalAppAPI.csproj|c:\\users\\admin\\documents\\github\\projecthostalappapi\\hostalappapi\\models\\grupo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9BC4DB5-681A-4E14-B281-AF3A35C06D91}|HostalAppAPI\\HostalAppAPI.csproj|solutionrelative:hostalappapi\\models\\grupo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 212,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GrupoController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Github\\ProjectHostalAppAPI\\HostalAppAPI\\Controllers\\GrupoController.cs",
+              "RelativeDocumentMoniker": "HostalAppAPI\\Controllers\\GrupoController.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\Github\\ProjectHostalAppAPI\\HostalAppAPI\\Controllers\\GrupoController.cs",
+              "RelativeToolTip": "HostalAppAPI\\Controllers\\GrupoController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-02T19:12:28.364Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Github\\ProjectHostalAppAPI\\HostalAppAPI\\appsettings.json",
+              "RelativeDocumentMoniker": "HostalAppAPI\\appsettings.json",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\Github\\ProjectHostalAppAPI\\HostalAppAPI\\appsettings.json",
+              "RelativeToolTip": "HostalAppAPI\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-09-02T19:04:07.729Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Github\\ProjectHostalAppAPI\\HostalAppAPI\\Program.cs",
+              "RelativeDocumentMoniker": "HostalAppAPI\\Program.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\Github\\ProjectHostalAppAPI\\HostalAppAPI\\Program.cs",
+              "RelativeToolTip": "HostalAppAPI\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-02T18:52:20.44Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Github\\ProjectHostalAppAPI\\HostalAppAPI\\Context\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "HostalAppAPI\\Context\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\Github\\ProjectHostalAppAPI\\HostalAppAPI\\Context\\AppDbContext.cs",
+              "RelativeToolTip": "HostalAppAPI\\Context\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-02T18:34:47.714Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Grupo.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Github\\ProjectHostalAppAPI\\HostalAppAPI\\Models\\Grupo.cs",
+              "RelativeDocumentMoniker": "HostalAppAPI\\Models\\Grupo.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\Github\\ProjectHostalAppAPI\\HostalAppAPI\\Models\\Grupo.cs",
+              "RelativeToolTip": "HostalAppAPI\\Models\\Grupo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-02T18:25:26.965Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

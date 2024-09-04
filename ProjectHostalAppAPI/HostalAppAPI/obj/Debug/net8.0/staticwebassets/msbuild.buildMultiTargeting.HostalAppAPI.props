@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\HostalAppAPI.props" />
+</Project>
