@@ -113,7 +113,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(2, 57);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(730, 515);
+            this.panel1.Size = new System.Drawing.Size(746, 554);
             this.panel1.TabIndex = 4;
             // 
             // LoginForm
@@ -122,7 +122,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(734, 575);
+            this.ClientSize = new System.Drawing.Size(750, 614);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
